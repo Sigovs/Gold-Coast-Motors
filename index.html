@@ -175,11 +175,11 @@ section[id],footer[id],form[id]{scroll-margin-top:84px}
 .tabs button:hover{color:var(--ink2)}
 .tabs [aria-selected=true]{color:var(--or)}
 /* premier switcher: four small frames; the others wait in the dark, the chosen car is lit */
-.tabs{gap:14px;margin-bottom:0;list-style:none;padding:0}
-.tabs .pt{display:block;width:clamp(120px,10.5vw,158px);padding:0;text-align:left;color:var(--ink3)}
+.tabs{gap:10px;margin-bottom:0;list-style:none;padding:0}
+.tabs .pt{display:block;width:96px;padding:0;text-align:left;color:var(--ink3)}
 .pt-i{position:relative;display:block;aspect-ratio:3/2;border-radius:4px;overflow:hidden;background:#000;box-shadow:0 0 0 1px rgb(236 238 241/.08)}
 .pt-i img{width:100%;height:100%;object-fit:cover;object-position:50% 60%;filter:brightness(.3) saturate(.5);transform:scale(1.06);transition:filter .6s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
-.pt-l{display:flex;align-items:baseline;gap:8px;margin-top:10px;font-family:var(--disp);font-weight:600;font-size:16px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .3s}
+.pt-l{display:flex;align-items:baseline;gap:6px;margin-top:8px;font-family:var(--disp);font-weight:600;font-size:14px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .3s}
 .pt-l i{font-style:normal;font-family:var(--mono);font-size:12px;font-weight:400;letter-spacing:.08em;color:rgb(236 238 241/.4);transition:color .3s}
 .tabs .pt:hover .pt-i img{filter:brightness(.62) saturate(.8)}
 .tabs .pt:hover{color:var(--ink2)}
@@ -187,7 +187,7 @@ section[id],footer[id],form[id]{scroll-margin-top:84px}
 .tabs .pt[aria-selected=true] .pt-i{box-shadow:0 0 0 1px var(--or)}
 .tabs .pt[aria-selected=true] .pt-i img{filter:none;transform:none}
 .tabs .pt[aria-selected=true] .pt-l i{color:var(--or)}
-.tabs .pt:focus-visible{outline:none}.tabs .pt:focus-visible .pt-i{box-shadow:0 0 0 2px var(--or)}
+.tabs .pt:focus{outline:none}.tabs .pt:focus-visible .pt-i{outline:2px solid var(--ink);outline-offset:3px}
 .stage{position:relative;max-width:1488px;margin:48px auto 0;aspect-ratio:2.1/1;border-radius:6px;overflow:hidden;background:#000}
 .stage img{width:100%;height:100%;object-fit:cover;object-position:50% 36%}
 .lights{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}
@@ -578,7 +578,6 @@ h2.kick{font-weight:400}
   <div class="wm" aria-hidden="true"><span>Gold Coast Motors</span></div>
   <div class="in base"><p class="small" style="margin:0;padding:0">© 2026 Gold Coast Motors Inc.</p>
     <ul><li><a href="#">Inventory</a></li><li><a href="#">Sold</a></li><li><a href="#">Financing</a></li><li><a href="#sell">Sell us your car</a></li><li><a href="#contact">Contact us</a></li></ul></div>
-  <p class="in small">Every photograph is from our showroom; in the We buy cars panel, the room to the right of the car is extended with generated imagery. Map © <a href="https://openfreemap.org">OpenFreeMap</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>.</p>
 </footer>
 
 <script>
@@ -636,9 +635,10 @@ h2.kick{font-weight:400}
   document.fonts.ready.then(fit); addEventListener('resize', fit);
   const lots = [{"img": "03608", "make": "McLaren", "model": "720S", "hp": "710", "z": "2.8", "v": "212", "year": "2019", "mi": "6,812", "stk": "P0142", "price": "$239,900"}, {"img": "09386", "make": "Ferrari", "model": "812 Superfast", "hp": "789", "z": "2.9", "v": "211", "year": "2018", "mi": "4,210", "stk": "P0138", "price": "$389,900"}, {"img": "04778", "make": "Porsche", "model": "911 GT3 RS", "hp": "520", "z": "3.0", "v": "193", "year": "2019", "mi": "3,105", "stk": "P0151", "price": "$229,900"}, {"img": "04804", "make": "Mercedes-AMG", "model": "GT R", "hp": "577", "z": "3.5", "v": "198", "year": "2018", "mi": "9,880", "stk": "P0127", "price": "$149,900"}];
   const tabs = $$('.tabs [role=tab]'), img = $('#lot-img'), lights = $('.lights');
-  let cur = 0, busy = false;
+  let cur = 0, busy = false, queued = null;
   const pick = async (i, focus) => {
-    if (i === cur || busy) return; busy = true;
+    if (busy) { queued = i; return; }
+    if (i === cur) return; busy = true;
     tabs.forEach((t, k) => { t.setAttribute('aria-selected', k === i); t.tabIndex = k === i ? 0 : -1; });
     if (focus) tabs[i].focus();
     $('#lot-p').setAttribute('aria-labelledby', tabs[i].id);
@@ -665,6 +665,7 @@ h2.kick{font-weight:400}
       out.cancel(); next.parentNode.removeChild(next);
     }
     cur = i; busy = false;
+    if (queued !== null) { const n = queued; queued = null; if (n !== cur) pick(n); }
   };
   tabs.forEach((t, i) => {
     t.addEventListener('click', () => pick(i));
@@ -729,6 +730,23 @@ h2.kick{font-weight:400}
       .from(hc.querySelectorAll('.cta > *'), { x: -48, opacity: 0, duration: .8, stagger: .12 }, '-=.55');
   }
   addEventListener('load', () => ScrollTrigger.refresh());
+})();
+</script>
+<script>
+/* SELL: plays once when the text column comes on screen. Label and title slide in from the side, the steps rise one by one. */
+(() => {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('shot')) return;
+  const t = document.querySelector('.s-txt');
+  if (!t) return;
+  const h2 = t.querySelector('h2');
+  h2.innerHTML = '<span class="ln"><span>' + h2.innerHTML + '</span></span>';
+  gsap.timeline({ scrollTrigger: { trigger: t, start: 'top 72%', once: true }, defaults: { ease: 'power3.out' } })
+    .from(t.querySelector('.kick'), { x: -40, opacity: 0, duration: .55 })
+    .from(h2.querySelector('.ln > span'), { xPercent: -104, duration: .9 }, .12)
+    .from(t.querySelector('.lead'), { x: -32, opacity: 0, duration: .7 }, .4)
+    .from(t.querySelectorAll('.steps li'), { y: 44, opacity: 0, duration: .75, stagger: .12 }, .55)
+    .from(t.querySelectorAll('.cta > *'), { y: 26, opacity: 0, duration: .6, stagger: .1 }, 1.1);
 })();
 </script>
 <script>
