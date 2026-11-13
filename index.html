@@ -46,6 +46,12 @@ svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.4;stroke
 .util b{color:var(--ink);font-weight:500}
 .bar{display:flex;justify-content:space-between;align-items:center;height:84px}
 .logo img{width:188px}
+/* sticky bar: after the first screen starts to scroll, the main bar holds the top of the window */
+.hdr.is-stuck .bar{position:fixed;top:0;left:0;right:0;z-index:60;height:68px;padding:0 max(var(--pad),calc((100vw - 1488px)/2));background:rgb(11 15 19/.94);box-shadow:0 1px 0 rgb(236 238 241/.07);animation:barIn .5s cubic-bezier(.2,.7,.2,1)}
+.hdr.is-stuck .logo img{width:156px}
+@keyframes barIn{from{transform:translateY(-100%)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.hdr.is-stuck .bar{animation:none}}
+section[id],footer[id],form[id]{scroll-margin-top:84px}
 .bar nav{display:flex;align-items:center;gap:40px}
 .bar ul{display:flex;gap:30px;font-family:var(--disp);font-weight:600;font-size:16px;letter-spacing:.14em;text-transform:uppercase}
 .bar ul a{display:inline-flex;align-items:center;gap:6px}
@@ -114,7 +120,32 @@ svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.4;stroke
 .steps p{margin-top:8px;font-size:14px;color:var(--ink3)}
 .s-txt .cta{display:flex;gap:12px;margin-top:48px}
 /* OFFER band */
-.offer{padding:112px var(--pad) 120px;background:var(--bg)}
+.offer{padding:136px var(--pad) 144px;background:var(--bg)}
+[hidden]{display:none!important}
+.of{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:72px;align-items:start}
+.of-l h2{margin-top:14px;font-size:clamp(44px,4.4vw,68px)}
+.of-lead{margin-top:20px;font-size:16px;line-height:1.55;color:var(--ink2);max-width:38ch}
+.of-l .bx{margin-top:32px}
+.of-f{max-width:640px;width:100%;justify-self:end;padding:32px;border-radius:6px;background:var(--bg3);border:1px solid var(--edge)}
+.of-steps{display:flex;gap:28px;margin:0 0 28px;padding:0;list-style:none;font-family:var(--disp);font-weight:600;font-size:17px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3)}
+.of-steps li{display:flex;align-items:baseline;gap:8px;transition:color .3s}
+.of-steps i{font-style:normal;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:rgb(236 238 241/.4)}
+.of-steps li.on{color:var(--ink)}.of-steps li.on i{color:var(--or)}.of-steps li.ok i{color:var(--ink2)}
+.of-p{border:0;margin:0;padding:0;display:grid;gap:16px;min-width:0}
+.of-g{display:grid;grid-template-columns:1fr 1fr;gap:16px 12px}
+.of-p .bx{margin-top:8px}
+.of-sum{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 16px;border-radius:4px;background:#0f141c;font-size:15px}
+.of-car{color:var(--ink)}
+.of-edit{background:none;border:0;padding:4px 0;color:var(--ink3);font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.of-edit:hover{color:var(--ink)}
+.f i{font-style:normal;color:var(--ink3)}
+.err{font-style:normal;font-size:13px;color:#ff7a4d}
+.err:empty{display:none}
+.f.bad input,.f.bad select{border-color:#ff7a4d}
+.of-note{font-size:14px;color:var(--ink3);text-align:center}
+.of-done h3{margin-top:12px;font-family:var(--disp);font-weight:300;font-size:44px;line-height:1;text-transform:uppercase}
+.of-done p:last-child{margin-top:14px;font-size:16px;line-height:1.55;color:var(--ink2)}
+.of-done b{color:var(--ink);font-weight:500}
 .o-panel{padding:28px;border-radius:6px;background:var(--bg3);border:1px solid var(--edge);display:grid;gap:14px}
 .o-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:end}
 .o-row .btn{height:50px;width:100%}
@@ -125,7 +156,10 @@ svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.4;stroke
 .issues{max-width:980px;margin:72px auto 0;display:grid;gap:96px}
 .iss{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 .iss:nth-child(even) .i-img{order:2}
-.i-img{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:1/1;background:var(--bg3)}
+.a-hd{display:flex;flex-direction:column;align-items:center;text-align:center}
+.a-hd h2{margin-top:14px;font-size:clamp(44px,4.4vw,68px)}
+.a-hd .sub{margin-top:18px;font-size:15px;color:var(--ink3)}
+.i-img{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/5;background:var(--bg3)}
 .i-img img{width:100%;height:100%;object-fit:cover}
 .i-img .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:76px;height:76px;border-radius:50%;background:var(--or);color:#0a0a0b;border:0;cursor:pointer}
 .i-img .play svg{width:22px;height:22px;margin-left:4px}
@@ -135,24 +169,48 @@ svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.4;stroke
 .i-txt p{margin-top:16px;font-size:15px;line-height:1.6;color:var(--ink3);max-width:40ch}
 .i-txt .lnk{margin-top:24px}
 /* PREMIER: showcase */
-.prem{padding:144px var(--pad) 152px;background:var(--bg)}
-.tabs{display:flex;flex-wrap:wrap;gap:8px 28px}
-.tabs button{padding:12px 0;background:none;border:0;cursor:pointer;font-family:var(--disp);font-weight:500;font-size:18px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);transition:color .25s}
+.prem{padding:144px var(--pad) 136px;background:#07090c;overflow-x:clip}
+.tabs{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px 32px;margin-bottom:-6px}
+.tabs button{padding:10px 0;background:none;border:0;cursor:pointer;font-family:var(--disp);font-weight:600;font-size:19px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);transition:color .25s}
 .tabs button:hover{color:var(--ink2)}
 .tabs [aria-selected=true]{color:var(--or)}
-.stage{position:relative;max-width:1488px;margin:56px auto 0;aspect-ratio:16/8;border-radius:6px;overflow:hidden;background:#000}
-.stage img{width:100%;height:100%;object-fit:cover;object-position:50% 58%}
+/* premier switcher: four small frames; the others wait in the dark, the chosen car is lit */
+.tabs{gap:14px;margin-bottom:0;list-style:none;padding:0}
+.tabs .pt{display:block;width:clamp(120px,10.5vw,158px);padding:0;text-align:left;color:var(--ink3)}
+.pt-i{position:relative;display:block;aspect-ratio:3/2;border-radius:4px;overflow:hidden;background:#000;box-shadow:0 0 0 1px rgb(236 238 241/.08)}
+.pt-i img{width:100%;height:100%;object-fit:cover;object-position:50% 60%;filter:brightness(.3) saturate(.5);transform:scale(1.06);transition:filter .6s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.pt-l{display:flex;align-items:baseline;gap:8px;margin-top:10px;font-family:var(--disp);font-weight:600;font-size:16px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .3s}
+.pt-l i{font-style:normal;font-family:var(--mono);font-size:12px;font-weight:400;letter-spacing:.08em;color:rgb(236 238 241/.4);transition:color .3s}
+.tabs .pt:hover .pt-i img{filter:brightness(.62) saturate(.8)}
+.tabs .pt:hover{color:var(--ink2)}
+.tabs .pt[aria-selected=true]{color:var(--ink)}
+.tabs .pt[aria-selected=true] .pt-i{box-shadow:0 0 0 1px var(--or)}
+.tabs .pt[aria-selected=true] .pt-i img{filter:none;transform:none}
+.tabs .pt[aria-selected=true] .pt-l i{color:var(--or)}
+.tabs .pt:focus-visible{outline:none}.tabs .pt:focus-visible .pt-i{box-shadow:0 0 0 2px var(--or)}
+.stage{position:relative;max-width:1488px;margin:48px auto 0;aspect-ratio:2.1/1;border-radius:6px;overflow:hidden;background:#000}
+.stage img{width:100%;height:100%;object-fit:cover;object-position:50% 36%}
 .lights{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}
-.figs{display:flex;justify-content:center;gap:72px;margin-top:48px;text-align:center}
-.figs b{display:block;font-family:var(--disp);font-weight:300;font-size:64px;line-height:1;letter-spacing:.06em;color:var(--or);font-variant-numeric:tabular-nums}
-.figs span{display:block;margin-top:8px}
-.lot-m{margin-top:32px;text-align:center;font-family:var(--mono);font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
-.lot-m b{color:var(--ink);font-weight:500}
-.prem .cta{display:flex;justify-content:center;gap:12px;margin-top:28px}
-.lot-s{margin-top:18px;text-align:center;font-size:14px;color:rgb(236 238 241/.42)}
+.stage-next{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 36%;will-change:clip-path,transform}
+.p-hd{display:flex;justify-content:space-between;align-items:flex-end;gap:48px}
+.p-hd h2{margin-top:14px;font-size:clamp(44px,4.4vw,68px)}
+/* one information block: the car on the left, its figures on the right, on one bottom line */
+.lot{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:24px;align-items:end;margin-top:44px}
+.lot-y{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--ink3)}
+.lot-t{margin-top:8px;font-family:var(--disp);font-weight:700;font-size:clamp(48px,5.2vw,80px);line-height:.9;text-transform:uppercase;letter-spacing:.005em}
+.lot-m{margin-top:16px;font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);font-variant-numeric:tabular-nums}
+.lot-m i{font-style:normal;margin:0 8px;color:var(--ink4,rgb(236 238 241/.36))}
+.lot-p{margin-top:22px;font-family:var(--disp);font-weight:600;font-size:40px;line-height:1;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.lot-a{display:flex;align-items:center;gap:28px;margin-top:28px}
+.figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0}
+.figs > div{position:relative;padding:22px 24px 26px;border-radius:6px;border:1px solid rgb(236 238 241/.08);background:linear-gradient(180deg,rgb(236 238 241/.045) 0,rgb(236 238 241/.012) 46%,rgb(236 238 241/0) 100%),#0d1016;box-shadow:inset 0 1px 0 rgb(236 238 241/.06)}
+.figs dt{display:block}
+.figs dd{margin:22px 0 0;font-family:var(--disp);font-weight:300;font-size:clamp(52px,5vw,76px);line-height:.86;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.lot-s{margin-top:40px;font-size:13px;color:rgb(236 238 241/.34)}
 /* CTA panels */
-.panels{display:grid;grid-template-columns:repeat(3,1fr);max-width:1488px;margin:0 auto;padding:0 var(--pad) 0}
-.pan{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;min-height:420px;padding:32px;background:#0b0f13}
+.panels{display:grid;grid-template-columns:repeat(3,1fr);background:#07090c}
+.pan{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;min-height:480px;padding:56px 48px 48px;background:#0b0f13}
+.pan:first-child{padding-left:max(var(--pad),calc((100vw - 1488px)/2))}
 .pan > img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(.85);transition:transform 1.2s cubic-bezier(.2,.7,.2,1),filter .6s}
 .pan::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgb(11 15 19/.62) 0,rgb(11 15 19/.12) 42%,rgb(11 15 19/.55) 100%)}
 .pan:hover > img{transform:scale(1.04);filter:brightness(.6) saturate(.9)}
@@ -163,7 +221,7 @@ svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.4;stroke
 .pan p.kick{margin:0;color:var(--or);font-size:13px}
 h2.kick{font-weight:400}
 /* REVIEWS */
-.rev{padding:144px var(--pad)}
+.rev{padding:152px var(--pad) 144px;background:#121721}
 .score{display:flex;align-items:center;gap:18px}
 .score b{font-family:var(--disp);font-weight:700;font-size:64px;line-height:1}
 .score .stars{display:flex;gap:3px;color:var(--or)}
@@ -177,13 +235,47 @@ h2.kick{font-weight:400}
 .qt p b{color:var(--ink);font-weight:500;margin-right:8px}
 .rev .foot{display:flex;justify-content:space-between;align-items:center;margin-top:56px}
 .rev .note{font-size:14px;color:rgb(236 238 241/.42)}
+/* reviews: centred head, then an endless row of review cards that pauses under the pointer */
+.rev{padding:152px 0 144px}
+.rv-head{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 var(--pad)}
+.rv-head h2{margin-top:14px;font-size:clamp(44px,4.4vw,68px)}
+.rv-head .score{margin-top:26px}
+.mq{position:relative;display:flex;gap:16px;overflow:hidden;margin-top:64px;padding:4px 0;--dur:60s}
+.mq::before,.mq::after{content:"";position:absolute;top:0;bottom:0;width:22%;z-index:2;pointer-events:none}
+.mq::before{left:0;background:linear-gradient(90deg,#121721,rgb(18 23 33/0))}
+.mq::after{right:0;background:linear-gradient(270deg,#121721,rgb(18 23 33/0))}
+.mq-g{display:flex;flex-shrink:0;gap:16px}
+@media (prefers-reduced-motion:no-preference){
+  .mq-g{animation:mq var(--dur) linear infinite}
+  .mq:hover .mq-g{animation-play-state:paused}
+}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(calc(-100% - 16px))}}
+@media (prefers-reduced-motion:reduce){.mq{overflow-x:auto;scroll-snap-type:x mandatory;padding:4px var(--pad)}.mq-g[aria-hidden]{display:none}.mq::before,.mq::after{display:none}.rv{scroll-snap-align:start}}
+.rv{width:340px;flex-shrink:0;margin:0;padding:24px 26px 26px;border-radius:6px;border-top:1px solid rgb(236 238 241/.12);background:linear-gradient(180deg,rgb(236 238 241/.06) 0,rgb(236 238 241/.015) 100%);transition:background-color .3s}
+.rv:hover{background-color:rgb(236 238 241/.03)}
+.rv-h{display:flex;align-items:center;gap:12px}
+.av{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:50%;background:#1d2533;font-family:var(--mono);font-size:13px;letter-spacing:.06em;color:var(--ink)}
+.rv-h b{display:block;font-size:15px;font-weight:600;line-height:1.2}
+.rv-h span:not(.av):not(.rv-s){display:block;margin-top:3px;font-size:13px;color:var(--ink3)}
+.rv-s{display:flex;gap:2px;margin-top:6px;color:var(--or)}
+.rv-d{margin-top:16px;font-size:13px;color:var(--ink3)}
+.rv-s svg{width:12px;height:12px}
+.rv blockquote{margin:16px 0 0;font-size:15px;line-height:1.6;color:var(--ink2)}
+.rv-foot{display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:56px;padding:0 var(--pad);text-align:center}
+@media (max-width:860px){.rv{width:290px}.mq::before,.mq::after{width:12%}}
 /* IG */
-.ig{padding:0 0 0}
-.ig-h{display:flex;justify-content:space-between;align-items:baseline;padding:0 var(--pad) 24px}
-.ig-h p{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink3)}
-.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
-.strip img{width:100%;aspect-ratio:1;object-fit:cover;filter:brightness(.86);transition:filter .4s}
-.strip a:hover img{filter:none}
+/* instagram: a quiet contact sheet inside the page grid; a frame widens under the pointer */
+.ig{padding:136px var(--pad) 128px;background:#0b0f13}
+.ig .hd{margin-bottom:40px}
+.sheet{display:flex;gap:8px;height:clamp(220px,22vw,320px)}
+.ig-t{position:relative;flex:1 1 0;min-width:0;overflow:hidden;border-radius:4px;transition:flex-grow .7s cubic-bezier(.2,.7,.2,1)}
+.ig-t img{width:100%;height:100%;object-fit:cover;filter:brightness(.78) saturate(.9);transition:filter .5s,transform 1s cubic-bezier(.2,.7,.2,1)}
+.ig-o{position:absolute;z-index:2;left:16px;bottom:14px;display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.ig-o svg{width:14px;height:14px}
+.ig-t:hover,.ig-t:focus-visible{flex-grow:1.9}
+.ig-t:hover img,.ig-t:focus-visible img{filter:none}
+.ig-t:hover .ig-o,.ig-t:focus-visible .ig-o{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.ig-t,.ig-t img,.ig-o{transition:none}}
 /* FOOTER */
 .ft{padding:144px 0 40px;background:#07090d}
 .visit{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;padding-left:max(var(--pad),calc((100vw - 1488px)/2))}
@@ -209,6 +301,20 @@ h2.kick{font-weight:400}
 .btn,.lnk,.pill,.more{white-space:nowrap}
 /* line masks for text arrivals */
 .ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.dim{position:absolute;inset:0;z-index:1;background:#05070a;pointer-events:none}
+.pan > .dim{z-index:-1}
+.i-img .play{z-index:2}
+.iss .lab{transition:color .6s cubic-bezier(.2,.7,.2,1)}
+.iss .lab .num{transition:color .6s cubic-bezier(.2,.7,.2,1)}
+.iss.is-current .lab{color:var(--ink)}
+.iss.is-current .lab .num{color:var(--or)}
+@media (prefers-reduced-motion:no-preference){
+  .i-img .play{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+  .i-img .play:hover{transform:translate(-50%,-50%) scale(1.06)}
+  .i-img .play::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 0 rgb(255 69 0/.55);pointer-events:none}
+  .i-img .play:hover::after{animation:ring .9s cubic-bezier(.2,.7,.2,1) 1}
+  @keyframes ring{to{box-shadow:0 0 0 18px rgb(255 69 0/0)}}
+}
 .ln > span{display:block}
 .wm i{display:inline-block;font-style:normal}
 /* ambient light: soft cool pools on the dark ground, sampled from the Vegas reference (#0b0f13 lifting to about #14202b) */
@@ -229,8 +335,8 @@ h2.kick{font-weight:400}
 .hd .r{display:grid;gap:22px;justify-items:start}
 .hd .r > p{font-size:15px;line-height:1.55;color:var(--ink3);max-width:38ch}
 /* footer wordmark and pin */
-.wm{margin-top:128px;padding:0 var(--pad);overflow:hidden;text-align:center}
-.wm span{display:inline-block;font-family:var(--disp);font-weight:800;font-size:17.6vw;line-height:.76;text-transform:uppercase;letter-spacing:-.004em;white-space:nowrap;color:var(--ink);text-align:center}
+.wm{max-width:calc(1488px + 2*var(--pad));margin:128px auto 0;padding:0 var(--pad);overflow:hidden;text-align:center}
+.wm span{display:inline-block;font-family:var(--disp);font-weight:800;font-size:11vw;line-height:.76;text-transform:uppercase;letter-spacing:-.004em;white-space:nowrap;color:rgb(236 238 241/.42);text-align:center}
 .v-cta{display:flex;gap:8px;margin-top:44px}
 .pinb{display:grid;place-items:center;width:52px;height:52px;border-radius:var(--r);border:1px solid rgb(236 238 241/.26);color:var(--or);transition:border-color .25s}
 .pinb:hover{border-color:var(--ink)}.pinb svg{width:18px;height:18px}
@@ -243,14 +349,14 @@ h2.kick{font-weight:400}
 }
 @media (max-width:520px){
   .logo img{width:148px}.pill{padding:0 14px;height:36px}.pill .w{display:none}
-  .offer .o-row{grid-template-columns:1fr}.row{grid-template-columns:1fr 1fr}.ft .v-row{flex-direction:column;gap:28px}.ft .ph{white-space:nowrap}
-  .figs{gap:20px}.figs b{font-size:40px}.lot-m{line-height:1.9}
+  .of-g{grid-template-columns:1fr}.of-f{padding:24px}.row{grid-template-columns:1fr 1fr}.ft .v-row{flex-direction:column;gap:28px}.ft .ph{white-space:nowrap}
+  .figs dd{font-size:44px}
   .iss{gap:24px}.issues{gap:72px}
 }
 @media (max-width:1100px){
   .bar ul{gap:18px;font-size:14px}.bar nav{gap:20px}.u-hrs{display:none}
   .sell{grid-template-columns:1fr}.s-img{min-height:420px}
-  .o-row{grid-template-columns:1fr 1fr}.iss{grid-template-columns:1fr;gap:32px}.iss:nth-child(even) .i-img{order:0}
+  .of{grid-template-columns:1fr;gap:40px}.of-f{justify-self:stretch;max-width:none}.iss{grid-template-columns:1fr;gap:32px}.iss:nth-child(even) .i-img{order:0}
   .quotes{gap:32px}.visit{grid-template-columns:1fr;padding-right:var(--pad)}
 }
 @media (max-width:860px){
@@ -258,8 +364,8 @@ h2.kick{font-weight:400}
   .hero{height:auto;min-height:0;max-height:none;padding-bottom:56px}.hero-img{position:relative;height:60vw}
   .h-copy{position:relative;left:auto;top:auto;transform:none;padding:32px var(--pad) 0}
   .dock{position:relative;right:auto;top:auto;transform:none;width:auto;margin:40px var(--pad) 0}
-  .scroll{display:none}.cards,.panels,.quotes{grid-template-columns:1fr}.pan{min-height:220px}.i-img{max-width:560px}.figs{gap:32px}.figs b{font-size:44px}.tabs{gap:20px;flex-wrap:wrap}
-  .strip{grid-template-columns:1fr 1fr}.base{flex-direction:column;align-items:flex-start}.base ul{flex-wrap:wrap;gap:14px 22px}
+  .scroll{display:none}.cards,.panels,.quotes{grid-template-columns:1fr}.pan{min-height:220px}.i-img{max-width:560px}.lot{grid-template-columns:1fr;row-gap:48px}.p-hd{flex-direction:column;align-items:flex-start;gap:20px}.tabs{justify-content:flex-start}.tabs{gap:20px;flex-wrap:wrap}
+  .sheet{overflow-x:auto;scroll-snap-type:x mandatory;height:260px}.ig-t{flex:0 0 200px;scroll-snap-align:start}.ig-t:hover{flex-grow:0}.ig-o{opacity:1;transform:none}.base{flex-direction:column;align-items:flex-start}.base ul{flex-wrap:wrap;gap:14px 22px}
 }
 
 </style>
@@ -361,25 +467,42 @@ h2.kick{font-weight:400}
   </div>
 </section>
 
-<section class="offer" aria-labelledby="offer-t"><div class="in">
-  <div class="hd"><div><p class="kick">Step 01</p><h2 class="t-light" id="offer-t">Get your offer today</h2></div><div class="r"><p>Year, make, model and mileage. Our buyers come back to you with a number.</p><a class="bx" href="tel:+16303059900"><span>Rather talk? 630-305-9900</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.2 2.5h2.4l1.2 3-1.6 1a8 8 0 0 0 4.3 4.3l1-1.6 3 1.2v2.4a1.2 1.2 0 0 1-1.3 1.2A11.5 11.5 0 0 1 2 3.8a1.2 1.2 0 0 1 1.2-1.3z"/></svg></i></a></div></div>
-  <form class="o-panel" id="offer" action="#">
-    <div class="o-row">
-      <label class="f"><span>Year</span><select name="year"><option value="">Select</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option><option>2014</option><option>2013</option><option>2012</option><option>2011</option><option>2010</option><option>2009</option><option>2008</option><option>2007</option><option>2006</option><option>2005</option><option>2004</option><option>2003</option><option>2002</option><option>2001</option><option>2000</option><option>1999</option><option>1998</option><option>1997</option><option>1996</option><option>1995</option><option>1994</option><option>1993</option><option>1992</option><option>1991</option><option>1990</option><option>1989</option><option>1988</option><option>1987</option><option>1986</option><option>1985</option><option>1984</option><option>1983</option><option>1982</option><option>1981</option><option>1980</option></select></label><label class="f"><span>Make</span><select name="make"><option value="">Select</option><option>Acura</option><option>Audi</option><option>BMW</option><option>Chevrolet</option><option>Dodge</option><option>Ferrari</option><option>Ford</option><option>Honda</option><option>Lamborghini</option><option>McLaren</option><option>Mercedes-Benz</option><option>Nissan</option><option>Porsche</option><option>Toyota</option><option>Other</option></select></label>
-      <label class="f"><span>Model</span><input name="model" type="text"></label><label class="f"><span>Mileage</span><input name="mileage" type="text" inputmode="numeric"></label>
-    </div>
-    <div class="o-row">
-      <label class="f"><span>Name</span><input id="o-name" type="text" autocomplete="name"></label><label class="f"><span>Phone</span><input type="tel" autocomplete="tel"></label>
-      <label class="f"><span>Email, optional</span><input type="email" autocomplete="email"></label><button class="bx pri full" type="submit"><span>Get my offer</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></button>
-    </div>
+<section class="offer" aria-labelledby="offer-t"><div class="in of">
+  <div class="of-l">
+    <p class="kick">Sell us your car</p>
+    <h2 class="t-light" id="offer-t">Get your offer today</h2>
+    <a class="bx" href="tel:+16303059900"><span>Rather talk? 630-305-9900</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.2 2.5h2.4l1.2 3-1.6 1a8 8 0 0 0 4.3 4.3l1-1.6 3 1.2v2.4a1.2 1.2 0 0 1-1.3 1.2A11.5 11.5 0 0 1 2 3.8a1.2 1.2 0 0 1 1.2-1.3z"/></svg></i></a>
+  </div>
+  <form class="of-f" id="offer" action="#" novalidate>
+    <ol class="of-steps" aria-hidden="true"><li class="on" data-s="1"><i>01</i>Your car</li><li data-s="2"><i>02</i>How to reach you</li></ol>
+    <fieldset class="of-p" data-step="1"><legend class="sr">Step 1 of 2: your car</legend>
+      <div class="of-g">
+        <label class="f"><span>Year</span><select name="year"><option value="">Select</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option><option>2014</option><option>2013</option><option>2012</option><option>2011</option><option>2010</option><option>2009</option><option>2008</option><option>2007</option><option>2006</option><option>2005</option><option>2004</option><option>2003</option><option>2002</option><option>2001</option><option>2000</option><option>1999</option><option>1998</option><option>1997</option><option>1996</option><option>1995</option><option>1994</option><option>1993</option><option>1992</option><option>1991</option><option>1990</option><option>1989</option><option>1988</option><option>1987</option><option>1986</option><option>1985</option><option>1984</option><option>1983</option><option>1982</option><option>1981</option><option>1980</option></select><em class="err" aria-live="polite"></em></label>
+        <label class="f"><span>Make</span><select name="make"><option value="">Select</option><option>Acura</option><option>Audi</option><option>BMW</option><option>Chevrolet</option><option>Dodge</option><option>Ferrari</option><option>Ford</option><option>Honda</option><option>Lamborghini</option><option>McLaren</option><option>Mercedes-Benz</option><option>Nissan</option><option>Porsche</option><option>Toyota</option><option>Other</option></select><em class="err" aria-live="polite"></em></label>
+        <label class="f"><span>Model</span><input name="model" type="text" placeholder="e.g. 911 Carrera S" autocomplete="off"><em class="err" aria-live="polite"></em></label>
+        <label class="f"><span>Mileage</span><input name="mileage" type="text" inputmode="numeric" placeholder="e.g. 24,500" autocomplete="off"><em class="err" aria-live="polite"></em></label>
+      </div>
+      <button class="bx pri full" type="submit"><span>Continue</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></button>
+    </fieldset>
+    <fieldset class="of-p" data-step="2" hidden><legend class="sr">Step 2 of 2: how to reach you</legend>
+      <div class="of-sum"><span class="of-car"></span><button type="button" class="of-edit">Edit</button></div>
+      <label class="f"><span>Name</span><input id="o-name" name="name" type="text" autocomplete="name"><em class="err" aria-live="polite"></em></label>
+      <div class="of-g">
+        <label class="f"><span>Phone</span><input name="phone" type="tel" autocomplete="tel" placeholder="(630) 000-0000"><em class="err" aria-live="polite"></em></label>
+        <label class="f"><span>Email <i>optional</i></span><input name="email" type="email" autocomplete="email"><em class="err" aria-live="polite"></em></label>
+      </div>
+      <button class="bx pri full" type="submit"><span>Get my offer</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></button>
+      <p class="of-note">We buy even if you don't buy from us.</p>
+    </fieldset>
+    <div class="of-done" hidden role="status"><p class="kick">Received</p><h3>Thanks, <span class="of-who"></span>.</h3><p>Our buyers will call you at <b class="of-ph"></b> with a number for your <span class="of-car2"></span>.</p></div>
   </form>
 </div></section>
 
 <section class="about" id="about" aria-labelledby="about-t">
-  <div class="in hd" style="margin-bottom:0"><div><p class="kick">About us</p><h2 class="t-light" id="about-t">Welcome to Gold Coast Motors</h2></div><div class="r"><p>Enthusiast and collector cars, chosen by the people who run the place.</p><a class="bx" href="#contact"><span>Contact us</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></div></div>
+  <div class="in a-hd"><p class="kick">About us</p><h2 class="t-light" id="about-t">Welcome to Gold Coast Motors</h2><p class="sub">Enthusiast and collector cars, chosen by the people who run the place.</p></div>
   <div class="issues">
     <article class="iss glow">
-      <div class="i-img"><img src="assets/e-about-video.webp" alt="" width="1000" height="1031" loading="lazy" decoding="async"><button class="play" type="button" aria-label="Play our walkaround videos on YouTube"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6L13 8z" fill="currentColor" stroke="none"/></svg></button></div>
+      <div class="i-img"><img src="assets/e-about-video-v.webp" alt="" width="960" height="1200" loading="lazy" decoding="async"><button class="play" type="button" aria-label="Play our walkaround videos on YouTube"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6L13 8z" fill="currentColor" stroke="none"/></svg></button></div>
       <div class="i-txt"><span class="lab">01 — On YouTube</span><span class="kick">Walkarounds</span><h3>Every car,<br>on camera</h3><p>Walkaround videos of the cars on our floor, on our channel @GoldCoastMotors.</p><a class="lnk" href="https://www.youtube.com/@GoldCoastMotors">Watch the channel<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a></div>
     </article>
     <article class="iss glow">
@@ -387,52 +510,56 @@ h2.kick{font-weight:400}
       <div class="i-txt"><span class="lab">02 — The owners</span><span class="kick">Hand-picked</span><h3>Picked by<br>the people who<br>run it</h3><p>Our customers are busy and don't have time to hunt for deals, so the owners take on the job of hand-picking our inventory and finding you the car you have been looking for.</p><a class="lnk" href="#contact">Contact us<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a></div>
     </article>
     <article class="iss glow">
-      <div class="i-img"><img src="assets/e-about-h1.webp" alt="Hummer H1 in our showroom" width="1000" height="868" loading="lazy" decoding="async"></div>
+      <div class="i-img"><img src="assets/e-about-h1-v.webp" alt="Hummer H1 in our showroom" width="960" height="1200" loading="lazy" decoding="async"></div>
       <div class="i-txt"><span class="lab">03 — Delivery</span><span class="kick">Anywhere</span><h3>Next town over<br>or across<br>the country</h3><p>We arrange shipping wherever you are, and we offer free pickup from either of Chicago's two major airports, O'Hare or Midway.</p><a class="lnk" href="tel:+16303059900">630-305-9900<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a></div>
     </article>
   </div>
 </section>
 
 <section class="prem" id="premier" aria-labelledby="prem-t">
-  <div class="in hd" style="margin-bottom:0"><div><p class="kick">Collector selections</p><h2 class="t-light" id="prem-t">Premier listings</h2></div><div class="r"><p>Special cars, chosen by the owners. Select one.</p><ul class="tabs" role="tablist" aria-label="Premier listings"><li><button role="tab" type="button" id="lt0" aria-selected="true" tabindex="0" aria-controls="lot-p">720S</button></li><li><button role="tab" type="button" id="lt1" aria-selected="false" tabindex="-1" aria-controls="lot-p">812 Superfast</button></li><li><button role="tab" type="button" id="lt2" aria-selected="false" tabindex="-1" aria-controls="lot-p">911 GT3 RS</button></li><li><button role="tab" type="button" id="lt3" aria-selected="false" tabindex="-1" aria-controls="lot-p">GT R</button></li></ul></div></div>
+  <div class="in p-hd"><div><p class="kick">Collector selections</p><h2 class="t-light" id="prem-t">Premier listings</h2></div><ul class="tabs" role="tablist" aria-label="Premier listings"><li><button class="pt" role="tab" type="button" id="lt0" aria-selected="true" tabindex="0" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/03608-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-l"><i>01</i>720S</span></button></li><li><button class="pt" role="tab" type="button" id="lt1" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/09386-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-l"><i>02</i>812 Superfast</span></button></li><li><button class="pt" role="tab" type="button" id="lt2" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/04778-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-l"><i>03</i>911 GT3 RS</span></button></li><li><button class="pt" role="tab" type="button" id="lt3" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/04804-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-l"><i>04</i>GT R</span></button></li></ul></div>
   <div id="lot-p" role="tabpanel" aria-labelledby="lt0">
     <div class="stage-w glow" style="--gw:1500px;--gh:900px"><div class="stage"><img id="lot-img" src="assets/lots/03608-2200.webp" alt="McLaren 720S in our showroom" width="2200" height="1467" loading="lazy" decoding="async"><div class="lights"></div></div></div>
-    <div class="figs">
-      <div><b data-k="hp">710</b><span class="lab">Horsepower</span></div>
-      <div><b data-k="z">2.8</b><span class="lab">0–60 mph, s</span></div>
-      <div><b data-k="v">212</b><span class="lab">Top speed, mph</span></div>
+    <div class="in lot">
+      <div class="lot-l">
+        <p class="lot-y"><span data-k="year">2019</span></p>
+        <h3 class="lot-t" data-k="mm">McLaren 720S</h3>
+        <p class="lot-m"><span data-k="mi">6,812</span> mi <i>·</i> Stock <span data-k="stk">P0142</span></p>
+        <p class="lot-p" data-k="price">$239,900</p>
+        <div class="lot-a"><a class="bx pri" href="#contact"><span>Ask about this car</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a><a class="lnk" href="#">Details<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a></div>
+      </div>
+      <dl class="figs">
+        <div><dt class="lab">Horsepower</dt><dd data-k="hp">710</dd></div>
+        <div><dt class="lab">0–60 mph, s</dt><dd data-k="z">2.8</dd></div>
+        <div><dt class="lab">Top speed, mph</dt><dd data-k="v">212</dd></div>
+      </dl>
     </div>
-    <p class="lot-m"><b data-k="name">2019 McLaren 720S</b> &nbsp;·&nbsp; <span data-k="mi">6,812</span> mi &nbsp;·&nbsp; Stock <span data-k="stk">P0142</span> &nbsp;·&nbsp; <b data-k="price">$239,900</b></p>
-    <div class="cta"><a class="bx pri" href="#contact"><span>Ask about this car</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a><a class="bx" href="#"><span>Details</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></div>
-    <p class="lot-s">Sample listing. The final Premier list comes from Gold Coast Motors.</p>
   </div>
 </section>
 
 <div class="panels">
   <section class="pan" aria-labelledby="p1"><img src="assets/about/06339-1600.webp" alt="" width="1600" height="1067" loading="lazy" decoding="async" style="object-position:40% 60%"><p class="kick">Get approved</p><h2 class="t-light" id="p1">Financing</h2><p>Apply online before you visit.</p><a class="bx sm" href="#"><span>Start here</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></section>
   <section class="pan" aria-labelledby="p2"><img src="assets/c-room-1440.webp" alt="" width="1440" height="864" loading="lazy" decoding="async" style="object-position:30% 55%"><p class="kick">Get your offer</p><h2 class="t-light" id="p2">We buy cars</h2><p>Even if you don't buy one of ours.</p><a class="bx sm" href="#offer"><span>Get an offer</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></section>
-  <section class="pan" aria-labelledby="p3"><img src="assets/lots/03608-1500.webp" alt="" width="1500" height="1000" loading="lazy" decoding="async" style="object-position:55% 55%"><p class="kick">Inventory</p><h2 class="t-light" id="p3">Our collection</h2><p>Everything currently on the floor.</p><a class="bx sm" href="#"><span>View all</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></section>
+  <section class="pan" aria-labelledby="p3"><img src="assets/e-pan-collection.webp" alt="" width="1500" height="1000" loading="lazy" decoding="async" style="object-position:50% 58%"><p class="kick">Inventory</p><h2 class="t-light" id="p3">Our collection</h2><p>Everything currently on the floor.</p><a class="bx sm" href="#"><span>View all</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></section>
 </div>
 
-<section class="rev" aria-labelledby="rev-t"><div class="in">
-  <div class="hd"><div><p class="kick">Google reviews</p><h2 class="t-light" id="rev-t">What our clients say</h2></div><div class="r"><div class="score"><b>5.0</b><div><div class="stars" role="img" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></div><p>Average on Google</p></div></div><a class="bx" href="#"><span>Read all reviews</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></div></div>
-  <div class="quotes glow" style="--gx:22%;--gw:700px;--gh:460px">
-    <figure class="qt"><div class="stars" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></div><blockquote>“Bought a manual 911 from out of state without seeing it. Exactly as described, simple paperwork, at my door a week later.”</blockquote><p><b>Daniel K.</b>October 2026</p></figure>
-    <figure class="qt"><div class="stars" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></div><blockquote>“Sold them my Z06. A fair number, no games, and the whole thing took one afternoon.”</blockquote><p><b>Priya S.</b>September 2026</p></figure>
-    <figure class="qt"><div class="stars" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></div><blockquote>“Small dealership, serious cars. You can tell the owners actually drive these.”</blockquote><p><b>Mark T.</b>August 2026</p></figure>
+<section class="rev" aria-labelledby="rev-t">
+  <div class="in rv-head">
+    <p class="kick">Google reviews</p>
+    <h2 class="t-light" id="rev-t">What our clients say</h2>
+    <div class="score"><b>5.0</b><div><div class="stars" role="img" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></div><p>Average on Google</p></div></div>
   </div>
-  <div class="foot"><p class="note">Sample reviews for the layout. Five-star Google reviews load here at launch.</p></div>
-</div></section>
-
-<section class="ig" aria-labelledby="ig-t">
-  <div class="ig-h"><h2 class="kick" id="ig-t">Instagram</h2><p><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3.5"/><circle cx="8" cy="8" r="2.8"/><circle cx="11.6" cy="4.4" r=".6" fill="currentColor" stroke="none"/></svg>Handle to confirm</p></div>
-  <div class="strip">
-    <a href="#"><img src="assets/d-ig-gt3rs.webp" alt="Porsche 911 GT3 RS side decal" width="720" height="720" loading="lazy"></a>
-    <a href="#"><img src="assets/d-ig-720.webp" alt="McLaren 720S headlight" width="720" height="720" loading="lazy"></a>
-    <a href="#"><img src="assets/d-ig-gtr.webp" alt="Mercedes-AMG GT R wheel and caliper" width="720" height="720" loading="lazy"></a>
-    <a href="#"><img src="assets/d-ig-nsx.webp" alt="Acura NSX wheel" width="720" height="720" loading="lazy"></a>
+  <div class="mq" aria-label="Customer reviews">
+    <div class="mq-g"><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">DK</span><div><b>Daniel K.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Bought a manual 911 from out of state without seeing it. Exactly as described, simple paperwork, at my door a week later.”</blockquote><p class="rv-d">Google review · October 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">PS</span><div><b>Priya S.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Sold them my Z06. A fair number, no games, and the whole thing took one afternoon.”</blockquote><p class="rv-d">Google review · September 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">MT</span><div><b>Mark T.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Small dealership, serious cars. You can tell the owners actually drive these.”</blockquote><p class="rv-d">Google review · August 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">AL</span><div><b>Andre L.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Clean car, honest description, and they answered every question about the service history.”</blockquote><p class="rv-d">Google review · August 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">KW</span><div><b>Kevin W.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Traded in my M3 and drove home in a GT4 the same day. Easy from start to finish.”</blockquote><p class="rv-d">Google review · July 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">LM</span><div><b>Lauren M.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“They shipped my S2000 to Denver without a single surprise. Would buy here again.”</blockquote><p class="rv-d">Google review · June 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">DK</span><div><b>Daniel K.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Bought a manual 911 from out of state without seeing it. Exactly as described, simple paperwork, at my door a week later.”</blockquote><p class="rv-d">Google review · October 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">PS</span><div><b>Priya S.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Sold them my Z06. A fair number, no games, and the whole thing took one afternoon.”</blockquote><p class="rv-d">Google review · September 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">MT</span><div><b>Mark T.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Small dealership, serious cars. You can tell the owners actually drive these.”</blockquote><p class="rv-d">Google review · August 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">AL</span><div><b>Andre L.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Clean car, honest description, and they answered every question about the service history.”</blockquote><p class="rv-d">Google review · August 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">KW</span><div><b>Kevin W.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Traded in my M3 and drove home in a GT4 the same day. Easy from start to finish.”</blockquote><p class="rv-d">Google review · July 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">LM</span><div><b>Lauren M.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“They shipped my S2000 to Denver without a single surprise. Would buy here again.”</blockquote><p class="rv-d">Google review · June 2026</p></figure></div>
+    <div class="mq-g" aria-hidden="true"><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">DK</span><div><b>Daniel K.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Bought a manual 911 from out of state without seeing it. Exactly as described, simple paperwork, at my door a week later.”</blockquote><p class="rv-d">Google review · October 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">PS</span><div><b>Priya S.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Sold them my Z06. A fair number, no games, and the whole thing took one afternoon.”</blockquote><p class="rv-d">Google review · September 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">MT</span><div><b>Mark T.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Small dealership, serious cars. You can tell the owners actually drive these.”</blockquote><p class="rv-d">Google review · August 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">AL</span><div><b>Andre L.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Clean car, honest description, and they answered every question about the service history.”</blockquote><p class="rv-d">Google review · August 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">KW</span><div><b>Kevin W.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Traded in my M3 and drove home in a GT4 the same day. Easy from start to finish.”</blockquote><p class="rv-d">Google review · July 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">LM</span><div><b>Lauren M.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“They shipped my S2000 to Denver without a single surprise. Would buy here again.”</blockquote><p class="rv-d">Google review · June 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">DK</span><div><b>Daniel K.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Bought a manual 911 from out of state without seeing it. Exactly as described, simple paperwork, at my door a week later.”</blockquote><p class="rv-d">Google review · October 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">PS</span><div><b>Priya S.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Sold them my Z06. A fair number, no games, and the whole thing took one afternoon.”</blockquote><p class="rv-d">Google review · September 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">MT</span><div><b>Mark T.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Small dealership, serious cars. You can tell the owners actually drive these.”</blockquote><p class="rv-d">Google review · August 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">AL</span><div><b>Andre L.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Clean car, honest description, and they answered every question about the service history.”</blockquote><p class="rv-d">Google review · August 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">KW</span><div><b>Kevin W.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“Traded in my M3 and drove home in a GT4 the same day. Easy from start to finish.”</blockquote><p class="rv-d">Google review · July 2026</p></figure><figure class="rv"><div class="rv-h"><span class="av" aria-hidden="true">LM</span><div><b>Lauren M.</b><span class="rv-s" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></span></div></div><blockquote>“They shipped my S2000 to Denver without a single surprise. Would buy here again.”</blockquote><p class="rv-d">Google review · June 2026</p></figure></div>
   </div>
+  <div class="in rv-foot"><a class="bx" href="#"><span>Read all reviews on Google</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></div>
 </section>
+
+<section class="ig" aria-labelledby="ig-t"><div class="in">
+  <div class="hd"><div><p class="kick">Instagram</p><h2 class="t-light" id="ig-t">On the floor</h2></div><div class="r"><a class="bx" href="#"><span>Follow on Instagram</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3.5"/><circle cx="8" cy="8" r="2.8"/><circle cx="11.6" cy="4.4" r=".6" fill="currentColor" stroke="none"/></svg></i></a></div></div>
+  <div class="sheet"><a class="ig-t" href="#"><img src="assets/d-ig-gt3rs.webp" alt="Porsche 911 GT3 RS side decal" width="720" height="720" loading="lazy" decoding="async"><span class="ig-o"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3.5"/><circle cx="8" cy="8" r="2.8"/><circle cx="11.6" cy="4.4" r=".6" fill="currentColor" stroke="none"/></svg>View post</span></a><a class="ig-t" href="#"><img src="assets/d-ig-720.webp" alt="McLaren 720S headlight" width="720" height="720" loading="lazy" decoding="async"><span class="ig-o"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3.5"/><circle cx="8" cy="8" r="2.8"/><circle cx="11.6" cy="4.4" r=".6" fill="currentColor" stroke="none"/></svg>View post</span></a><a class="ig-t" href="#"><img src="assets/d-ig-gtr.webp" alt="Mercedes-AMG GT R wheel and caliper" width="720" height="720" loading="lazy" decoding="async"><span class="ig-o"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3.5"/><circle cx="8" cy="8" r="2.8"/><circle cx="11.6" cy="4.4" r=".6" fill="currentColor" stroke="none"/></svg>View post</span></a><a class="ig-t" href="#"><img src="assets/e-cs-812.webp" alt="Ferrari 812 Superfast fender and shield" width="720" height="720" loading="lazy" decoding="async"><span class="ig-o"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3.5"/><circle cx="8" cy="8" r="2.8"/><circle cx="11.6" cy="4.4" r=".6" fill="currentColor" stroke="none"/></svg>View post</span></a><a class="ig-t" href="#"><img src="assets/d-ig-nsx.webp" alt="Acura NSX wheel" width="720" height="720" loading="lazy" decoding="async"><span class="ig-o"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3.5"/><circle cx="8" cy="8" r="2.8"/><circle cx="11.6" cy="4.4" r=".6" fill="currentColor" stroke="none"/></svg>View post</span></a><a class="ig-t" href="#"><img src="assets/e-cs-e46light.webp" alt="BMW M3 (E46) headlight" width="720" height="720" loading="lazy" decoding="async"><span class="ig-o"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3.5"/><circle cx="8" cy="8" r="2.8"/><circle cx="11.6" cy="4.4" r=".6" fill="currentColor" stroke="none"/></svg>View post</span></a></div>
+</div></section>
 </main>
 
 <footer class="ft" id="contact">
@@ -448,7 +575,7 @@ h2.kick{font-weight:400}
     </div>
     <div id="map" aria-label="Map of 1570 W Ogden Ave, Naperville"><p class="fb">Map loads here</p></div>
   </div>
-  <div class="wm" aria-hidden="true"><span>Gold Coast</span></div>
+  <div class="wm" aria-hidden="true"><span>Gold Coast Motors</span></div>
   <div class="in base"><p class="small" style="margin:0;padding:0">© 2026 Gold Coast Motors Inc.</p>
     <ul><li><a href="#">Inventory</a></li><li><a href="#">Sold</a></li><li><a href="#">Financing</a></li><li><a href="#sell">Sell us your car</a></li><li><a href="#contact">Contact us</a></li></ul></div>
   <p class="in small">Every photograph is from our showroom; in the We buy cars panel, the room to the right of the car is extended with generated imagery. Map © <a href="https://openfreemap.org">OpenFreeMap</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>.</p>
@@ -458,12 +585,47 @@ h2.kick{font-weight:400}
 (() => {
   const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* sticky bar */
+  const hdr = $('.hdr');
+  const stick = () => hdr.classList.toggle('is-stuck', scrollY > 140);
+  addEventListener('scroll', stick, { passive: true }); stick();
+  /* offer form: two steps. Step 1 the car, step 2 how to reach you. The hero form fills step 1 and lands on step 2. */
   const q = $('[data-quick]'), o = $('#offer');
+  const P = [...o.querySelectorAll('.of-p')], S = [...o.querySelectorAll('.of-steps li')];
+  const fmtMi = v => { const d = v.replace(/\D/g, '').slice(0, 7); return d ? Number(d).toLocaleString('en-US') : ''; };
+  const fmtPh = v => { const d = v.replace(/\D/g, '').slice(0, 10); return d.length < 4 ? d : d.length < 7 ? `(${d.slice(0, 3)}) ${d.slice(3)}` : `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}`; };
+  [q.elements.mileage, o.elements.mileage].forEach(i => i.addEventListener('input', () => { i.value = fmtMi(i.value); }));
+  o.elements.phone.addEventListener('input', e => { e.target.value = fmtPh(e.target.value); });
+  const msg = { year: 'Choose the year', make: 'Choose the make', model: 'Add the model', mileage: 'Add the mileage', name: 'Add your name', phone: 'Add a 10-digit phone number', email: 'Check the email address' };
+  const ok = el => { const v = el.value.trim(); if (el.name === 'email') return !v || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v); if (el.name === 'phone') return v.replace(/\D/g, '').length === 10; return !!v; };
+  const check = els => { let first = null; els.forEach(el => { const good = ok(el), f = el.closest('.f'); f.classList.toggle('bad', !good); f.querySelector('.err').textContent = good ? '' : msg[el.name]; el.setAttribute('aria-invalid', good ? 'false' : 'true'); if (!good && !first) first = el; }); return first; };
+  const carEls = () => ['year', 'make', 'model', 'mileage'].map(n => o.elements[n]);
+  const car = () => `${o.elements.year.value} ${o.elements.make.value} ${o.elements.model.value}`.trim();
+  const go = (n, focus) => {
+    P.forEach(p => { p.hidden = +p.dataset.step !== n; });
+    S.forEach(st => { st.classList.toggle('on', +st.dataset.s === n); st.classList.toggle('ok', +st.dataset.s < n); });
+    if (n === 2) o.querySelector('.of-car').textContent = `${car()} · ${o.elements.mileage.value} mi`;
+    if (focus) (n === 1 ? (carEls().find(el => !ok(el)) || o.elements.year) : o.elements.name).focus({ preventScroll: true });
+  };
+  o.querySelector('.of-edit').addEventListener('click', () => go(1, true));
+  o.addEventListener('submit', e => {
+    e.preventDefault();
+    const step = +P.find(p => !p.hidden).dataset.step;
+    if (step === 1) { const bad = check(carEls()); if (bad) { bad.focus(); return; } go(2, true); return; }
+    const bad = check(['name', 'phone', 'email'].map(n => o.elements[n])); if (bad) { bad.focus(); return; }
+    P.forEach(p => { p.hidden = true; }); o.querySelector('.of-steps').hidden = true;
+    const d = o.querySelector('.of-done'); d.hidden = false;
+    d.querySelector('.of-who').textContent = o.elements.name.value.trim().split(/\s+/)[0];
+    d.querySelector('.of-ph').textContent = o.elements.phone.value;
+    d.querySelector('.of-car2').textContent = car();
+    d.tabIndex = -1; d.focus();
+  });
   q.addEventListener('submit', e => {
     e.preventDefault();
-    ['year','make','model','mileage'].forEach(n => { o.elements[n].value = q.elements[n].value; });
+    ['year', 'make', 'model', 'mileage'].forEach(n => { o.elements[n].value = q.elements[n].value; });
+    const complete = carEls().every(ok);
     o.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'center' });
-    setTimeout(() => $('#o-name').focus({ preventScroll: true }), still ? 0 : 600);
+    setTimeout(() => go(complete ? 2 : 1, true), still ? 0 : 600);
   });
   $$('.ib[aria-pressed]').forEach(b => b.addEventListener('click', () => {
     b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
@@ -481,17 +643,26 @@ h2.kick{font-weight:400}
     if (focus) tabs[i].focus();
     $('#lot-p').setAttribute('aria-labelledby', tabs[i].id);
     const L = lots[i];
-    const swap = async () => {
-      img.src = `assets/lots/${L.img}-2200.webp`; img.alt = `${L.make} ${L.model} in our showroom`;
-      await img.decode().catch(() => 0);
-      $$('#lot-p [data-k]').forEach(d => { const k = d.dataset.k; d.textContent = k === 'name' ? `${L.year} ${L.make} ${L.model}` : L[k]; });
-    };
-    if (still) await swap();
+    const src = `assets/lots/${L.img}-2200.webp`, alt = `${L.make} ${L.model} in our showroom`;
+    const setText = () => $$('#lot-p [data-k]').forEach(d => { const k = d.dataset.k; if (/^(hp|z|v)$/.test(k) && window.gcmCount) window.gcmCount(d, L[k]); else d.textContent = k === 'mm' ? `${L.make} ${L.model}` : L[k]; });
+    if (still) { img.src = src; img.alt = alt; await img.decode().catch(() => 0); setText(); }
     else {
-      await lights.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 480, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'forwards' }).finished;
-      await swap();
-      const up = lights.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 1100, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' });
-      await up.finished; up.commitStyles(); up.cancel();
+      /* wipe: the next car is drawn across the stage like a curtain, from the side of the chosen tab;
+         the outgoing car steps back into the dark under it */
+      const dir = i > cur ? 1 : -1, ease = 'cubic-bezier(.77,0,.18,1)', T = 1150;
+      const next = new Image(); next.src = src; next.alt = ''; next.className = 'stage-next';
+      await next.decode().catch(() => 0);
+      img.after(next);
+      const inn = next.animate([
+        { clipPath: dir > 0 ? 'inset(0% 0% 0% 100%)' : 'inset(0% 100% 0% 0%)', transform: `translateX(${8 * dir}%) scale(1.1)` },
+        { clipPath: 'inset(0% 0% 0% 0%)', transform: 'translateX(0) scale(1)' }], { duration: T, easing: ease, fill: 'forwards' });
+      const out = img.animate([
+        { transform: 'translateX(0) scale(1)', filter: 'brightness(1)' },
+        { transform: `translateX(${-10 * dir}%) scale(1.04)`, filter: 'brightness(.3)' }], { duration: T, easing: ease, fill: 'forwards' });
+      setTimeout(setText, T * .35);
+      await inn.finished;
+      img.src = src; img.alt = alt; await img.decode().catch(() => 0);
+      out.cancel(); next.parentNode.removeChild(next);
     }
     cur = i; busy = false;
   };
@@ -527,98 +698,110 @@ h2.kick{font-weight:400}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
-/* Motion layer. The static page is complete without it; reduced motion and the #shot capture skip it entirely. */
+/* One idea: lights in the showroom. Nothing travels; each photograph waits in low light and the lights come up
+   as it reaches the middle of the screen, following the reader's scroll. The static page is complete without it;
+   reduced motion and the #shot capture skip it. */
 (() => {
   if (!window.gsap || !window.ScrollTrigger) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('shot')) return;
   gsap.registerPlugin(ScrollTrigger);
-  const $ = s => document.querySelector(s), $$ = (s, r) => gsap.utils.toArray(s, r);
-  const OUT = 'expo.out', IO = 'expo.inOut';
-  const once = (trigger, start = 'top 82%') => ({ trigger, start, once: true });
-
-  /* split helpers: section titles into a mask, the wordmark into letters */
-  $$('.hd h2, .sh h2').forEach(h => { if (!h.querySelector('.ln')) h.innerHTML = '<span class="ln"><span>' + h.innerHTML + '</span></span>'; });
-  const wm = $('.wm span');
-  if (wm) wm.innerHTML = [...wm.textContent].map(c => c === ' ' ? ' ' : '<i>' + c + '</i>').join('');
-
-  /* HERO: arrival on load */
-  gsap.timeline({ defaults: { ease: OUT } })
-    .from('.hdr', { y: -24, opacity: 0, duration: 1 }, 0)
-    .from('.hero-img img', { scale: 1.12, duration: 2.6, ease: 'power2.out' }, 0)
-    .from('.h-copy .kick', { x: -48, opacity: 0, duration: 1 }, .25)
-    .from('#h1 .ln > span', { yPercent: 112, duration: 1.25, stagger: .1 }, .32)
-    .from('.h-copy > p:not(.kick)', { x: -36, opacity: 0, duration: 1 }, .75)
-    .from('.h-copy .cta > *', { x: -36, opacity: 0, duration: .9, stagger: .08 }, .85)
-    .from('.dock', { x: 72, opacity: 0, duration: 1.3, clearProps: 'transform,opacity' }, .55)
-    .from('.scroll', { opacity: 0, duration: 1 }, 1.4);
-  /* HERO: parallax out */
-  gsap.to('.hero-img img', { yPercent: 14, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-  gsap.to('.h-copy > *', { y: -70, opacity: 0, ease: 'none', stagger: .02, scrollTrigger: { trigger: '.hero', start: '12% top', end: '75% top', scrub: true } });
-
-  /* SECTION HEADS: label slides in, title rises from its mask, the right column follows */
-  $$('.hd, .sh').forEach(h => {
-    gsap.timeline({ scrollTrigger: once(h), defaults: { ease: OUT } })
-      .from(h.querySelectorAll('.kick'), { x: -40, opacity: 0, duration: .9 })
-      .from(h.querySelectorAll('h2 .ln > span'), { yPercent: 112, duration: 1.15 }, '-=.75')
-      .from(h.querySelectorAll('.r > *, .sub'), { y: 26, opacity: 0, duration: .9, stagger: .08 }, '-=.85');
+  const frames = '.c-img, .s-img, .stage, .pan, .ig-t';
+  document.querySelectorAll(frames).forEach(f => {
+    if (getComputedStyle(f).position === 'static') f.style.position = 'relative';
+    const d = document.createElement('span');
+    d.className = 'dim'; d.setAttribute('aria-hidden', 'true');
+    f.appendChild(d);
+    gsap.fromTo(d, { opacity: .86 }, { opacity: 0, ease: 'none', scrollTrigger: { trigger: f, start: 'top 92%', end: 'top 38%', scrub: .6 } });
   });
-
-  /* INVENTORY: masked image reveals, staggered */
-  gsap.timeline({ scrollTrigger: once('.cards', 'top 80%') })
-    .from('.card .c-img', { clipPath: 'inset(100% 0% 0% 0%)', duration: 1.3, stagger: .12, ease: IO })
-    .from('.card .c-img img', { scale: 1.22, duration: 1.8, stagger: .12, ease: OUT }, 0)
-    .from('.card .c-b > *', { y: 22, opacity: 0, duration: .8, stagger: .035, ease: OUT }, .45);
-
-  /* OFFER band and form */
-  gsap.from('.o-panel', { y: 40, opacity: 0, duration: 1.1, ease: OUT, scrollTrigger: once('.o-panel', 'top 88%') });
-  gsap.from('.o-panel .f, .o-panel .bx', { y: 18, opacity: 0, duration: .7, stagger: .04, ease: OUT, scrollTrigger: once('.o-panel', 'top 85%') });
-
-  /* ABOUT: pictures open and drift inside their frames, text arrives from the open side */
-  $$('.iss').forEach((a, i) => {
-    const pic = a.querySelector('.i-img'), img = pic.querySelector('img');
-    gsap.from(pic, { clipPath: 'inset(100% 0% 0% 0%)', duration: 1.4, ease: IO, scrollTrigger: once(a, 'top 78%') });
-    gsap.fromTo(img, { yPercent: -7, scale: 1.16 }, { yPercent: 7, scale: 1.16, ease: 'none', scrollTrigger: { trigger: a, start: 'top bottom', end: 'bottom top', scrub: true } });
-    gsap.from(a.querySelector('.i-txt').children, { x: i % 2 ? -64 : 64, opacity: 0, duration: 1.05, stagger: .07, ease: OUT, scrollTrigger: once(a, 'top 72%') });
-  });
-
-  /* PREMIER: figures count up when they arrive */
-  const count = b => {
-    const t = b.textContent.trim(), v = parseFloat(t), d = (t.split('.')[1] || '').length, o = { v: 0 };
-    gsap.to(o, { v, duration: 1.8, ease: 'power2.out', onUpdate: () => { b.textContent = o.v.toFixed(d); } });
-  };
-  ScrollTrigger.create({ ...once('.figs', 'top 88%'), onEnter: () => $$('.figs b').forEach(count) });
-  gsap.from('.figs > div, .lot-m, .prem .cta, .lot-s', { y: 28, opacity: 0, duration: .9, stagger: .08, ease: OUT, scrollTrigger: once('.figs', 'top 90%') });
-
-  /* PANELS, REVIEWS, INSTAGRAM, FOOTER */
-  gsap.from('.pan', { y: 70, opacity: 0, duration: 1.2, stagger: .12, ease: OUT, scrollTrigger: once('.panels', 'top 85%') });
-  ScrollTrigger.create({ ...once('.score', 'top 90%'), onEnter: () => count($('.score b')) });
-  gsap.from('.qt', { y: 40, opacity: 0, duration: 1, stagger: .12, ease: OUT, scrollTrigger: once('.quotes', 'top 85%') });
-  $$('.strip a').forEach((a, i) => gsap.fromTo(a, { y: i % 2 ? 48 : -16 }, { y: i % 2 ? -16 : 48, ease: 'none', scrollTrigger: { trigger: '.strip', start: 'top bottom', end: 'bottom top', scrub: true } }));
-  gsap.from('.visit .kick, .addr, .v-row, .v-cta', { x: -48, opacity: 0, duration: 1, stagger: .08, ease: OUT, scrollTrigger: once('.visit', 'top 80%') });
-  gsap.from('#map', { clipPath: 'inset(0% 0% 0% 100%)', duration: 1.5, ease: IO, scrollTrigger: once('#map', 'top 85%') });
-  if (wm) gsap.from('.wm i', { yPercent: 105, duration: 1.2, stagger: .045, ease: OUT, scrollTrigger: once('.wm', 'top 95%') });
-
-  /* PIN STOPS: wide screens only */
-  gsap.matchMedia().add('(min-width: 1101px)', () => {
-    /* SELL: the section holds while the four steps arrive one by one */
-    gsap.timeline({ scrollTrigger: { trigger: '.sell', start: 'top top', end: '+=130%', pin: true, scrub: 1, anticipatePin: 1 } })
-      .fromTo('.s-img img', { scale: 1.2, yPercent: -5 }, { scale: 1, yPercent: 0, ease: 'none', duration: 4 }, 0)
-      .from('.s-txt .kick, .s-txt h2, .s-txt .lead', { x: 70, opacity: 0, stagger: .15, duration: .6 }, 0)
-      .from('.steps li', { x: 90, opacity: 0, stagger: .55, duration: .8 }, .5)
-      .from('.steps .n', { color: '#ff4500', stagger: .55, duration: .8 }, .5)
-      .from('.s-txt .cta', { y: 30, opacity: 0, duration: .6 }, 3.1);
-    /* PREMIER: the car holds in the middle and opens from a narrow frame to full width */
-    gsap.timeline({ scrollTrigger: { trigger: '.stage-w', start: 'center center', end: '+=90%', pin: true, scrub: 1, anticipatePin: 1 } })
-      .fromTo('.stage', { clipPath: 'inset(16% 20% 16% 20% round 6px)' }, { clipPath: 'inset(0% 0% 0% 0% round 6px)', ease: 'none' }, 0)
-      .fromTo('.stage img', { scale: 1.3 }, { scale: 1, ease: 'none' }, 0);
-  });
-  gsap.matchMedia().add('(max-width: 1100px)', () => {
-    gsap.from('.steps li', { x: 50, opacity: 0, duration: .9, stagger: .12, ease: OUT, scrollTrigger: once('.steps', 'top 82%') });
-    gsap.from('.stage', { clipPath: 'inset(100% 0% 0% 0%)', duration: 1.4, ease: IO, scrollTrigger: once('.stage', 'top 85%') });
-  });
-
+  /* hero: the lights come up once, on arrival */
+  const h = document.createElement('span');
+  h.className = 'dim'; h.setAttribute('aria-hidden', 'true');
+  document.querySelector('.hero-img').appendChild(h);
+  gsap.fromTo(h, { opacity: .9 }, { opacity: 0, duration: 2.4, ease: 'power2.inOut', delay: .15 });
+  /* hero text arrives as a staircase: each line slides in from the left behind its own mask, one step after the other */
+  const hc = document.querySelector('.h-copy');
+  if (hc) {
+    const kick = hc.querySelector('.kick'), lead = hc.querySelector(':scope > p:not(.kick)');
+    [kick, lead].forEach(el => { if (el && !el.querySelector('.ln')) el.innerHTML = '<span class="ln"><span>' + el.innerHTML + '</span></span>'; });
+    const steps = [kick.querySelector('.ln > span'), ...hc.querySelectorAll('#h1 .ln > span'), lead.querySelector('.ln > span')];
+    gsap.timeline({ delay: .25, defaults: { ease: 'power3.out' } })
+      .from(steps, { xPercent: -104, duration: 1, stagger: .12 })
+      .from(hc.querySelectorAll('.cta > *'), { x: -48, opacity: 0, duration: .8, stagger: .12 }, '-=.55');
+  }
   addEventListener('load', () => ScrollTrigger.refresh());
-  document.fonts.ready.then(() => ScrollTrigger.refresh());
+})();
+</script>
+<script>
+/* Premier figures count: from zero when they first arrive, then from the old car's value to the new one on every swap.
+   Tabular figures keep the width steady. Without GSAP or under reduced motion, values are set directly. */
+(() => {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('shot')) return;
+  const run = (el, to, from) => {
+    const target = String(to), dec = (target.split('.')[1] || '').length, end = parseFloat(target);
+    const o = { v: from == null ? parseFloat(el.textContent) || 0 : from };
+    gsap.killTweensOf(o);
+    gsap.to(o, { v: end, duration: 1.4, ease: 'power2.out', onUpdate: () => { el.textContent = o.v.toFixed(dec); }, onComplete: () => { el.textContent = target; } });
+  };
+  window.gcmCount = (el, to) => run(el, to);
+  const figs = document.querySelectorAll('.figs dd');
+  const finals = [...figs].map(d => d.textContent.trim());
+  figs.forEach(d => { d.textContent = (0).toFixed((d.textContent.split('.')[1] || '').length); });
+  ScrollTrigger.create({ trigger: '.figs', start: 'top 88%', once: true, onEnter: () => figs.forEach((d, i) => run(d, finals[i], 0)) });
+})();
+</script>
+<script>
+/* ABOUT: three chapters unfold one at a time, each when about 70% of it is on screen. Runs once per chapter.
+   Order inside a chapter: picture opens, then number, orange label, headline line by line, body, link.
+   Directions alternate with the composition. Pictures drift very lightly with scroll; text never does. */
+(() => {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('shot')) return;
+  const E = 'power3.out';
+  const mask = el => { el.innerHTML = el.innerHTML.split(/<br\s*\/?>/i).map(l => '<span class="ln"><span>' + l + '</span></span>').join(''); return el.querySelectorAll('.ln > span'); };
+
+  /* heading: eyebrow, then the title slides in from the left behind a mask */
+  const head = document.querySelector('.about .a-hd');
+  if (head) {
+    const h2 = head.querySelector('h2');
+    h2.innerHTML = '<span class="ln"><span>' + h2.innerHTML + '</span></span>';
+    gsap.timeline({ scrollTrigger: { trigger: head, start: 'top 80%', once: true }, defaults: { ease: E } })
+      .from(head.querySelector('.kick'), { x: -24, opacity: 0, duration: .5 })
+      .from(h2.querySelector('.ln > span'), { xPercent: -104, duration: .9 }, .15)
+      .from(head.querySelector('.sub'), { opacity: 0, duration: .6 }, .45);
+  }
+
+  /* chapters */
+  const side = [
+    { clip: 'inset(100% 0% 0% 0%)', text: 40, imgY: 0 },   /* 01: picture opens bottom to top, text from the right */
+    { clip: 'inset(0% 0% 0% 100%)', text: -40, imgY: 0 },  /* 02: picture opens right to left, text from the left */
+    { clip: 'inset(0% 100% 0% 0%)', text: 40, imgY: 16 }   /* 03: picture opens from the left with a slight rise, text from the right */
+  ];
+  document.querySelectorAll('.iss').forEach((a, i) => {
+    const d = side[i % 3], pic = a.querySelector('.i-img'), img = pic.querySelector('img'), txt = a.querySelector('.i-txt');
+    const lab = txt.querySelector('.lab');
+    lab.innerHTML = lab.innerHTML.replace(/^(\d+)/, '<span class="num">$1</span>');
+    const lines = mask(txt.querySelector('h3'));
+    const play = pic.querySelector('.play');
+    const start = () => 'top+=' + Math.round(a.offsetHeight * .7) + ' bottom';
+
+    const tl = gsap.timeline({ scrollTrigger: { trigger: a, start, once: true }, defaults: { ease: E } });
+    tl.fromTo(pic, { clipPath: d.clip }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1 }, 0)
+      .fromTo(img, { scale: d.imgY ? 1.07 : 1.04, y: d.imgY }, { scale: 1, y: 0, duration: 1.2 }, 0)
+      .from(lab, { x: d.text, opacity: 0, duration: .5 }, .2)
+      .from(txt.querySelector('.kick'), { x: d.text, opacity: 0, duration: .5 }, .32)
+      .from(lines, { yPercent: 108, duration: .8, stagger: .09 }, .42)
+      .from(txt.querySelector('p'), { x: d.text * .6, opacity: 0, duration: .65 }, .72)
+      .from(txt.querySelector('.lnk'), { x: d.text * .4, opacity: 0, duration: .5 }, .9);
+    if (play) tl.from(play, { scale: .6, opacity: 0, duration: .5, clearProps: 'transform,opacity' }, .75);
+
+    /* very light depth: the frame drifts at most about 36px, alternating direction */
+    const k = i % 2 ? -1 : 1;
+    gsap.fromTo(pic, { y: 18 * k }, { y: -18 * k, ease: 'none', scrollTrigger: { trigger: a, start: 'top bottom', end: 'bottom top', scrub: true } });
+
+    /* the chapter number is the progress mark: the chapter in the middle of the screen is lit, the others go quiet */
+    ScrollTrigger.create({ trigger: a, start: 'top 55%', end: 'bottom 45%', toggleClass: 'is-current' });
+  });
 })();
 </script>
 </body>
