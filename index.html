@@ -211,13 +211,11 @@ section[id],footer[id],form[id]{scroll-margin-top:84px}
 .pt-i{position:relative;display:block;aspect-ratio:3/2;border-radius:4px;overflow:hidden;background:#000;box-shadow:0 0 0 1px rgb(236 238 241/.08)}
 .pt-i img{width:100%;height:100%;object-fit:cover;object-position:50% 60%;filter:brightness(.3) saturate(.5);transform:scale(1.06);transition:filter .6s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
 .pt-l{display:flex;align-items:baseline;gap:6px;margin-top:8px;font-family:var(--disp);font-weight:600;font-size:14px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .3s}
-.pt-l i{font-style:normal;font-family:var(--mono);font-size:12px;font-weight:400;letter-spacing:.08em;color:rgb(236 238 241/.4);transition:color .3s}
 .tabs .pt:hover .pt-i img{filter:brightness(.62) saturate(.8)}
 .tabs .pt:hover{color:var(--ink2)}
 .tabs .pt[aria-selected=true]{color:var(--ink)}
 .tabs .pt[aria-selected=true] .pt-i{box-shadow:0 0 0 1px var(--or)}
 .tabs .pt[aria-selected=true] .pt-i img{filter:none;transform:none}
-.tabs .pt[aria-selected=true] .pt-l i{color:var(--or)}
 .tabs .pt:focus{outline:none}.tabs .pt:focus-visible .pt-i{outline:2px solid var(--ink);outline-offset:3px}
 .stage{position:relative;max-width:1488px;margin:48px auto 0;aspect-ratio:2.1/1;border-radius:6px;overflow:hidden;background:#000}
 .stage img{width:100%;height:100%;object-fit:cover;object-position:50% 36%}
@@ -309,7 +307,7 @@ h2.kick{font-weight:400}
 .ig-t:hover .ig-o,.ig-t:focus-visible .ig-o{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.ig-t,.ig-t img,.ig-o{transition:none}}
 /* FOOTER */
-.ft{padding:144px 0 0;background:#07090d}
+.ft{padding:144px 0 56px;background:#07090d}
 .visit{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;padding-left:max(var(--pad),calc((100vw - 1488px)/2))}
 .addr{margin-top:20px;font-family:var(--disp);font-weight:300;font-size:clamp(40px,3.8vw,60px);line-height:.98;text-transform:uppercase;letter-spacing:.02em;font-style:normal}
 .v-row{display:flex;gap:56px;margin-top:44px}
@@ -348,7 +346,6 @@ h2.kick{font-weight:400}
   @keyframes ring{to{box-shadow:0 0 0 18px rgb(255 69 0/0)}}
 }
 .ln > span{display:block}
-.wm i{display:inline-block;font-style:normal}
 /* ambient light: soft cool pools on the dark ground, sampled from the Vegas reference (#0b0f13 lifting to about #14202b) */
 .glow{position:relative;isolation:isolate}
 .glow::before{content:"";position:absolute;z-index:-1;pointer-events:none;left:var(--gx,50%);top:var(--gy,50%);width:var(--gw,820px);height:var(--gh,600px);max-width:140vw;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgb(var(--glow)/.95),rgb(var(--glow)/.45) 45%,rgb(var(--glow)/0))}
@@ -366,9 +363,7 @@ h2.kick{font-weight:400}
 .hd h2{margin-top:14px;font-size:clamp(44px,4.4vw,68px)}
 .hd .r{display:grid;gap:22px;justify-items:start}
 .hd .r > p{font-size:15px;line-height:1.55;color:var(--ink3);max-width:38ch}
-/* footer wordmark and pin */
-.wm{max-width:calc(1488px + 2*var(--pad));margin:56px auto 0;padding:0 var(--pad);overflow:hidden;text-align:center;height:8vw}
-.wm span{display:inline-block;font-family:var(--disp);font-weight:800;font-size:11vw;line-height:.76;text-transform:uppercase;letter-spacing:-.004em;white-space:nowrap;color:rgb(236 238 241/.42);text-align:center}
+/* footer pin */
 .v-cta{display:flex;gap:8px;margin-top:44px}
 .pinb{display:grid;place-items:center;width:52px;height:52px;border-radius:var(--r);border:1px solid rgb(236 238 241/.26);color:var(--or);transition:border-color .25s}
 .pinb:hover{border-color:var(--ink)}.pinb svg{width:18px;height:18px}
@@ -550,7 +545,7 @@ h2.kick{font-weight:400}
 </section>
 
 <section class="prem" id="premier" aria-labelledby="prem-t">
-  <div class="in p-hd"><div><p class="kick">Collector selections</p><h2 class="t-light" id="prem-t">Premier listings</h2></div><ul class="tabs" role="tablist" aria-label="Premier listings"><li><button class="pt" role="tab" type="button" id="lt0" aria-selected="true" tabindex="0" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/03608-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-l"><i>01</i>720S</span></button></li><li><button class="pt" role="tab" type="button" id="lt1" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/09386-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-l"><i>02</i>812 Superfast</span></button></li><li><button class="pt" role="tab" type="button" id="lt2" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/04778-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-l"><i>03</i>911 GT3 RS</span></button></li><li><button class="pt" role="tab" type="button" id="lt3" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/04804-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-l"><i>04</i>GT R</span></button></li></ul></div>
+  <div class="in p-hd"><div><p class="kick">Collector selections</p><h2 class="t-light" id="prem-t">Premier listings</h2></div><ul class="tabs" role="tablist" aria-label="Premier listings"><li><button class="pt" role="tab" type="button" id="lt0" aria-selected="true" tabindex="0" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/03608-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-l">720S</span></button></li><li><button class="pt" role="tab" type="button" id="lt1" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/09386-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-l">812 Superfast</span></button></li><li><button class="pt" role="tab" type="button" id="lt2" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/04778-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-l">911 GT3 RS</span></button></li><li><button class="pt" role="tab" type="button" id="lt3" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/04804-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-l">GT R</span></button></li></ul></div>
   <div id="lot-p" role="tabpanel" aria-labelledby="lt0">
     <div class="stage-w glow" style="--gw:1500px;--gh:900px"><div class="stage"><img id="lot-img" src="assets/lots/03608-2200.webp" alt="McLaren 720S in our showroom" width="2200" height="1467" loading="lazy" decoding="async"><div class="lights"></div></div></div>
     <div class="in lot">
@@ -610,7 +605,6 @@ h2.kick{font-weight:400}
   </div>
   <div class="in base"><p class="small" style="margin:0;padding:0">© 2026 Gold Coast Motors Inc.</p>
     <ul><li><a href="#">Inventory</a></li><li><a href="#">Sold</a></li><li><a href="#">Financing</a></li><li><a href="#sell">Sell us your car</a></li><li><a href="#contact">Contact us</a></li></ul></div>
-  <div class="wm" aria-hidden="true"><span>Gold Coast Motors</span></div>
 </footer>
 
 <script>
@@ -658,9 +652,6 @@ h2.kick{font-weight:400}
     b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
     $('.util b').textContent = $$('.ib[aria-pressed=true]').length;
   }));
-  const wm = $('.wm span');
-  const fit = () => { wm.style.fontSize = '100px'; const box = wm.parentNode.clientWidth - parseFloat(getComputedStyle(wm.parentNode).paddingLeft) * 2; const fs = 100 * box / wm.getBoundingClientRect().width; wm.style.fontSize = fs.toFixed(2) + 'px'; wm.parentNode.style.height = Math.round(fs * .47) + 'px'; };
-  document.fonts.ready.then(fit); addEventListener('resize', fit);
   const lots = [{"img": "03608", "make": "McLaren", "model": "720S", "hp": "710", "z": "2.8", "v": "212", "year": "2019", "mi": "6,812", "stk": "P0142", "price": "$239,900"}, {"img": "09386", "make": "Ferrari", "model": "812 Superfast", "hp": "789", "z": "2.9", "v": "211", "year": "2018", "mi": "4,210", "stk": "P0138", "price": "$389,900"}, {"img": "04778", "make": "Porsche", "model": "911 GT3 RS", "hp": "520", "z": "3.0", "v": "193", "year": "2019", "mi": "3,105", "stk": "P0151", "price": "$229,900"}, {"img": "04804", "make": "Mercedes-AMG", "model": "GT R", "hp": "577", "z": "3.5", "v": "198", "year": "2018", "mi": "9,880", "stk": "P0127", "price": "$149,900"}];
   const tabs = $$('.tabs [role=tab]'), img = $('#lot-img'), lights = $('.lights');
   let cur = 0, busy = false, queued = null;
