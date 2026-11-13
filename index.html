@@ -7,7 +7,7 @@
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;400;500;600;700;800&family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/e-hero-2560.webp" imagesrcset="assets/e-hero-1440.webp 1440w, assets/e-hero-2560.webp 2560w" imagesizes="100vw">
+<link rel="preload" as="image" href="assets/e-hero-n3-2560.webp" imagesrcset="assets/e-hero-n3-1440.webp 1440w, assets/e-hero-n3-2560.webp 2560w" imagesizes="100vw">
 <style>
 
 *,*::before,*::after{box-sizing:border-box}
@@ -63,6 +63,15 @@ section[id],footer[id],form[id]{scroll-margin-top:84px}
 @media (min-width:861px){.shot .hero{height:900px!important}}
 .hero-img{position:absolute;inset:0;z-index:-2}
 .hero-img img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;filter:brightness(.62) contrast(1.06) saturate(.9)}
+/* HERO SLIDES: the lakefront at night from two positions, then the showroom after hours; the light crosses from one view to the next */
+.hero-img .hs{position:absolute;inset:0;opacity:0;transition:opacity 1.6s cubic-bezier(.4,0,.2,1)}
+.hero-img .hs.on{opacity:1}
+.h-pg{position:absolute;left:var(--pad);bottom:24px;z-index:2;display:flex;align-items:center;margin-left:-6px}
+.h-pg button{display:grid;place-items:center;height:28px;padding:0 6px;background:none;border:0;cursor:pointer}
+.h-pg button::before{content:"";display:block;width:8px;height:8px;border-radius:999px;background:rgb(236 238 241/.38);transition:width .6s cubic-bezier(.2,.7,.2,1),background-color .35s}
+.h-pg button:hover::before{background:rgb(236 238 241/.72)}
+.h-pg button[aria-current=true]::before{width:30px;background:var(--or)}
+.h-pg button:focus{outline:none}.h-pg button:focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:999px}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
   linear-gradient(90deg,rgb(10 13 18/.9) 0,rgb(10 13 18/.55) 34%,rgb(10 13 18/0) 56%),
   linear-gradient(180deg,rgb(10 13 18/.8) 0,rgb(10 13 18/0) 20%),
@@ -409,7 +418,7 @@ h2.kick{font-weight:400}
 }
 @media (max-width:860px){
   .hdr{position:relative;background:var(--bg)}.bar ul{display:none}.util .u-addr{display:none}
-  .hero{height:auto;min-height:0;max-height:none;padding-bottom:56px}.hero-img{position:relative;height:60vw}
+  .hero{height:auto;min-height:0;max-height:none;padding-bottom:56px}.hero-img{position:relative;height:60vw}.h-pg{bottom:auto;top:calc(60vw - 40px);left:var(--pad)}
   .h-copy{position:relative;left:auto;top:auto;transform:none;padding:32px var(--pad) 0}
   .dock{position:relative;right:auto;top:auto;transform:none;width:auto;margin:40px var(--pad) 0}
   .scroll{display:none}.cards,.panels,.quotes{grid-template-columns:1fr}.pan{min-height:220px}.i-img{max-width:560px}.lot{grid-template-columns:1fr;row-gap:48px}.p-hd{flex-direction:column;align-items:flex-start;gap:20px}
@@ -437,7 +446,8 @@ h2.kick{font-weight:400}
 </header>
 <main>
 <section class="hero" aria-labelledby="h1">
-  <div class="hero-img"><img src="assets/e-hero-2560.webp" srcset="assets/e-hero-1440.webp 1440w, assets/e-hero-2560.webp 2560w" sizes="100vw" alt="Wheel and yellow brake caliper of a Ferrari 812 Superfast in our showroom" width="2560" height="1600" fetchpriority="high"></div>
+  <div class="hero-img"><img class="hs on" src="assets/e-hero-n3-2560.webp" srcset="assets/e-hero-n3-1440.webp 1440w, assets/e-hero-n3-2560.webp 2560w" sizes="100vw" alt="Rear view of sports cars with tail lights on at the lakefront (generated artwork)" width="2560" height="1440" fetchpriority="high"><img class="hs" src="assets/e-hero-n1-2560.webp" srcset="assets/e-hero-n1-1440.webp 1440w, assets/e-hero-n1-2560.webp 2560w" sizes="100vw" alt="Sports cars on the Chicago lakefront at night, skyline behind (generated artwork)" width="2560" height="1440" fetchpriority="low" decoding="async" aria-hidden="true"><img class="hs" src="assets/e-hero-room-2560.webp" srcset="assets/e-hero-room-1440.webp 1440w, assets/e-hero-room-2560.webp 2560w" sizes="100vw" alt="Porsche 911 GT2 RS in a dimmed showroom (room extended with generated artwork)" width="2560" height="1536" fetchpriority="low" decoding="async" aria-hidden="true"></div>
+  <div class="h-pg" role="group" aria-label="Hero photos"><button type="button" aria-label="Photo 1 of 3" aria-current="true"></button><button type="button" aria-label="Photo 2 of 3" aria-current="false"></button><button type="button" aria-label="Photo 3 of 3" aria-current="false"></button></div>
   <div class="h-copy">
     <p class="kick">Naperville, Illinois</p>
     <h1 id="h1"><span class="ln"><span>Hand-picked</span></span><span class="ln"><span>by the</span></span><span class="ln"><span>owners.</span></span></h1>
@@ -679,6 +689,22 @@ h2.kick{font-weight:400}
     b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
     $('.util b').textContent = $$('.ib[aria-pressed=true]').length;
   }));
+  /* hero slides */
+  const hs = $$('.hero-img .hs'), hpg = $$('.h-pg button'), dock = $('.dock');
+  let hi = 0, ht = 0, hold = false;
+  const auto = !still && !document.documentElement.classList.contains('shot');
+  const show = i => {
+    if (i === hi) return;
+    hs[hi].classList.remove('on'); hs[hi].setAttribute('aria-hidden', 'true'); hpg[hi].setAttribute('aria-current', 'false');
+    hs[i].classList.add('on'); hs[i].removeAttribute('aria-hidden'); hpg[i].setAttribute('aria-current', 'true');
+    hi = i;
+  };
+  const tick = () => { clearTimeout(ht); if (auto && !hold && !document.hidden) ht = setTimeout(() => { show((hi + 1) % hs.length); tick(); }, 6500); };
+  hpg.forEach((b, i) => b.addEventListener('click', () => { show(i); tick(); }));
+  dock.addEventListener('focusin', () => { hold = true; clearTimeout(ht); });
+  dock.addEventListener('focusout', e => { if (!dock.contains(e.relatedTarget)) { hold = false; tick(); } });
+  document.addEventListener('visibilitychange', tick);
+  tick();
   const lots = [{"img": "03608", "make": "McLaren", "model": "720S", "hp": "710", "z": "2.8", "v": "212", "year": "2019", "mi": "6,812", "stk": "P0142", "price": "$239,900"}, {"img": "09386", "make": "Ferrari", "model": "812 Superfast", "hp": "789", "z": "2.9", "v": "211", "year": "2018", "mi": "4,210", "stk": "P0138", "price": "$389,900"}, {"img": "04778", "make": "Porsche", "model": "911 GT3 RS", "hp": "520", "z": "3.0", "v": "193", "year": "2019", "mi": "3,105", "stk": "P0151", "price": "$229,900"}, {"img": "04804", "make": "Mercedes-AMG", "model": "GT R", "hp": "577", "z": "3.5", "v": "198", "year": "2018", "mi": "9,880", "stk": "P0127", "price": "$149,900"}];
   const tabs = $$('.tabs [role=tab]'), img = $('#lot-img'), lights = $('.lights');
   let cur = 0, want = 0, busy = false, queued = null;
