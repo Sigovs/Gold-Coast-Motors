@@ -107,7 +107,7 @@ section[id],footer[id],form[id]{scroll-margin-top:84px}
 .more{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:var(--r);background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase}
 .more svg{width:12px;height:12px;stroke-width:1.8}
 /* SELL: split */
-.sell{display:grid;grid-template-columns:1fr 1fr;background:var(--bg2);min-height:820px}
+.sell{display:grid;grid-template-columns:1fr 1fr;background:var(--bg2);min-height:820px;overflow-x:clip}
 .s-img{position:relative;overflow:hidden}
 .s-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 60%;filter:brightness(.85)}
 .s-txt{align-self:center;padding:112px var(--pad) 112px clamp(48px,6vw,112px);max-width:760px}
@@ -120,29 +120,60 @@ section[id],footer[id],form[id]{scroll-margin-top:84px}
 .steps p{margin-top:8px;font-size:14px;color:var(--ink3)}
 .s-txt .cta{display:flex;gap:12px;margin-top:48px}
 /* OFFER band */
-.offer{padding:136px var(--pad) 144px;background:var(--bg)}
 [hidden]{display:none!important}
-.of{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:72px;align-items:start}
-.of-l h2{margin-top:14px;font-size:clamp(44px,4.4vw,68px)}
-.of-lead{margin-top:20px;font-size:16px;line-height:1.55;color:var(--ink2);max-width:38ch}
-.of-l .bx{margin-top:32px}
-.of-f{max-width:640px;width:100%;justify-self:end;padding:32px;border-radius:6px;background:var(--bg3);border:1px solid var(--edge)}
-.of-steps{display:flex;gap:28px;margin:0 0 28px;padding:0;list-style:none;font-family:var(--disp);font-weight:600;font-size:17px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3)}
-.of-steps li{display:flex;align-items:baseline;gap:8px;transition:color .3s}
-.of-steps i{font-style:normal;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:rgb(236 238 241/.4)}
-.of-steps li.on{color:var(--ink)}.of-steps li.on i{color:var(--or)}.of-steps li.ok i{color:var(--ink2)}
-.of-p{border:0;margin:0;padding:0;display:grid;gap:16px;min-width:0}
-.of-g{display:grid;grid-template-columns:1fr 1fr;gap:16px 12px}
-.of-p .bx{margin-top:8px}
-.of-sum{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 16px;border-radius:4px;background:#0f141c;font-size:15px}
-.of-car{color:var(--ink)}
-.of-edit{background:none;border:0;padding:4px 0;color:var(--ink3);font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
-.of-edit:hover{color:var(--ink)}
+/* OFFER: a functional pause. Calm editorial left column, a quiet form surface on the right; both share one top and one bottom line */
+.offer{padding:88px var(--pad);background:var(--bg)}
+.of{max-width:1264px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,740px);gap:clamp(48px,6vw,112px);align-items:start}
+.of-l{padding-top:30px}
+.of-l h2{font-size:clamp(44px,4.2vw,64px)}
+.of-rule{display:block;width:40px;height:2px;margin:30px 0 26px;background:var(--or)}
+.of-lead{margin:0;font-size:19px;line-height:1.45;color:var(--ink)}
+.of-why{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:12px}
+.of-why li{display:flex;align-items:center;gap:12px;font-size:15px;line-height:1.4;color:var(--ink2)}
+.of-why svg{flex:none;width:14px;height:14px;color:var(--ink3)}
+.of-tel{margin:36px 0 0;font-size:15px;color:var(--ink3)}
+.of-tel a{display:inline-flex;align-items:center;gap:8px;margin-left:4px;color:var(--ink);white-space:nowrap;transition:color .25s}
+.of-tel a svg{width:13px;height:13px;stroke-width:1.8;transition:transform .25s}
+.of-tel a:hover{color:#fff}.of-tel a:hover svg{transform:translateX(3px)}
+.of-f{position:relative;width:100%;max-width:740px;justify-self:end;padding:36px 40px 40px;border-radius:var(--r);background:#0f1318;border:1px solid rgb(236 238 241/.09)}
+.of-p{border:0;margin:0;padding:0;display:grid;gap:20px;min-width:0}
+.of-g{display:grid;grid-template-columns:1fr 1fr;gap:20px 16px}
+.of-g + .of-g{margin-top:8px}
+.of-f .f{gap:10px}
+.of-f .f > span{display:flex;align-items:baseline;justify-content:space-between;font-family:var(--mono);font-size:12px;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.of-f .f > span i{font-family:var(--body);font-size:13px;letter-spacing:0;text-transform:none;color:var(--ink3)}
+.of-f .f input,.of-f .f select{height:52px;padding:0 16px;font-size:16px;color:var(--ink);background-color:#131821;border:1px solid rgb(236 238 241/.13);transition:border-color .2s,box-shadow .2s}
+.of-f .f select{padding-right:40px;background-position:right 16px center}
+.of-f .f select:has(option[value=""]:checked){color:rgb(236 238 241/.42)}
+.of-f .f select option{color:var(--ink);background:#10141b}
+.of-f .f input:hover,.of-f .f select:hover{border-color:rgb(236 238 241/.24)}
+.of-f .f input:focus,.of-f .f select:focus{border-color:var(--or);box-shadow:0 0 0 3px rgb(255 69 0/.14)}
+.of-f .f.bad input,.of-f .f.bad select{border-color:#ff7a4d}
+.of-f .bx{height:56px;margin-top:12px;padding-left:24px;font-size:14px;letter-spacing:.18em}
+.of-f .bx i{width:46px;height:46px}
+@media (prefers-reduced-motion:reduce){.of-f .f input,.of-f .f select,.of-tel a,.of-tel a svg{transition:none}}
+@property --beam{syntax:'<angle>';inherits:false;initial-value:0deg}
+.beam{position:absolute;inset:0;z-index:3;border-radius:inherit;padding:1px;pointer-events:none;opacity:0;background:conic-gradient(from var(--beam),rgb(255 69 0/0) 0deg,rgb(255 69 0/0) 240deg,rgb(255 140 80/.85) 318deg,#ff4500 344deg,rgb(255 69 0/0) 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;filter:drop-shadow(0 0 6px rgb(255 69 0/.55))}
+.beam.run{animation:beam 2.6s cubic-bezier(.45,0,.2,1) forwards}
+@keyframes beam{0%{--beam:0deg;opacity:0}12%{opacity:1}82%{opacity:1}100%{--beam:360deg;opacity:0}}
+@media (prefers-reduced-motion:reduce){.beam{display:none}}
+/* hero form as frosted glass over the photograph, with the same low orange light as the offer form */
+.hero .dock{isolation:isolate;border:0;background:linear-gradient(180deg,rgb(236 238 241/.08) 0,rgb(236 238 241/.02) 40%,rgb(236 238 241/0) 100%),rgb(12 15 20/.5);-webkit-backdrop-filter:blur(18px) saturate(1.25);backdrop-filter:blur(18px) saturate(1.25);box-shadow:inset 0 0 0 1px rgb(236 238 241/.13),inset 0 1px 0 rgb(236 238 241/.2),0 34px 90px -36px rgb(0 0 0/.8)}
+.hero .dock::after{content:"";position:absolute;left:10%;right:10%;bottom:-1px;height:1px;background:linear-gradient(90deg,rgb(255 69 0/0),#ff5a1f 50%,rgb(255 69 0/0));opacity:.95;transition:opacity .5s,left .6s cubic-bezier(.2,.7,.2,1),right .6s cubic-bezier(.2,.7,.2,1)}
+.hero .dock::before{content:"";position:absolute;z-index:-1;left:16%;right:16%;bottom:-26px;height:52px;background:radial-gradient(50% 50% at 50% 50%,rgb(255 69 0/.5),rgb(255 69 0/0));filter:blur(10px);opacity:.95;transition:opacity .5s}
+.hero .dock:focus-within::after{opacity:1;left:6%;right:6%}
+.hero .dock:focus-within::before{opacity:1}
+.hero .dock .f > span{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2)}
+.hero .dock .f input,.hero .dock .f select{height:52px;background-color:rgb(236 238 241/.045);border:1px solid rgb(236 238 241/.14);transition:border-color .25s,box-shadow .25s,background-color .25s}
+.hero .dock .f input:hover,.hero .dock .f select:hover{border-color:rgb(236 238 241/.26)}
+.hero .dock .f input:focus,.hero .dock .f select:focus{border-color:var(--or);box-shadow:0 0 0 3px rgb(255 69 0/.16);background-color:rgb(236 238 241/.07)}
+.hero .dock .f select option{background:#10141b;color:var(--ink)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.hero .dock{background:rgb(12 15 20/.9)}}
+@media (max-width:860px){.hero .dock{-webkit-backdrop-filter:none;backdrop-filter:none;background:var(--bg3)}}
 .f i{font-style:normal;color:var(--ink3)}
 .err{font-style:normal;font-size:13px;color:#ff7a4d}
 .err:empty{display:none}
 .f.bad input,.f.bad select{border-color:#ff7a4d}
-.of-note{font-size:14px;color:var(--ink3);text-align:center}
 .of-done h3{margin-top:12px;font-family:var(--disp);font-weight:300;font-size:44px;line-height:1;text-transform:uppercase}
 .of-done p:last-child{margin-top:14px;font-size:16px;line-height:1.55;color:var(--ink2)}
 .of-done b{color:var(--ink);font-weight:500}
@@ -152,7 +183,7 @@ section[id],footer[id],form[id]{scroll-margin-top:84px}
 .o-tel{margin-top:22px;text-align:center;font-size:15px;color:var(--ink3)}
 .o-tel a{color:var(--ink)}
 /* ABOUT: editorial issue */
-.about{padding:136px var(--pad) 144px;background:var(--bg2)}
+.about{padding:136px var(--pad) 144px;background:var(--bg2);overflow-x:clip}
 .issues{max-width:980px;margin:72px auto 0;display:grid;gap:96px}
 .iss{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 .iss:nth-child(even) .i-img{order:2}
@@ -265,8 +296,9 @@ h2.kick{font-weight:400}
 @media (max-width:860px){.rv{width:290px}.mq::before,.mq::after{width:12%}}
 /* IG */
 /* instagram: a quiet contact sheet inside the page grid; a frame widens under the pointer */
-.ig{padding:136px var(--pad) 128px;background:#0b0f13}
+.ig{padding:136px var(--pad) 128px;background:#0b0f13;overflow-x:clip}
 .ig .hd{margin-bottom:40px}
+.ig .hd .r{justify-items:end}
 .sheet{display:flex;gap:8px;height:clamp(220px,22vw,320px)}
 .ig-t{position:relative;flex:1 1 0;min-width:0;overflow:hidden;border-radius:4px;transition:flex-grow .7s cubic-bezier(.2,.7,.2,1)}
 .ig-t img{width:100%;height:100%;object-fit:cover;filter:brightness(.78) saturate(.9);transition:filter .5s,transform 1s cubic-bezier(.2,.7,.2,1)}
@@ -277,7 +309,7 @@ h2.kick{font-weight:400}
 .ig-t:hover .ig-o,.ig-t:focus-visible .ig-o{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.ig-t,.ig-t img,.ig-o{transition:none}}
 /* FOOTER */
-.ft{padding:144px 0 40px;background:#07090d}
+.ft{padding:144px 0 0;background:#07090d}
 .visit{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;padding-left:max(var(--pad),calc((100vw - 1488px)/2))}
 .addr{margin-top:20px;font-family:var(--disp);font-weight:300;font-size:clamp(40px,3.8vw,60px);line-height:.98;text-transform:uppercase;letter-spacing:.02em;font-style:normal}
 .v-row{display:flex;gap:56px;margin-top:44px}
@@ -292,7 +324,7 @@ h2.kick{font-weight:400}
 .pin{width:18px;height:18px;border-radius:50%;background:var(--or);box-shadow:0 0 0 7px rgb(255 69 0/.2)}
 .maplibregl-ctrl-group{background:#161b24!important;border-radius:4px!important}
 .maplibregl-ctrl-group button .maplibregl-ctrl-icon{filter:invert(1)}
-.base{display:flex;justify-content:space-between;align-items:center;gap:40px;margin-top:40px;padding:0 var(--pad)}
+.base{display:flex;justify-content:space-between;align-items:center;gap:40px;margin-top:112px;padding:0 var(--pad)}
 .base img{width:160px}
 .base ul{display:flex;gap:28px;font-family:var(--disp);font-weight:600;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
 .small{margin-top:28px;padding:0 var(--pad);font-size:14px;line-height:1.6;color:var(--ink3)}
@@ -335,7 +367,7 @@ h2.kick{font-weight:400}
 .hd .r{display:grid;gap:22px;justify-items:start}
 .hd .r > p{font-size:15px;line-height:1.55;color:var(--ink3);max-width:38ch}
 /* footer wordmark and pin */
-.wm{max-width:calc(1488px + 2*var(--pad));margin:128px auto 0;padding:0 var(--pad);overflow:hidden;text-align:center}
+.wm{max-width:calc(1488px + 2*var(--pad));margin:56px auto 0;padding:0 var(--pad);overflow:hidden;text-align:center;height:8vw}
 .wm span{display:inline-block;font-family:var(--disp);font-weight:800;font-size:11vw;line-height:.76;text-transform:uppercase;letter-spacing:-.004em;white-space:nowrap;color:rgb(236 238 241/.42);text-align:center}
 .v-cta{display:flex;gap:8px;margin-top:44px}
 .pinb{display:grid;place-items:center;width:52px;height:52px;border-radius:var(--r);border:1px solid rgb(236 238 241/.26);color:var(--or);transition:border-color .25s}
@@ -349,14 +381,14 @@ h2.kick{font-weight:400}
 }
 @media (max-width:520px){
   .logo img{width:148px}.pill{padding:0 14px;height:36px}.pill .w{display:none}
-  .of-g{grid-template-columns:1fr}.of-f{padding:24px}.row{grid-template-columns:1fr 1fr}.ft .v-row{flex-direction:column;gap:28px}.ft .ph{white-space:nowrap}
+  .of-g{grid-template-columns:1fr}.of-f .of-g:first-of-type{grid-template-columns:1fr 1fr}.of-f .of-g:first-of-type .f:not(:has(select)){grid-column:1/-1}.of-f{padding:28px 22px 26px}.offer{padding:72px var(--pad)}.row{grid-template-columns:1fr 1fr}.ft .v-row{flex-direction:column;gap:28px}.ft .ph{white-space:nowrap}
   .figs dd{font-size:44px}
   .iss{gap:24px}.issues{gap:72px}
 }
 @media (max-width:1100px){
   .bar ul{gap:18px;font-size:14px}.bar nav{gap:20px}.u-hrs{display:none}
   .sell{grid-template-columns:1fr}.s-img{min-height:420px}
-  .of{grid-template-columns:1fr;gap:40px}.of-f{justify-self:stretch;max-width:none}.iss{grid-template-columns:1fr;gap:32px}.iss:nth-child(even) .i-img{order:0}
+  .of{grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:48px}.of-l{padding-top:22px}.of-f{padding:28px 28px 32px}.iss{grid-template-columns:1fr;gap:32px}.iss:nth-child(even) .i-img{order:0}
   .quotes{gap:32px}.visit{grid-template-columns:1fr;padding-right:var(--pad)}
 }
 @media (max-width:860px){
@@ -368,6 +400,7 @@ h2.kick{font-weight:400}
   .sheet{overflow-x:auto;scroll-snap-type:x mandatory;height:260px}.ig-t{flex:0 0 200px;scroll-snap-align:start}.ig-t:hover{flex-grow:0}.ig-o{opacity:1;transform:none}.base{flex-direction:column;align-items:flex-start}.base ul{flex-wrap:wrap;gap:14px 22px}
 }
 
+@media (max-width:860px){.offer .of{grid-template-columns:1fr;gap:40px}.offer .of-l{padding:0}.offer .of-tel{margin-top:28px}.offer .of-f{justify-self:stretch;max-width:none}}
 </style>
 </head>
 <body>
@@ -396,7 +429,7 @@ h2.kick{font-weight:400}
     <div class="cta"><a class="bx lt" href="#inventory"><span>View inventory</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a><a class="bx" href="#"><span>Financing</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></div>
   </div>
   <form class="dock" action="#offer" data-quick aria-labelledby="dock-t">
-    <div class="dock-h"><h2 id="dock-t">Sell us your car</h2><span class="lab">Step 1 / 2</span></div>
+    <div class="dock-h"><h2 id="dock-t">Sell us your car</h2></div>
     <div class="row"><label class="f"><span>Year</span><select name="year"><option value="">Select</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option><option>2014</option><option>2013</option><option>2012</option><option>2011</option><option>2010</option><option>2009</option><option>2008</option><option>2007</option><option>2006</option><option>2005</option><option>2004</option><option>2003</option><option>2002</option><option>2001</option><option>2000</option><option>1999</option><option>1998</option><option>1997</option><option>1996</option><option>1995</option><option>1994</option><option>1993</option><option>1992</option><option>1991</option><option>1990</option><option>1989</option><option>1988</option><option>1987</option><option>1986</option><option>1985</option><option>1984</option><option>1983</option><option>1982</option><option>1981</option><option>1980</option></select></label><label class="f"><span>Make</span><select name="make"><option value="">Select</option><option>Acura</option><option>Audi</option><option>BMW</option><option>Chevrolet</option><option>Dodge</option><option>Ferrari</option><option>Ford</option><option>Honda</option><option>Lamborghini</option><option>McLaren</option><option>Mercedes-Benz</option><option>Nissan</option><option>Porsche</option><option>Toyota</option><option>Other</option></select></label></div>
     <label class="f"><span>Model</span><input name="model" type="text" placeholder="e.g. 911 Carrera S" autocomplete="off"></label>
     <label class="f"><span>Mileage</span><input name="mileage" type="text" inputmode="numeric" placeholder="e.g. 24,500"></label>
@@ -469,30 +502,30 @@ h2.kick{font-weight:400}
 
 <section class="offer" aria-labelledby="offer-t"><div class="in of">
   <div class="of-l">
-    <p class="kick">Sell us your car</p>
-    <h2 class="t-light" id="offer-t">Get your offer today</h2>
-    <a class="bx" href="tel:+16303059900"><span>Rather talk? 630-305-9900</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.2 2.5h2.4l1.2 3-1.6 1a8 8 0 0 0 4.3 4.3l1-1.6 3 1.2v2.4a1.2 1.2 0 0 1-1.3 1.2A11.5 11.5 0 0 1 2 3.8a1.2 1.2 0 0 1 1.2-1.3z"/></svg></i></a>
+    <h2 class="t-light" id="offer-t">Get your offer<br>today</h2>
+    <span class="of-rule" aria-hidden="true"></span>
+    <p class="of-lead">A few details and you're done.</p>
+    <ul class="of-why">
+      <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>No obligation</li>
+      <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>Takes only a few minutes</li>
+      <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>We buy even if you don't buy from us</li>
+    </ul>
+    <p class="of-tel">Rather talk? <a href="tel:+16303059900">Call 630-305-9900 <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></p>
   </div>
   <form class="of-f" id="offer" action="#" novalidate>
-    <ol class="of-steps" aria-hidden="true"><li class="on" data-s="1"><i>01</i>Your car</li><li data-s="2"><i>02</i>How to reach you</li></ol>
-    <fieldset class="of-p" data-step="1"><legend class="sr">Step 1 of 2: your car</legend>
+    <fieldset class="of-p"><legend class="sr">Your car and how to reach you</legend>
       <div class="of-g">
         <label class="f"><span>Year</span><select name="year"><option value="">Select</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option><option>2014</option><option>2013</option><option>2012</option><option>2011</option><option>2010</option><option>2009</option><option>2008</option><option>2007</option><option>2006</option><option>2005</option><option>2004</option><option>2003</option><option>2002</option><option>2001</option><option>2000</option><option>1999</option><option>1998</option><option>1997</option><option>1996</option><option>1995</option><option>1994</option><option>1993</option><option>1992</option><option>1991</option><option>1990</option><option>1989</option><option>1988</option><option>1987</option><option>1986</option><option>1985</option><option>1984</option><option>1983</option><option>1982</option><option>1981</option><option>1980</option></select><em class="err" aria-live="polite"></em></label>
         <label class="f"><span>Make</span><select name="make"><option value="">Select</option><option>Acura</option><option>Audi</option><option>BMW</option><option>Chevrolet</option><option>Dodge</option><option>Ferrari</option><option>Ford</option><option>Honda</option><option>Lamborghini</option><option>McLaren</option><option>Mercedes-Benz</option><option>Nissan</option><option>Porsche</option><option>Toyota</option><option>Other</option></select><em class="err" aria-live="polite"></em></label>
         <label class="f"><span>Model</span><input name="model" type="text" placeholder="e.g. 911 Carrera S" autocomplete="off"><em class="err" aria-live="polite"></em></label>
         <label class="f"><span>Mileage</span><input name="mileage" type="text" inputmode="numeric" placeholder="e.g. 24,500" autocomplete="off"><em class="err" aria-live="polite"></em></label>
       </div>
-      <button class="bx pri full" type="submit"><span>Continue</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></button>
-    </fieldset>
-    <fieldset class="of-p" data-step="2" hidden><legend class="sr">Step 2 of 2: how to reach you</legend>
-      <div class="of-sum"><span class="of-car"></span><button type="button" class="of-edit">Edit</button></div>
-      <label class="f"><span>Name</span><input id="o-name" name="name" type="text" autocomplete="name"><em class="err" aria-live="polite"></em></label>
       <div class="of-g">
+        <label class="f"><span>Name</span><input id="o-name" name="name" type="text" autocomplete="name" placeholder="First and last name"><em class="err" aria-live="polite"></em></label>
         <label class="f"><span>Phone</span><input name="phone" type="tel" autocomplete="tel" placeholder="(630) 000-0000"><em class="err" aria-live="polite"></em></label>
-        <label class="f"><span>Email <i>optional</i></span><input name="email" type="email" autocomplete="email"><em class="err" aria-live="polite"></em></label>
+        <label class="f" style="grid-column:1/-1"><span>Email <i>optional</i></span><input name="email" type="email" autocomplete="email" placeholder="you@example.com"><em class="err" aria-live="polite"></em></label>
       </div>
       <button class="bx pri full" type="submit"><span>Get my offer</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></button>
-      <p class="of-note">We buy even if you don't buy from us.</p>
     </fieldset>
     <div class="of-done" hidden role="status"><p class="kick">Received</p><h3>Thanks, <span class="of-who"></span>.</h3><p>Our buyers will call you at <b class="of-ph"></b> with a number for your <span class="of-car2"></span>.</p></div>
   </form>
@@ -575,9 +608,9 @@ h2.kick{font-weight:400}
     </div>
     <div id="map" aria-label="Map of 1570 W Ogden Ave, Naperville"><p class="fb">Map loads here</p></div>
   </div>
-  <div class="wm" aria-hidden="true"><span>Gold Coast Motors</span></div>
   <div class="in base"><p class="small" style="margin:0;padding:0">© 2026 Gold Coast Motors Inc.</p>
     <ul><li><a href="#">Inventory</a></li><li><a href="#">Sold</a></li><li><a href="#">Financing</a></li><li><a href="#sell">Sell us your car</a></li><li><a href="#contact">Contact us</a></li></ul></div>
+  <div class="wm" aria-hidden="true"><span>Gold Coast Motors</span></div>
 </footer>
 
 <script>
@@ -588,31 +621,21 @@ h2.kick{font-weight:400}
   const hdr = $('.hdr');
   const stick = () => hdr.classList.toggle('is-stuck', scrollY > 140);
   addEventListener('scroll', stick, { passive: true }); stick();
-  /* offer form: two steps. Step 1 the car, step 2 how to reach you. The hero form fills step 1 and lands on step 2. */
+  /* offer form: one form. The hero form fills the car and lands on the first empty field. */
   const q = $('[data-quick]'), o = $('#offer');
-  const P = [...o.querySelectorAll('.of-p')], S = [...o.querySelectorAll('.of-steps li')];
   const fmtMi = v => { const d = v.replace(/\D/g, '').slice(0, 7); return d ? Number(d).toLocaleString('en-US') : ''; };
   const fmtPh = v => { const d = v.replace(/\D/g, '').slice(0, 10); return d.length < 4 ? d : d.length < 7 ? `(${d.slice(0, 3)}) ${d.slice(3)}` : `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}`; };
   [q.elements.mileage, o.elements.mileage].forEach(i => i.addEventListener('input', () => { i.value = fmtMi(i.value); }));
   o.elements.phone.addEventListener('input', e => { e.target.value = fmtPh(e.target.value); });
   const msg = { year: 'Choose the year', make: 'Choose the make', model: 'Add the model', mileage: 'Add the mileage', name: 'Add your name', phone: 'Add a 10-digit phone number', email: 'Check the email address' };
   const ok = el => { const v = el.value.trim(); if (el.name === 'email') return !v || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v); if (el.name === 'phone') return v.replace(/\D/g, '').length === 10; return !!v; };
+  const fields = () => ['year', 'make', 'model', 'mileage', 'name', 'phone', 'email'].map(n => o.elements[n]);
   const check = els => { let first = null; els.forEach(el => { const good = ok(el), f = el.closest('.f'); f.classList.toggle('bad', !good); f.querySelector('.err').textContent = good ? '' : msg[el.name]; el.setAttribute('aria-invalid', good ? 'false' : 'true'); if (!good && !first) first = el; }); return first; };
-  const carEls = () => ['year', 'make', 'model', 'mileage'].map(n => o.elements[n]);
   const car = () => `${o.elements.year.value} ${o.elements.make.value} ${o.elements.model.value}`.trim();
-  const go = (n, focus) => {
-    P.forEach(p => { p.hidden = +p.dataset.step !== n; });
-    S.forEach(st => { st.classList.toggle('on', +st.dataset.s === n); st.classList.toggle('ok', +st.dataset.s < n); });
-    if (n === 2) o.querySelector('.of-car').textContent = `${car()} · ${o.elements.mileage.value} mi`;
-    if (focus) (n === 1 ? (carEls().find(el => !ok(el)) || o.elements.year) : o.elements.name).focus({ preventScroll: true });
-  };
-  o.querySelector('.of-edit').addEventListener('click', () => go(1, true));
   o.addEventListener('submit', e => {
     e.preventDefault();
-    const step = +P.find(p => !p.hidden).dataset.step;
-    if (step === 1) { const bad = check(carEls()); if (bad) { bad.focus(); return; } go(2, true); return; }
-    const bad = check(['name', 'phone', 'email'].map(n => o.elements[n])); if (bad) { bad.focus(); return; }
-    P.forEach(p => { p.hidden = true; }); o.querySelector('.of-steps').hidden = true;
+    const bad = check(fields()); if (bad) { bad.focus(); return; }
+    o.querySelector('.of-p').hidden = true;
     const d = o.querySelector('.of-done'); d.hidden = false;
     d.querySelector('.of-who').textContent = o.elements.name.value.trim().split(/\s+/)[0];
     d.querySelector('.of-ph').textContent = o.elements.phone.value;
@@ -622,16 +645,21 @@ h2.kick{font-weight:400}
   q.addEventListener('submit', e => {
     e.preventDefault();
     ['year', 'make', 'model', 'mileage'].forEach(n => { o.elements[n].value = q.elements[n].value; });
-    const complete = carEls().every(ok);
     o.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'center' });
-    setTimeout(() => go(complete ? 2 : 1, true), still ? 0 : 600);
+    setTimeout(() => (fields().find(el => el.name !== 'email' && !ok(el)) || o.elements.name).focus({ preventScroll: true }), still ? 0 : 600);
   });
+  /* one beam of light runs once around the hero form on load */
+  if (!still && CSS.supports('(--a: 0deg)')) {
+    const beam = el => { const b = document.createElement('span'); b.className = 'beam'; b.setAttribute('aria-hidden', 'true'); el.appendChild(b); return b; };
+    const hb = beam($('.dock'));
+    setTimeout(() => hb.classList.add('run'), 1300);
+  }
   $$('.ib[aria-pressed]').forEach(b => b.addEventListener('click', () => {
     b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
     $('.util b').textContent = $$('.ib[aria-pressed=true]').length;
   }));
   const wm = $('.wm span');
-  const fit = () => { wm.style.fontSize = '100px'; const box = wm.parentNode.clientWidth - parseFloat(getComputedStyle(wm.parentNode).paddingLeft) * 2; wm.style.fontSize = (100 * box / wm.getBoundingClientRect().width).toFixed(2) + 'px'; };
+  const fit = () => { wm.style.fontSize = '100px'; const box = wm.parentNode.clientWidth - parseFloat(getComputedStyle(wm.parentNode).paddingLeft) * 2; const fs = 100 * box / wm.getBoundingClientRect().width; wm.style.fontSize = fs.toFixed(2) + 'px'; wm.parentNode.style.height = Math.round(fs * .47) + 'px'; };
   document.fonts.ready.then(fit); addEventListener('resize', fit);
   const lots = [{"img": "03608", "make": "McLaren", "model": "720S", "hp": "710", "z": "2.8", "v": "212", "year": "2019", "mi": "6,812", "stk": "P0142", "price": "$239,900"}, {"img": "09386", "make": "Ferrari", "model": "812 Superfast", "hp": "789", "z": "2.9", "v": "211", "year": "2018", "mi": "4,210", "stk": "P0138", "price": "$389,900"}, {"img": "04778", "make": "Porsche", "model": "911 GT3 RS", "hp": "520", "z": "3.0", "v": "193", "year": "2019", "mi": "3,105", "stk": "P0151", "price": "$229,900"}, {"img": "04804", "make": "Mercedes-AMG", "model": "GT R", "hp": "577", "z": "3.5", "v": "198", "year": "2018", "mi": "9,880", "stk": "P0127", "price": "$149,900"}];
   const tabs = $$('.tabs [role=tab]'), img = $('#lot-img'), lights = $('.lights');
@@ -747,6 +775,26 @@ h2.kick{font-weight:400}
     .from(t.querySelector('.lead'), { x: -32, opacity: 0, duration: .7 }, .4)
     .from(t.querySelectorAll('.steps li'), { y: 44, opacity: 0, duration: .75, stagger: .12 }, .55)
     .from(t.querySelectorAll('.cta > *'), { y: 26, opacity: 0, duration: .6, stagger: .1 }, 1.1);
+})();
+</script>
+<script>
+/* OFFER: one quiet arrival. Headline lines rise from their masks, the rule draws, the reassurance lines follow,
+   the form fades up 16px as one piece, the CTA settles last. Fields never move on their own. Reduced motion: nothing moves. */
+(() => {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('shot')) return;
+  const sec = document.querySelector('.offer');
+  if (!sec) return;
+  const h2 = sec.querySelector('h2');
+  h2.innerHTML = h2.innerHTML.split(/<br\s*\/?>/i).map(l => '<span class="ln"><span>' + l + '</span></span>').join('');
+  gsap.timeline({ scrollTrigger: { trigger: sec, start: 'top 72%', once: true }, defaults: { ease: 'power3.out' } })
+    .from(h2.querySelectorAll('.ln > span'), { yPercent: 105, duration: .9, stagger: .08 })
+    .from(sec.querySelector('.of-f'), { y: 16, opacity: 0, duration: .9 }, .15)
+    .from(sec.querySelector('.of-rule'), { scaleX: 0, transformOrigin: '0 50%', duration: .6 }, .4)
+    .from(sec.querySelector('.of-lead'), { y: 8, opacity: 0, duration: .6 }, .48)
+    .from(sec.querySelectorAll('.of-why li'), { y: 8, opacity: 0, duration: .5, stagger: .08 }, .58)
+    .from(sec.querySelector('.of-tel'), { opacity: 0, duration: .6 }, .9)
+    .from(sec.querySelector('.of-f .bx'), { y: 8, opacity: 0, duration: .55 }, .95);
 })();
 </script>
 <script>
