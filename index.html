@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gold Coast Motors · Enthusiast and collector cars, Naperville</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;400;500;600;700;800&family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/e-hero-2560.webp" imagesrcset="assets/e-hero-1440.webp 1440w, assets/e-hero-2560.webp 2560w" imagesizes="100vw">
+<style>
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+:root{--bg:#0b0f13;--glow:21 32 44;--bg2:#0e121a;--bg3:#141a24;--bg4:#1b2230;--ink:#eceef1;--ink2:rgb(236 238 241/.74);--ink3:rgb(236 238 241/.56);--edge:rgb(236 238 241/.1);--or:#ff4500;
+  --disp:"Big Shoulders Display",sans-serif;--body:"Geist",system-ui,sans-serif;--mono:"Geist Mono",ui-monospace,monospace;--pad:clamp(24px,5.6vw,96px);--r:4px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+ul,ol,dl,dd,h1,h2,h3,p,figure,blockquote{margin:0;padding:0}
+ul,ol{list-style:none}
+svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--or);outline-offset:3px}
+.in{max-width:1488px;margin:0 auto}
+/* type roles */
+.kick{font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--or)}
+.t-light{font-family:var(--disp);font-weight:300;text-transform:uppercase;letter-spacing:.01em;line-height:.95}
+.lab{font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.lnk{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.lnk svg{width:12px;height:12px;stroke-width:1.8;transition:transform .25s}
+.lnk:hover svg{transform:translateX(3px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:48px;padding:0 24px;border-radius:var(--r);font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;border:1px solid rgb(236 238 241/.3);transition:background-color .25s,border-color .25s,color .25s}
+.btn:hover{border-color:var(--ink)}
+.btn.fill{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.fill:hover{background:#fff}
+.btn.or{background:var(--or);color:#0a0a0b;border-color:var(--or)}
+.btn.or:hover{background:#ff5a1f}
+/* header */
+.hdr{position:absolute;inset:0 0 auto;z-index:5;padding:0 var(--pad)}
+.util{display:flex;justify-content:space-between;align-items:center;height:36px;font-size:14px;color:var(--ink3)}
+.util div{display:flex;align-items:center;gap:24px}
+.util a{display:inline-flex;align-items:center;gap:8px}
+.util .ic{color:var(--ink2)}.util .ic+.ic{margin-left:-10px}
+.util b{color:var(--ink);font-weight:500}
+.bar{display:flex;justify-content:space-between;align-items:center;height:84px}
+.logo img{width:188px}
+.bar nav{display:flex;align-items:center;gap:40px}
+.bar ul{display:flex;gap:30px;font-family:var(--disp);font-weight:600;font-size:16px;letter-spacing:.14em;text-transform:uppercase}
+.bar ul a{display:inline-flex;align-items:center;gap:6px}
+.bar ul a[aria-current]{color:var(--or)}
+.chev{width:10px;height:10px;stroke-width:1.6;opacity:.7}
+.pill{display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 18px;border-radius:999px;border:1px solid rgb(236 238 241/.26);color:var(--ink);font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+/* HERO */
+.hero{position:relative;height:100svh;min-height:760px;max-height:1080px;overflow:hidden;isolation:isolate}
+@media (min-width:861px){.shot .hero{height:900px!important}}
+.hero-img{position:absolute;inset:0;z-index:-2}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;filter:brightness(.62) contrast(1.06) saturate(.9)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(90deg,rgb(10 13 18/.9) 0,rgb(10 13 18/.55) 34%,rgb(10 13 18/0) 56%),
+  linear-gradient(180deg,rgb(10 13 18/.8) 0,rgb(10 13 18/0) 20%),
+  linear-gradient(0deg,var(--bg) 0,rgb(10 13 18/0) 26%)}
+.h-copy{position:absolute;left:var(--pad);top:50%;transform:translateY(-44%);max-width:520px}
+.h-copy h1{margin-top:20px;font-family:var(--disp);font-weight:800;font-size:clamp(56px,6.2vw,92px);line-height:.88;text-transform:uppercase;letter-spacing:.005em}
+.h-copy p{margin-top:24px;font-size:17px;line-height:1.5;color:var(--ink2);max-width:34ch}
+.h-copy .cta{display:flex;gap:12px;margin-top:32px}
+.scroll{position:absolute;left:50%;bottom:32px;transform:translateX(-50%);font-family:var(--mono);font-size:12px;letter-spacing:.3em;color:var(--ink3)}
+.dock{position:absolute;right:var(--pad);top:50%;transform:translateY(-44%);width:360px;display:grid;gap:14px;padding:32px;border-radius:6px;background:rgb(14 18 26/.9);border:1px solid var(--edge)}
+.dock-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+.dock-h h2{font-family:var(--disp);font-weight:700;font-size:28px;text-transform:uppercase;letter-spacing:.02em;line-height:1}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f{display:grid;gap:8px;font-size:14px;color:var(--ink3)}
+.f input,.f select{height:50px;width:100%;padding:0 14px;background:var(--bg3);border:1px solid var(--edge);border-radius:var(--r);appearance:none;-webkit-appearance:none}
+.f select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2 3.5l3 3 3-3' fill='none' stroke='%23eceef1' stroke-width='1.4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:10px}
+.f input::placeholder{color:rgb(236 238 241/.4)}
+.f input:focus,.f select:focus{outline:none;border-color:var(--or)}
+.dock .bx{margin-top:6px}
+.dock-n{font-size:14px;color:var(--ink3)}
+/* section heads */
+.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:48px}
+.sh h2{margin-top:14px;font-size:clamp(44px,4.4vw,68px)}
+.sh.c{flex-direction:column;align-items:center;text-align:center}
+.sh.c p.sub{margin-top:18px;font-size:15px;color:var(--ink3)}
+/* INVENTORY */
+.inv{padding:128px var(--pad) 136px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{display:flex;flex-direction:column;background:var(--bg3);border-radius:6px;overflow:hidden}
+.c-img{display:block;aspect-ratio:16/10;overflow:hidden}
+.c-img img{width:100%;height:100%;object-fit:cover;object-position:50% 66%;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.card:hover .c-img img{transform:scale(1.035)}
+.c-b{display:flex;flex-direction:column;flex:1;padding:24px 24px 18px}
+.c-t{font-family:var(--disp);font-weight:500;font-size:24px;line-height:1.1;letter-spacing:.06em;text-transform:uppercase}
+.c-pm{display:flex;gap:22px;margin-top:12px;font-size:14px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.c-pm b{font-weight:500;color:var(--ink)}
+.c-d{margin-top:10px;font-size:14px;line-height:1.55;color:var(--ink3);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.c-a{display:flex;align-items:center;gap:2px;margin-top:auto;padding-top:16px}
+.ib{display:grid;place-items:center;width:40px;height:40px;margin-left:-10px;margin-right:4px;background:none;border:0;color:rgb(236 238 241/.45);cursor:pointer;transition:color .2s}
+.ib:hover,.ib[aria-pressed=true]{color:var(--ink)}
+.ib svg{width:18px;height:18px}
+.more{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:var(--r);background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.more svg{width:12px;height:12px;stroke-width:1.8}
+/* SELL: split */
+.sell{display:grid;grid-template-columns:1fr 1fr;background:var(--bg2);min-height:820px}
+.s-img{position:relative;overflow:hidden}
+.s-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 60%;filter:brightness(.85)}
+.s-txt{align-self:center;padding:112px var(--pad) 112px clamp(48px,6vw,112px);max-width:760px}
+.s-txt h2{margin-top:14px;font-size:clamp(48px,4.6vw,72px)}
+.s-txt .lead{margin-top:18px;font-size:16px;color:var(--ink2);max-width:40ch}
+.steps{margin-top:48px;display:grid;gap:30px}
+.steps li{display:grid;grid-template-columns:52px 1fr;align-items:baseline}
+.steps .n{font-family:var(--mono);font-size:14px;color:var(--or)}
+.steps h3{font-family:var(--disp);font-weight:500;font-size:28px;letter-spacing:.08em;text-transform:uppercase;line-height:1}
+.steps p{margin-top:8px;font-size:14px;color:var(--ink3)}
+.s-txt .cta{display:flex;gap:12px;margin-top:48px}
+/* OFFER band */
+.offer{padding:112px var(--pad) 120px;background:var(--bg)}
+.o-panel{padding:28px;border-radius:6px;background:var(--bg3);border:1px solid var(--edge);display:grid;gap:14px}
+.o-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:end}
+.o-row .btn{height:50px;width:100%}
+.o-tel{margin-top:22px;text-align:center;font-size:15px;color:var(--ink3)}
+.o-tel a{color:var(--ink)}
+/* ABOUT: editorial issue */
+.about{padding:136px var(--pad) 144px;background:var(--bg2)}
+.issues{max-width:980px;margin:72px auto 0;display:grid;gap:96px}
+.iss{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.iss:nth-child(even) .i-img{order:2}
+.i-img{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:1/1;background:var(--bg3)}
+.i-img img{width:100%;height:100%;object-fit:cover}
+.i-img .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:76px;height:76px;border-radius:50%;background:var(--or);color:#0a0a0b;border:0;cursor:pointer}
+.i-img .play svg{width:22px;height:22px;margin-left:4px}
+.i-txt .lab{display:block}
+.i-txt .kick{display:block;margin-top:28px}
+.i-txt h3{margin-top:12px;font-family:var(--disp);font-weight:400;font-size:34px;letter-spacing:.1em;text-transform:uppercase;line-height:1.1}
+.i-txt p{margin-top:16px;font-size:15px;line-height:1.6;color:var(--ink3);max-width:40ch}
+.i-txt .lnk{margin-top:24px}
+/* PREMIER: showcase */
+.prem{padding:144px var(--pad) 152px;background:var(--bg)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px 28px}
+.tabs button{padding:12px 0;background:none;border:0;cursor:pointer;font-family:var(--disp);font-weight:500;font-size:18px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);transition:color .25s}
+.tabs button:hover{color:var(--ink2)}
+.tabs [aria-selected=true]{color:var(--or)}
+.stage{position:relative;max-width:1488px;margin:56px auto 0;aspect-ratio:16/8;border-radius:6px;overflow:hidden;background:#000}
+.stage img{width:100%;height:100%;object-fit:cover;object-position:50% 58%}
+.lights{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}
+.figs{display:flex;justify-content:center;gap:72px;margin-top:48px;text-align:center}
+.figs b{display:block;font-family:var(--disp);font-weight:300;font-size:64px;line-height:1;letter-spacing:.06em;color:var(--or);font-variant-numeric:tabular-nums}
+.figs span{display:block;margin-top:8px}
+.lot-m{margin-top:32px;text-align:center;font-family:var(--mono);font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+.lot-m b{color:var(--ink);font-weight:500}
+.prem .cta{display:flex;justify-content:center;gap:12px;margin-top:28px}
+.lot-s{margin-top:18px;text-align:center;font-size:14px;color:rgb(236 238 241/.42)}
+/* CTA panels */
+.panels{display:grid;grid-template-columns:repeat(3,1fr);max-width:1488px;margin:0 auto;padding:0 var(--pad) 0}
+.pan{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;min-height:420px;padding:32px;background:#0b0f13}
+.pan > img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(.85);transition:transform 1.2s cubic-bezier(.2,.7,.2,1),filter .6s}
+.pan::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgb(11 15 19/.62) 0,rgb(11 15 19/.12) 42%,rgb(11 15 19/.55) 100%)}
+.pan:hover > img{transform:scale(1.04);filter:brightness(.6) saturate(.9)}
+.panels{gap:2px}
+.pan h2{margin-top:12px;font-size:clamp(40px,3.6vw,56px)}
+.pan p{margin-top:14px;font-size:15px;color:var(--ink2);max-width:30ch}
+.pan .bx{margin-top:auto;align-self:flex-start;background:rgb(11 15 19/.35)}
+.pan p.kick{margin:0;color:var(--or);font-size:13px}
+h2.kick{font-weight:400}
+/* REVIEWS */
+.rev{padding:144px var(--pad)}
+.score{display:flex;align-items:center;gap:18px}
+.score b{font-family:var(--disp);font-weight:700;font-size:64px;line-height:1}
+.score .stars{display:flex;gap:3px;color:var(--or)}
+.score .stars svg{width:15px;height:15px}
+.score p{margin-top:6px;font-size:14px;color:var(--ink3)}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:56px;margin-top:8px}
+.qt .stars{display:flex;gap:3px;color:var(--ink)}
+.qt .stars svg{width:14px;height:14px}
+.qt blockquote{margin-top:18px;font-size:17px;line-height:1.6;color:var(--ink2)}
+.qt p{margin-top:18px;font-size:14px;color:var(--ink3)}
+.qt p b{color:var(--ink);font-weight:500;margin-right:8px}
+.rev .foot{display:flex;justify-content:space-between;align-items:center;margin-top:56px}
+.rev .note{font-size:14px;color:rgb(236 238 241/.42)}
+/* IG */
+.ig{padding:0 0 0}
+.ig-h{display:flex;justify-content:space-between;align-items:baseline;padding:0 var(--pad) 24px}
+.ig-h p{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink3)}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.strip img{width:100%;aspect-ratio:1;object-fit:cover;filter:brightness(.86);transition:filter .4s}
+.strip a:hover img{filter:none}
+/* FOOTER */
+.ft{padding:144px 0 40px;background:#07090d}
+.visit{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;padding-left:max(var(--pad),calc((100vw - 1488px)/2))}
+.addr{margin-top:20px;font-family:var(--disp);font-weight:300;font-size:clamp(40px,3.8vw,60px);line-height:.98;text-transform:uppercase;letter-spacing:.02em;font-style:normal}
+.v-row{display:flex;gap:56px;margin-top:44px}
+.v-row .lab{margin-bottom:10px}
+.ph{font-family:var(--disp);font-weight:600;font-size:28px;letter-spacing:.06em}
+.hrs{display:grid;grid-template-columns:auto auto;gap:6px 28px;font-size:15px}
+.hrs dt{color:var(--ink3)}
+
+#map{position:relative;min-height:560px;background:#0d1117;overflow:hidden;border-radius:6px 0 0 6px}
+#map .fb{position:absolute;inset:0;display:grid;place-items:center;font-size:15px;color:var(--ink3)}
+#map.is-live .fb{display:none}
+.pin{width:18px;height:18px;border-radius:50%;background:var(--or);box-shadow:0 0 0 7px rgb(255 69 0/.2)}
+.maplibregl-ctrl-group{background:#161b24!important;border-radius:4px!important}
+.maplibregl-ctrl-group button .maplibregl-ctrl-icon{filter:invert(1)}
+.base{display:flex;justify-content:space-between;align-items:center;gap:40px;margin-top:40px;padding:0 var(--pad)}
+.base img{width:160px}
+.base ul{display:flex;gap:28px;font-family:var(--disp);font-weight:600;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.small{margin-top:28px;padding:0 var(--pad);font-size:14px;line-height:1.6;color:var(--ink3)}
+.small a{text-decoration:underline;text-underline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.btn,.lnk,.pill,.more{white-space:nowrap}
+/* line masks for text arrivals */
+.ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.ln > span{display:block}
+.wm i{display:inline-block;font-style:normal}
+/* ambient light: soft cool pools on the dark ground, sampled from the Vegas reference (#0b0f13 lifting to about #14202b) */
+.glow{position:relative;isolation:isolate}
+.glow::before{content:"";position:absolute;z-index:-1;pointer-events:none;left:var(--gx,50%);top:var(--gy,50%);width:var(--gw,820px);height:var(--gh,600px);max-width:140vw;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgb(var(--glow)/.95),rgb(var(--glow)/.45) 45%,rgb(var(--glow)/0))}
+/* one button: label + square arrow tile */
+.bx{display:inline-flex;align-items:center;justify-content:space-between;gap:18px;height:52px;padding:5px 5px 5px 22px;border-radius:var(--r);border:1px solid rgb(236 238 241/.26);background:none;color:var(--ink);font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;cursor:pointer;transition:border-color .25s,background-color .25s}
+.bx i{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:2px;background:var(--ink);color:#0a0d12}
+.bx i svg{width:15px;height:15px;stroke-width:1.7;transition:transform .3s}
+.bx:hover{border-color:var(--ink)}.bx:hover i svg{transform:translateX(2px)}
+.bx.pri{background:var(--or);border-color:var(--or);color:#0a0a0b}.bx.pri i{background:#0a0a0b;color:var(--or)}.bx.pri:hover{background:#ff5a1f;border-color:#ff5a1f}
+.bx.lt{background:var(--ink);border-color:var(--ink);color:#0a0d12}.bx.lt i{background:#0a0d12;color:var(--ink)}.bx.lt:hover{background:#fff}
+.bx.full{width:100%}
+.bx.sm{height:44px;padding:4px 4px 4px 16px;gap:14px}.bx.sm i{width:34px;height:34px}
+/* one section head: title left, phrase and button right, on one bottom line */
+.hd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,400px);gap:48px;align-items:end;margin-bottom:56px}
+.hd h2{margin-top:14px;font-size:clamp(44px,4.4vw,68px)}
+.hd .r{display:grid;gap:22px;justify-items:start}
+.hd .r > p{font-size:15px;line-height:1.55;color:var(--ink3);max-width:38ch}
+/* footer wordmark and pin */
+.wm{margin-top:128px;padding:0 var(--pad);overflow:hidden;text-align:center}
+.wm span{display:inline-block;font-family:var(--disp);font-weight:800;font-size:17.6vw;line-height:.76;text-transform:uppercase;letter-spacing:-.004em;white-space:nowrap;color:var(--ink);text-align:center}
+.v-cta{display:flex;gap:8px;margin-top:44px}
+.pinb{display:grid;place-items:center;width:52px;height:52px;border-radius:var(--r);border:1px solid rgb(236 238 241/.26);color:var(--or);transition:border-color .25s}
+.pinb:hover{border-color:var(--ink)}.pinb svg{width:18px;height:18px}
+@media (max-width:860px){
+  .hd{grid-template-columns:1fr;gap:24px}
+  .sh{flex-direction:column;align-items:flex-start;gap:20px}.sh.c{align-items:center}
+  .score{margin-top:4px}.rev .foot{flex-direction:column;align-items:flex-start;gap:16px}
+  .s-txt{padding:72px var(--pad)}.s-txt .cta,.prem .cta,.h-copy .cta{flex-wrap:wrap}
+  .dock-h{flex-wrap:wrap;gap:8px}
+}
+@media (max-width:520px){
+  .logo img{width:148px}.pill{padding:0 14px;height:36px}.pill .w{display:none}
+  .offer .o-row{grid-template-columns:1fr}.row{grid-template-columns:1fr 1fr}.ft .v-row{flex-direction:column;gap:28px}.ft .ph{white-space:nowrap}
+  .figs{gap:20px}.figs b{font-size:40px}.lot-m{line-height:1.9}
+  .iss{gap:24px}.issues{gap:72px}
+}
+@media (max-width:1100px){
+  .bar ul{gap:18px;font-size:14px}.bar nav{gap:20px}.u-hrs{display:none}
+  .sell{grid-template-columns:1fr}.s-img{min-height:420px}
+  .o-row{grid-template-columns:1fr 1fr}.iss{grid-template-columns:1fr;gap:32px}.iss:nth-child(even) .i-img{order:0}
+  .quotes{gap:32px}.visit{grid-template-columns:1fr;padding-right:var(--pad)}
+}
+@media (max-width:860px){
+  .hdr{position:relative;background:var(--bg)}.bar ul{display:none}.util .u-addr{display:none}
+  .hero{height:auto;min-height:0;max-height:none;padding-bottom:56px}.hero-img{position:relative;height:60vw}
+  .h-copy{position:relative;left:auto;top:auto;transform:none;padding:32px var(--pad) 0}
+  .dock{position:relative;right:auto;top:auto;transform:none;width:auto;margin:40px var(--pad) 0}
+  .scroll{display:none}.cards,.panels,.quotes{grid-template-columns:1fr}.pan{min-height:220px}.i-img{max-width:560px}.figs{gap:32px}.figs b{font-size:44px}.tabs{gap:20px;flex-wrap:wrap}
+  .strip{grid-template-columns:1fr 1fr}.base{flex-direction:column;align-items:flex-start}.base ul{flex-wrap:wrap;gap:14px 22px}
+}
+
+</style>
+</head>
+<body>
+<script>if(location.hash==="#shot")document.documentElement.classList.add("shot")</script>
+<header class="hdr">
+  <div class="util">
+    <div><a class="ic" href="#" aria-label="Instagram"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3.5"/><circle cx="8" cy="8" r="2.8"/><circle cx="11.6" cy="4.4" r=".6" fill="currentColor" stroke="none"/></svg></a><a class="ic" href="https://www.youtube.com/@GoldCoastMotors" aria-label="YouTube"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="3.5" width="13" height="9" rx="2.5"/><path d="M6.7 6v4l3.4-2z" fill="currentColor" stroke="none"/></svg></a>
+      <a class="u-addr" href="#contact"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s-4.5-4.6-4.5-8a4.5 4.5 0 0 1 9 0c0 3.4-4.5 8-4.5 8z"/><circle cx="8" cy="6.5" r="1.6"/></svg>1570 W Ogden Ave #112, Naperville, IL</a><span class="u-hrs">Mon–Fri 10–6 · Sat 10–5</span></div>
+    <div><a href="#"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h8v11L8 10.6 4 13.5z"/></svg>Saved <b>0</b></a></div>
+  </div>
+  <div class="bar">
+    <a class="logo" href="#" aria-label="Gold Coast Motors, home"><img src="assets/brand/logo-h-light.svg" alt="" width="263" height="47"></a>
+    <nav aria-label="Main">
+      <ul><li><a href="#" aria-current="page">Home</a></li><li><a href="#">Inventory<svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3"/></svg></a></li><li><a href="#">Financing</a></li><li><a href="#">Sell Us Your Car</a></li><li><a href="#">Contact Us<svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3"/></svg></a></li></ul>
+      <a class="pill" href="tel:+16303059900"><span style="display:inline-grid;color:var(--or)"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.2 2.5h2.4l1.2 3-1.6 1a8 8 0 0 0 4.3 4.3l1-1.6 3 1.2v2.4a1.2 1.2 0 0 1-1.3 1.2A11.5 11.5 0 0 1 2 3.8a1.2 1.2 0 0 1 1.2-1.3z"/></svg></span><span class="w">Call&nbsp;</span>630-305-9900</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero" aria-labelledby="h1">
+  <div class="hero-img"><img src="assets/e-hero-2560.webp" srcset="assets/e-hero-1440.webp 1440w, assets/e-hero-2560.webp 2560w" sizes="100vw" alt="Wheel and yellow brake caliper of a Ferrari 812 Superfast in our showroom" width="2560" height="1600" fetchpriority="high"></div>
+  <div class="h-copy">
+    <p class="kick">Naperville, Illinois</p>
+    <h1 id="h1"><span class="ln"><span>Hand-picked</span></span><span class="ln"><span>by the</span></span><span class="ln"><span>owners.</span></span></h1>
+    <p>Enthusiast and collector cars on Ogden Avenue. We buy them too.</p>
+    <div class="cta"><a class="bx lt" href="#inventory"><span>View inventory</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a><a class="bx" href="#"><span>Financing</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></div>
+  </div>
+  <form class="dock" action="#offer" data-quick aria-labelledby="dock-t">
+    <div class="dock-h"><h2 id="dock-t">Sell us your car</h2><span class="lab">Step 1 / 2</span></div>
+    <div class="row"><label class="f"><span>Year</span><select name="year"><option value="">Select</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option><option>2014</option><option>2013</option><option>2012</option><option>2011</option><option>2010</option><option>2009</option><option>2008</option><option>2007</option><option>2006</option><option>2005</option><option>2004</option><option>2003</option><option>2002</option><option>2001</option><option>2000</option><option>1999</option><option>1998</option><option>1997</option><option>1996</option><option>1995</option><option>1994</option><option>1993</option><option>1992</option><option>1991</option><option>1990</option><option>1989</option><option>1988</option><option>1987</option><option>1986</option><option>1985</option><option>1984</option><option>1983</option><option>1982</option><option>1981</option><option>1980</option></select></label><label class="f"><span>Make</span><select name="make"><option value="">Select</option><option>Acura</option><option>Audi</option><option>BMW</option><option>Chevrolet</option><option>Dodge</option><option>Ferrari</option><option>Ford</option><option>Honda</option><option>Lamborghini</option><option>McLaren</option><option>Mercedes-Benz</option><option>Nissan</option><option>Porsche</option><option>Toyota</option><option>Other</option></select></label></div>
+    <label class="f"><span>Model</span><input name="model" type="text" placeholder="e.g. 911 Carrera S" autocomplete="off"></label>
+    <label class="f"><span>Mileage</span><input name="mileage" type="text" inputmode="numeric" placeholder="e.g. 24,500"></label>
+    <button class="bx pri full" type="submit"><span>Continue</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></button>
+    <p class="dock-n">We buy even if you don't buy from us.</p>
+  </form>
+  <span class="scroll" aria-hidden="true">SCROLL</span>
+</section>
+
+<section class="inv" id="inventory" aria-labelledby="inv-t"><div class="in">
+  <div class="hd"><div><p class="kick">Featured inventory</p><h2 class="t-light" id="inv-t">Our trending inventory</h2></div><div class="r"><p>Hand-picked by the owners and on the floor in Naperville now.</p><a class="bx" href="#"><span>View all inventory</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></div></div>
+  <ul class="cards">
+<li class="card">
+  <a class="c-img" href="https://www.gcmchicago.com/details-2015-porsche-911-_991_1_carrera_gts__7~speed_manual__low_miles__full_car_ppf_-used-wp0ab2a96fs124486.html" tabindex="-1" aria-hidden="true"><img src="assets/inv/3522-1024.webp" alt="" width="1024" height="768" loading="lazy" decoding="async"></a>
+  <div class="c-b">
+    <h3 class="c-t"><a href="https://www.gcmchicago.com/details-2015-porsche-911-_991_1_carrera_gts__7~speed_manual__low_miles__full_car_ppf_-used-wp0ab2a96fs124486.html">2015 Porsche 911 Carrera GTS</a></h3>
+    <p class="c-pm"><span>Price: <b>$184,900</b></span><span>Mileage: <b>10,093</b></span></p>
+    <p class="c-d">3.8L flat-six, 7-speed manual. GT Silver Metallic over Black and Carmine Red, full-car PPF.</p>
+    <div class="c-a">
+      <button class="ib" type="button" aria-pressed="false" aria-label="Save 2015 Porsche 911 Carrera GTS" title="Save"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h8v11L8 10.6 4 13.5z"/></svg></button>
+      <button class="ib" type="button" aria-label="Share 2015 Porsche 911 Carrera GTS" title="Share"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="12" cy="3.5" r="1.8"/><circle cx="4" cy="8" r="1.8"/><circle cx="12" cy="12.5" r="1.8"/><path d="M5.6 7.1l4.8-2.7M5.6 8.9l4.8 2.7"/></svg></button>
+      <a class="bx sm lt" href="https://www.gcmchicago.com/details-2015-porsche-911-_991_1_carrera_gts__7~speed_manual__low_miles__full_car_ppf_-used-wp0ab2a96fs124486.html" style="margin-left:auto"><span>Details<span class="sr"> of the 2015 Porsche 911 Carrera GTS</span></span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a>
+    </div>
+  </div>
+</li>
+<li class="card">
+  <a class="c-img" href="https://www.gcmchicago.com/details-2019-chevrolet-corvette-_zr1__ztk_track_package__only_946_miles_-used-1g1y32d94k5801379.html" tabindex="-1" aria-hidden="true"><img src="assets/inv/3342-1024.webp" alt="" width="1024" height="768" loading="lazy" decoding="async"></a>
+  <div class="c-b">
+    <h3 class="c-t"><a href="https://www.gcmchicago.com/details-2019-chevrolet-corvette-_zr1__ztk_track_package__only_946_miles_-used-1g1y32d94k5801379.html">2019 Chevrolet Corvette ZR1</a></h3>
+    <p class="c-pm"><span>Price: <b>$172,790</b></span><span>Mileage: <b>946</b></span></p>
+    <p class="c-d">6.2L V8, 8-speed automatic. ZTK Track Package. Arctic White over Jet Black.</p>
+    <div class="c-a">
+      <button class="ib" type="button" aria-pressed="false" aria-label="Save 2019 Chevrolet Corvette ZR1" title="Save"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h8v11L8 10.6 4 13.5z"/></svg></button>
+      <button class="ib" type="button" aria-label="Share 2019 Chevrolet Corvette ZR1" title="Share"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="12" cy="3.5" r="1.8"/><circle cx="4" cy="8" r="1.8"/><circle cx="12" cy="12.5" r="1.8"/><path d="M5.6 7.1l4.8-2.7M5.6 8.9l4.8 2.7"/></svg></button>
+      <a class="bx sm lt" href="https://www.gcmchicago.com/details-2019-chevrolet-corvette-_zr1__ztk_track_package__only_946_miles_-used-1g1y32d94k5801379.html" style="margin-left:auto"><span>Details<span class="sr"> of the 2019 Chevrolet Corvette ZR1</span></span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a>
+    </div>
+  </div>
+</li>
+<li class="card">
+  <a class="c-img" href="https://www.gcmchicago.com/details-2023-dodge-challenger-_demon_170__lightweight_edition__only_1400_miles__ppf_-used-2c3cdzl9xph100598.html" tabindex="-1" aria-hidden="true"><img src="assets/inv/3509-1024.webp" alt="" width="1024" height="768" loading="lazy" decoding="async"></a>
+  <div class="c-b">
+    <h3 class="c-t"><a href="https://www.gcmchicago.com/details-2023-dodge-challenger-_demon_170__lightweight_edition__only_1400_miles__ppf_-used-2c3cdzl9xph100598.html">2023 Dodge Challenger Demon 170</a></h3>
+    <p class="c-pm"><span>Price: <b>$119,900</b></span><span>Mileage: <b>1,434</b></span></p>
+    <p class="c-d">6.2L supercharged V8, automatic. Lightweight Edition, PPF. Plum Crazy Pearlcoat over Black.</p>
+    <div class="c-a">
+      <button class="ib" type="button" aria-pressed="false" aria-label="Save 2023 Dodge Challenger Demon 170" title="Save"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h8v11L8 10.6 4 13.5z"/></svg></button>
+      <button class="ib" type="button" aria-label="Share 2023 Dodge Challenger Demon 170" title="Share"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="12" cy="3.5" r="1.8"/><circle cx="4" cy="8" r="1.8"/><circle cx="12" cy="12.5" r="1.8"/><path d="M5.6 7.1l4.8-2.7M5.6 8.9l4.8 2.7"/></svg></button>
+      <a class="bx sm lt" href="https://www.gcmchicago.com/details-2023-dodge-challenger-_demon_170__lightweight_edition__only_1400_miles__ppf_-used-2c3cdzl9xph100598.html" style="margin-left:auto"><span>Details<span class="sr"> of the 2023 Dodge Challenger Demon 170</span></span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a>
+    </div>
+  </div>
+</li>
+  </ul>
+</div></section>
+
+<section class="sell" id="sell" aria-labelledby="sell-t">
+  <div class="s-img"><img src="assets/e-sell.webp" alt="BMW M3 (E46) in Imola Red in our showroom" width="1200" height="1236" loading="lazy" decoding="async"></div>
+  <div class="s-txt glow" style="--gx:45%;--gw:760px;--gh:720px">
+    <p class="kick">We buy cars</p>
+    <h2 class="t-light" id="sell-t">Sell us your car</h2>
+    <p class="lead">Even if you don't buy one of ours. Four steps, and you are paid.</p>
+    <ol class="steps">
+      <li><span class="n">01</span><div><h3>Tell us about the car</h3><p>Year, make, model, mileage and how to reach you.</p></div></li>
+      <li><span class="n">02</span><div><h3>Get your quote</h3><p>Our buyers look at the details and come back with a number.</p></div></li>
+      <li><span class="n">03</span><div><h3>Bring it to us</h3><p>1570 W Ogden Ave, Naperville. Mon–Fri 10–6, Sat 10–5.</p></div></li>
+      <li><span class="n">04</span><div><h3>Get paid</h3><p>Even if you don't buy from us.</p></div></li>
+    </ol>
+    <div class="cta"><a class="bx pri" href="#offer"><span>Get your offer</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a><a class="bx" href="tel:+16303059900"><span>630-305-9900</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.2 2.5h2.4l1.2 3-1.6 1a8 8 0 0 0 4.3 4.3l1-1.6 3 1.2v2.4a1.2 1.2 0 0 1-1.3 1.2A11.5 11.5 0 0 1 2 3.8a1.2 1.2 0 0 1 1.2-1.3z"/></svg></i></a></div>
+  </div>
+</section>
+
+<section class="offer" aria-labelledby="offer-t"><div class="in">
+  <div class="hd"><div><p class="kick">Step 01</p><h2 class="t-light" id="offer-t">Get your offer today</h2></div><div class="r"><p>Year, make, model and mileage. Our buyers come back to you with a number.</p><a class="bx" href="tel:+16303059900"><span>Rather talk? 630-305-9900</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.2 2.5h2.4l1.2 3-1.6 1a8 8 0 0 0 4.3 4.3l1-1.6 3 1.2v2.4a1.2 1.2 0 0 1-1.3 1.2A11.5 11.5 0 0 1 2 3.8a1.2 1.2 0 0 1 1.2-1.3z"/></svg></i></a></div></div>
+  <form class="o-panel" id="offer" action="#">
+    <div class="o-row">
+      <label class="f"><span>Year</span><select name="year"><option value="">Select</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option><option>2014</option><option>2013</option><option>2012</option><option>2011</option><option>2010</option><option>2009</option><option>2008</option><option>2007</option><option>2006</option><option>2005</option><option>2004</option><option>2003</option><option>2002</option><option>2001</option><option>2000</option><option>1999</option><option>1998</option><option>1997</option><option>1996</option><option>1995</option><option>1994</option><option>1993</option><option>1992</option><option>1991</option><option>1990</option><option>1989</option><option>1988</option><option>1987</option><option>1986</option><option>1985</option><option>1984</option><option>1983</option><option>1982</option><option>1981</option><option>1980</option></select></label><label class="f"><span>Make</span><select name="make"><option value="">Select</option><option>Acura</option><option>Audi</option><option>BMW</option><option>Chevrolet</option><option>Dodge</option><option>Ferrari</option><option>Ford</option><option>Honda</option><option>Lamborghini</option><option>McLaren</option><option>Mercedes-Benz</option><option>Nissan</option><option>Porsche</option><option>Toyota</option><option>Other</option></select></label>
+      <label class="f"><span>Model</span><input name="model" type="text"></label><label class="f"><span>Mileage</span><input name="mileage" type="text" inputmode="numeric"></label>
+    </div>
+    <div class="o-row">
+      <label class="f"><span>Name</span><input id="o-name" type="text" autocomplete="name"></label><label class="f"><span>Phone</span><input type="tel" autocomplete="tel"></label>
+      <label class="f"><span>Email, optional</span><input type="email" autocomplete="email"></label><button class="bx pri full" type="submit"><span>Get my offer</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></button>
+    </div>
+  </form>
+</div></section>
+
+<section class="about" id="about" aria-labelledby="about-t">
+  <div class="in hd" style="margin-bottom:0"><div><p class="kick">About us</p><h2 class="t-light" id="about-t">Welcome to Gold Coast Motors</h2></div><div class="r"><p>Enthusiast and collector cars, chosen by the people who run the place.</p><a class="bx" href="#contact"><span>Contact us</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></div></div>
+  <div class="issues">
+    <article class="iss glow">
+      <div class="i-img"><img src="assets/e-about-video.webp" alt="" width="1000" height="1031" loading="lazy" decoding="async"><button class="play" type="button" aria-label="Play our walkaround videos on YouTube"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6L13 8z" fill="currentColor" stroke="none"/></svg></button></div>
+      <div class="i-txt"><span class="lab">01 — On YouTube</span><span class="kick">Walkarounds</span><h3>Every car,<br>on camera</h3><p>Walkaround videos of the cars on our floor, on our channel @GoldCoastMotors.</p><a class="lnk" href="https://www.youtube.com/@GoldCoastMotors">Watch the channel<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a></div>
+    </article>
+    <article class="iss glow">
+      <div class="i-img"><img src="assets/d-m3-nose.webp" alt="Front of a BMW M3 (E36) in our showroom" width="960" height="1200" loading="lazy" decoding="async"></div>
+      <div class="i-txt"><span class="lab">02 — The owners</span><span class="kick">Hand-picked</span><h3>Picked by<br>the people who<br>run it</h3><p>Our customers are busy and don't have time to hunt for deals, so the owners take on the job of hand-picking our inventory and finding you the car you have been looking for.</p><a class="lnk" href="#contact">Contact us<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a></div>
+    </article>
+    <article class="iss glow">
+      <div class="i-img"><img src="assets/e-about-h1.webp" alt="Hummer H1 in our showroom" width="1000" height="868" loading="lazy" decoding="async"></div>
+      <div class="i-txt"><span class="lab">03 — Delivery</span><span class="kick">Anywhere</span><h3>Next town over<br>or across<br>the country</h3><p>We arrange shipping wherever you are, and we offer free pickup from either of Chicago's two major airports, O'Hare or Midway.</p><a class="lnk" href="tel:+16303059900">630-305-9900<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a></div>
+    </article>
+  </div>
+</section>
+
+<section class="prem" id="premier" aria-labelledby="prem-t">
+  <div class="in hd" style="margin-bottom:0"><div><p class="kick">Collector selections</p><h2 class="t-light" id="prem-t">Premier listings</h2></div><div class="r"><p>Special cars, chosen by the owners. Select one.</p><ul class="tabs" role="tablist" aria-label="Premier listings"><li><button role="tab" type="button" id="lt0" aria-selected="true" tabindex="0" aria-controls="lot-p">720S</button></li><li><button role="tab" type="button" id="lt1" aria-selected="false" tabindex="-1" aria-controls="lot-p">812 Superfast</button></li><li><button role="tab" type="button" id="lt2" aria-selected="false" tabindex="-1" aria-controls="lot-p">911 GT3 RS</button></li><li><button role="tab" type="button" id="lt3" aria-selected="false" tabindex="-1" aria-controls="lot-p">GT R</button></li></ul></div></div>
+  <div id="lot-p" role="tabpanel" aria-labelledby="lt0">
+    <div class="stage-w glow" style="--gw:1500px;--gh:900px"><div class="stage"><img id="lot-img" src="assets/lots/03608-2200.webp" alt="McLaren 720S in our showroom" width="2200" height="1467" loading="lazy" decoding="async"><div class="lights"></div></div></div>
+    <div class="figs">
+      <div><b data-k="hp">710</b><span class="lab">Horsepower</span></div>
+      <div><b data-k="z">2.8</b><span class="lab">0–60 mph, s</span></div>
+      <div><b data-k="v">212</b><span class="lab">Top speed, mph</span></div>
+    </div>
+    <p class="lot-m"><b data-k="name">2019 McLaren 720S</b> &nbsp;·&nbsp; <span data-k="mi">6,812</span> mi &nbsp;·&nbsp; Stock <span data-k="stk">P0142</span> &nbsp;·&nbsp; <b data-k="price">$239,900</b></p>
+    <div class="cta"><a class="bx pri" href="#contact"><span>Ask about this car</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a><a class="bx" href="#"><span>Details</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></div>
+    <p class="lot-s">Sample listing. The final Premier list comes from Gold Coast Motors.</p>
+  </div>
+</section>
+
+<div class="panels">
+  <section class="pan" aria-labelledby="p1"><img src="assets/about/06339-1600.webp" alt="" width="1600" height="1067" loading="lazy" decoding="async" style="object-position:40% 60%"><p class="kick">Get approved</p><h2 class="t-light" id="p1">Financing</h2><p>Apply online before you visit.</p><a class="bx sm" href="#"><span>Start here</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></section>
+  <section class="pan" aria-labelledby="p2"><img src="assets/c-room-1440.webp" alt="" width="1440" height="864" loading="lazy" decoding="async" style="object-position:30% 55%"><p class="kick">Get your offer</p><h2 class="t-light" id="p2">We buy cars</h2><p>Even if you don't buy one of ours.</p><a class="bx sm" href="#offer"><span>Get an offer</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></section>
+  <section class="pan" aria-labelledby="p3"><img src="assets/lots/03608-1500.webp" alt="" width="1500" height="1000" loading="lazy" decoding="async" style="object-position:55% 55%"><p class="kick">Inventory</p><h2 class="t-light" id="p3">Our collection</h2><p>Everything currently on the floor.</p><a class="bx sm" href="#"><span>View all</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></section>
+</div>
+
+<section class="rev" aria-labelledby="rev-t"><div class="in">
+  <div class="hd"><div><p class="kick">Google reviews</p><h2 class="t-light" id="rev-t">What our clients say</h2></div><div class="r"><div class="score"><b>5.0</b><div><div class="stars" role="img" aria-label="Five stars"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></div><p>Average on Google</p></div></div><a class="bx" href="#"><span>Read all reviews</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></div></div>
+  <div class="quotes glow" style="--gx:22%;--gw:700px;--gh:460px">
+    <figure class="qt"><div class="stars" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></div><blockquote>“Bought a manual 911 from out of state without seeing it. Exactly as described, simple paperwork, at my door a week later.”</blockquote><p><b>Daniel K.</b>October 2026</p></figure>
+    <figure class="qt"><div class="stars" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></div><blockquote>“Sold them my Z06. A fair number, no games, and the whole thing took one afternoon.”</blockquote><p><b>Priya S.</b>September 2026</p></figure>
+    <figure class="qt"><div class="stars" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.9 4 4.4.5-3.3 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.3-3 4.4-.5z" fill="currentColor" stroke="none"/></svg></div><blockquote>“Small dealership, serious cars. You can tell the owners actually drive these.”</blockquote><p><b>Mark T.</b>August 2026</p></figure>
+  </div>
+  <div class="foot"><p class="note">Sample reviews for the layout. Five-star Google reviews load here at launch.</p></div>
+</div></section>
+
+<section class="ig" aria-labelledby="ig-t">
+  <div class="ig-h"><h2 class="kick" id="ig-t">Instagram</h2><p><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3.5"/><circle cx="8" cy="8" r="2.8"/><circle cx="11.6" cy="4.4" r=".6" fill="currentColor" stroke="none"/></svg>Handle to confirm</p></div>
+  <div class="strip">
+    <a href="#"><img src="assets/d-ig-gt3rs.webp" alt="Porsche 911 GT3 RS side decal" width="720" height="720" loading="lazy"></a>
+    <a href="#"><img src="assets/d-ig-720.webp" alt="McLaren 720S headlight" width="720" height="720" loading="lazy"></a>
+    <a href="#"><img src="assets/d-ig-gtr.webp" alt="Mercedes-AMG GT R wheel and caliper" width="720" height="720" loading="lazy"></a>
+    <a href="#"><img src="assets/d-ig-nsx.webp" alt="Acura NSX wheel" width="720" height="720" loading="lazy"></a>
+  </div>
+</section>
+</main>
+
+<footer class="ft" id="contact">
+  <div class="visit glow" style="--gx:22%;--gw:860px;--gh:640px">
+    <div>
+      <p class="kick">Visit the showroom</p>
+      <address class="addr">1570 W Ogden Ave<br>Suite 112<br>Naperville, IL 60540</address>
+      <div class="v-row">
+        <div><p class="lab">Sales</p><a class="ph" href="tel:+16303059900">630-305-9900</a></div>
+        <div><p class="lab">Hours</p><dl class="hrs"><dt>Mon–Fri</dt><dd>10 am – 6 pm</dd><dt>Saturday</dt><dd>10 am – 5 pm</dd><dt>Sunday</dt><dd>Closed</dd></dl></div>
+      </div>
+      <div class="v-cta"><a class="bx" href="#"><span>Contact us</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a><a class="pinb" href="https://www.google.com/maps/dir/?api=1&amp;destination=1570+W+Ogden+Ave+112+Naperville+IL+60540" aria-label="Directions to 1570 W Ogden Ave" title="Directions"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s-4.5-4.6-4.5-8a4.5 4.5 0 0 1 9 0c0 3.4-4.5 8-4.5 8z"/><circle cx="8" cy="6.5" r="1.6"/></svg></a></div>
+    </div>
+    <div id="map" aria-label="Map of 1570 W Ogden Ave, Naperville"><p class="fb">Map loads here</p></div>
+  </div>
+  <div class="wm" aria-hidden="true"><span>Gold Coast</span></div>
+  <div class="in base"><p class="small" style="margin:0;padding:0">© 2026 Gold Coast Motors Inc.</p>
+    <ul><li><a href="#">Inventory</a></li><li><a href="#">Sold</a></li><li><a href="#">Financing</a></li><li><a href="#sell">Sell us your car</a></li><li><a href="#contact">Contact us</a></li></ul></div>
+  <p class="in small">Every photograph is from our showroom; in the We buy cars panel, the room to the right of the car is extended with generated imagery. Map © <a href="https://openfreemap.org">OpenFreeMap</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>.</p>
+</footer>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const q = $('[data-quick]'), o = $('#offer');
+  q.addEventListener('submit', e => {
+    e.preventDefault();
+    ['year','make','model','mileage'].forEach(n => { o.elements[n].value = q.elements[n].value; });
+    o.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'center' });
+    setTimeout(() => $('#o-name').focus({ preventScroll: true }), still ? 0 : 600);
+  });
+  $$('.ib[aria-pressed]').forEach(b => b.addEventListener('click', () => {
+    b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+    $('.util b').textContent = $$('.ib[aria-pressed=true]').length;
+  }));
+  const wm = $('.wm span');
+  const fit = () => { wm.style.fontSize = '100px'; const box = wm.parentNode.clientWidth - parseFloat(getComputedStyle(wm.parentNode).paddingLeft) * 2; wm.style.fontSize = (100 * box / wm.getBoundingClientRect().width).toFixed(2) + 'px'; };
+  document.fonts.ready.then(fit); addEventListener('resize', fit);
+  const lots = [{"img": "03608", "make": "McLaren", "model": "720S", "hp": "710", "z": "2.8", "v": "212", "year": "2019", "mi": "6,812", "stk": "P0142", "price": "$239,900"}, {"img": "09386", "make": "Ferrari", "model": "812 Superfast", "hp": "789", "z": "2.9", "v": "211", "year": "2018", "mi": "4,210", "stk": "P0138", "price": "$389,900"}, {"img": "04778", "make": "Porsche", "model": "911 GT3 RS", "hp": "520", "z": "3.0", "v": "193", "year": "2019", "mi": "3,105", "stk": "P0151", "price": "$229,900"}, {"img": "04804", "make": "Mercedes-AMG", "model": "GT R", "hp": "577", "z": "3.5", "v": "198", "year": "2018", "mi": "9,880", "stk": "P0127", "price": "$149,900"}];
+  const tabs = $$('.tabs [role=tab]'), img = $('#lot-img'), lights = $('.lights');
+  let cur = 0, busy = false;
+  const pick = async (i, focus) => {
+    if (i === cur || busy) return; busy = true;
+    tabs.forEach((t, k) => { t.setAttribute('aria-selected', k === i); t.tabIndex = k === i ? 0 : -1; });
+    if (focus) tabs[i].focus();
+    $('#lot-p').setAttribute('aria-labelledby', tabs[i].id);
+    const L = lots[i];
+    const swap = async () => {
+      img.src = `assets/lots/${L.img}-2200.webp`; img.alt = `${L.make} ${L.model} in our showroom`;
+      await img.decode().catch(() => 0);
+      $$('#lot-p [data-k]').forEach(d => { const k = d.dataset.k; d.textContent = k === 'name' ? `${L.year} ${L.make} ${L.model}` : L[k]; });
+    };
+    if (still) await swap();
+    else {
+      await lights.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 480, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'forwards' }).finished;
+      await swap();
+      const up = lights.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 1100, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' });
+      await up.finished; up.commitStyles(); up.cancel();
+    }
+    cur = i; busy = false;
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => pick(i));
+    t.addEventListener('keydown', e => {
+      const l = tabs.length - 1, to = /Right|Down/.test(e.key) ? (i + 1) % tabs.length : /Left|Up/.test(e.key) ? (i + l) % tabs.length : e.key === 'Home' ? 0 : e.key === 'End' ? l : -1;
+      if (to > -1) { e.preventDefault(); pick(to, true); }
+    });
+  });
+  const mapEl = $('#map');
+  const addCss = h => new Promise(r => { const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = h; l.onload = l.onerror = r; document.head.append(l); });
+  const addJs = s => new Promise((r, j) => { const x = document.createElement('script'); x.src = s; x.onload = r; x.onerror = j; document.head.append(x); });
+  const darken = map => { for (const ly of map.getStyle().layers) { const id = ly.id, t = ly.type; try {
+    if (t === 'background') map.setPaintProperty(id, 'background-color', '#0d1117');
+    else if (t === 'fill') { const c = /water/.test(id) ? '#080b10' : /building/.test(id) ? '#151b24' : /park|wood|grass|landcover|landuse/.test(id) ? '#10151c' : '#0e1218'; map.setPaintProperty(id, 'fill-color', c); map.setPaintProperty(id, 'fill-outline-color', c); }
+    else if (t === 'line') map.setPaintProperty(id, 'line-color', /water|river/.test(id) ? '#080b10' : /motorway|trunk|primary/.test(id) ? '#3a4250' : /boundary/.test(id) ? '#232a35' : '#242b36');
+    else if (t === 'symbol') { map.setPaintProperty(id, 'text-color', '#8d95a3'); map.setPaintProperty(id, 'text-halo-color', '#0d1117'); }
+  } catch (e) {} } };
+  const start = async () => { try {
+    await addCss('https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.css');
+    await addJs('https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.js');
+    const at = [-88.1852937, 41.7676727];
+    const map = new maplibregl.Map({ container: mapEl, style: 'https://tiles.openfreemap.org/styles/positron', center: at, zoom: 14.4, attributionControl: false, cooperativeGestures: true });
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
+    map.once('style.load', () => darken(map));
+    map.on('load', () => { darken(map); const p = document.createElement('div'); p.className = 'pin'; new maplibregl.Marker({ element: p }).setLngLat(at).addTo(map); mapEl.classList.add('is-live'); map.resize(); });
+    new ResizeObserver(() => map.resize()).observe(mapEl);
+  } catch (e) {} };
+  new IntersectionObserver(([e], ob) => { if (e.isIntersecting) { ob.disconnect(); start(); } }, { rootMargin: '600px 0px' }).observe(mapEl);
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+/* Motion layer. The static page is complete without it; reduced motion and the #shot capture skip it entirely. */
+(() => {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('shot')) return;
+  gsap.registerPlugin(ScrollTrigger);
+  const $ = s => document.querySelector(s), $$ = (s, r) => gsap.utils.toArray(s, r);
+  const OUT = 'expo.out', IO = 'expo.inOut';
+  const once = (trigger, start = 'top 82%') => ({ trigger, start, once: true });
+
+  /* split helpers: section titles into a mask, the wordmark into letters */
+  $$('.hd h2, .sh h2').forEach(h => { if (!h.querySelector('.ln')) h.innerHTML = '<span class="ln"><span>' + h.innerHTML + '</span></span>'; });
+  const wm = $('.wm span');
+  if (wm) wm.innerHTML = [...wm.textContent].map(c => c === ' ' ? ' ' : '<i>' + c + '</i>').join('');
+
+  /* HERO: arrival on load */
+  gsap.timeline({ defaults: { ease: OUT } })
+    .from('.hdr', { y: -24, opacity: 0, duration: 1 }, 0)
+    .from('.hero-img img', { scale: 1.12, duration: 2.6, ease: 'power2.out' }, 0)
+    .from('.h-copy .kick', { x: -48, opacity: 0, duration: 1 }, .25)
+    .from('#h1 .ln > span', { yPercent: 112, duration: 1.25, stagger: .1 }, .32)
+    .from('.h-copy > p:not(.kick)', { x: -36, opacity: 0, duration: 1 }, .75)
+    .from('.h-copy .cta > *', { x: -36, opacity: 0, duration: .9, stagger: .08 }, .85)
+    .from('.dock', { x: 72, opacity: 0, duration: 1.3, clearProps: 'transform,opacity' }, .55)
+    .from('.scroll', { opacity: 0, duration: 1 }, 1.4);
+  /* HERO: parallax out */
+  gsap.to('.hero-img img', { yPercent: 14, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('.h-copy > *', { y: -70, opacity: 0, ease: 'none', stagger: .02, scrollTrigger: { trigger: '.hero', start: '12% top', end: '75% top', scrub: true } });
+
+  /* SECTION HEADS: label slides in, title rises from its mask, the right column follows */
+  $$('.hd, .sh').forEach(h => {
+    gsap.timeline({ scrollTrigger: once(h), defaults: { ease: OUT } })
+      .from(h.querySelectorAll('.kick'), { x: -40, opacity: 0, duration: .9 })
+      .from(h.querySelectorAll('h2 .ln > span'), { yPercent: 112, duration: 1.15 }, '-=.75')
+      .from(h.querySelectorAll('.r > *, .sub'), { y: 26, opacity: 0, duration: .9, stagger: .08 }, '-=.85');
+  });
+
+  /* INVENTORY: masked image reveals, staggered */
+  gsap.timeline({ scrollTrigger: once('.cards', 'top 80%') })
+    .from('.card .c-img', { clipPath: 'inset(100% 0% 0% 0%)', duration: 1.3, stagger: .12, ease: IO })
+    .from('.card .c-img img', { scale: 1.22, duration: 1.8, stagger: .12, ease: OUT }, 0)
+    .from('.card .c-b > *', { y: 22, opacity: 0, duration: .8, stagger: .035, ease: OUT }, .45);
+
+  /* OFFER band and form */
+  gsap.from('.o-panel', { y: 40, opacity: 0, duration: 1.1, ease: OUT, scrollTrigger: once('.o-panel', 'top 88%') });
+  gsap.from('.o-panel .f, .o-panel .bx', { y: 18, opacity: 0, duration: .7, stagger: .04, ease: OUT, scrollTrigger: once('.o-panel', 'top 85%') });
+
+  /* ABOUT: pictures open and drift inside their frames, text arrives from the open side */
+  $$('.iss').forEach((a, i) => {
+    const pic = a.querySelector('.i-img'), img = pic.querySelector('img');
+    gsap.from(pic, { clipPath: 'inset(100% 0% 0% 0%)', duration: 1.4, ease: IO, scrollTrigger: once(a, 'top 78%') });
+    gsap.fromTo(img, { yPercent: -7, scale: 1.16 }, { yPercent: 7, scale: 1.16, ease: 'none', scrollTrigger: { trigger: a, start: 'top bottom', end: 'bottom top', scrub: true } });
+    gsap.from(a.querySelector('.i-txt').children, { x: i % 2 ? -64 : 64, opacity: 0, duration: 1.05, stagger: .07, ease: OUT, scrollTrigger: once(a, 'top 72%') });
+  });
+
+  /* PREMIER: figures count up when they arrive */
+  const count = b => {
+    const t = b.textContent.trim(), v = parseFloat(t), d = (t.split('.')[1] || '').length, o = { v: 0 };
+    gsap.to(o, { v, duration: 1.8, ease: 'power2.out', onUpdate: () => { b.textContent = o.v.toFixed(d); } });
+  };
+  ScrollTrigger.create({ ...once('.figs', 'top 88%'), onEnter: () => $$('.figs b').forEach(count) });
+  gsap.from('.figs > div, .lot-m, .prem .cta, .lot-s', { y: 28, opacity: 0, duration: .9, stagger: .08, ease: OUT, scrollTrigger: once('.figs', 'top 90%') });
+
+  /* PANELS, REVIEWS, INSTAGRAM, FOOTER */
+  gsap.from('.pan', { y: 70, opacity: 0, duration: 1.2, stagger: .12, ease: OUT, scrollTrigger: once('.panels', 'top 85%') });
+  ScrollTrigger.create({ ...once('.score', 'top 90%'), onEnter: () => count($('.score b')) });
+  gsap.from('.qt', { y: 40, opacity: 0, duration: 1, stagger: .12, ease: OUT, scrollTrigger: once('.quotes', 'top 85%') });
+  $$('.strip a').forEach((a, i) => gsap.fromTo(a, { y: i % 2 ? 48 : -16 }, { y: i % 2 ? -16 : 48, ease: 'none', scrollTrigger: { trigger: '.strip', start: 'top bottom', end: 'bottom top', scrub: true } }));
+  gsap.from('.visit .kick, .addr, .v-row, .v-cta', { x: -48, opacity: 0, duration: 1, stagger: .08, ease: OUT, scrollTrigger: once('.visit', 'top 80%') });
+  gsap.from('#map', { clipPath: 'inset(0% 0% 0% 100%)', duration: 1.5, ease: IO, scrollTrigger: once('#map', 'top 85%') });
+  if (wm) gsap.from('.wm i', { yPercent: 105, duration: 1.2, stagger: .045, ease: OUT, scrollTrigger: once('.wm', 'top 95%') });
+
+  /* PIN STOPS: wide screens only */
+  gsap.matchMedia().add('(min-width: 1101px)', () => {
+    /* SELL: the section holds while the four steps arrive one by one */
+    gsap.timeline({ scrollTrigger: { trigger: '.sell', start: 'top top', end: '+=130%', pin: true, scrub: 1, anticipatePin: 1 } })
+      .fromTo('.s-img img', { scale: 1.2, yPercent: -5 }, { scale: 1, yPercent: 0, ease: 'none', duration: 4 }, 0)
+      .from('.s-txt .kick, .s-txt h2, .s-txt .lead', { x: 70, opacity: 0, stagger: .15, duration: .6 }, 0)
+      .from('.steps li', { x: 90, opacity: 0, stagger: .55, duration: .8 }, .5)
+      .from('.steps .n', { color: '#ff4500', stagger: .55, duration: .8 }, .5)
+      .from('.s-txt .cta', { y: 30, opacity: 0, duration: .6 }, 3.1);
+    /* PREMIER: the car holds in the middle and opens from a narrow frame to full width */
+    gsap.timeline({ scrollTrigger: { trigger: '.stage-w', start: 'center center', end: '+=90%', pin: true, scrub: 1, anticipatePin: 1 } })
+      .fromTo('.stage', { clipPath: 'inset(16% 20% 16% 20% round 6px)' }, { clipPath: 'inset(0% 0% 0% 0% round 6px)', ease: 'none' }, 0)
+      .fromTo('.stage img', { scale: 1.3 }, { scale: 1, ease: 'none' }, 0);
+  });
+  gsap.matchMedia().add('(max-width: 1100px)', () => {
+    gsap.from('.steps li', { x: 50, opacity: 0, duration: .9, stagger: .12, ease: OUT, scrollTrigger: once('.steps', 'top 82%') });
+    gsap.from('.stage', { clipPath: 'inset(100% 0% 0% 0%)', duration: 1.4, ease: IO, scrollTrigger: once('.stage', 'top 85%') });
+  });
+
+  addEventListener('load', () => ScrollTrigger.refresh());
+  document.fonts.ready.then(() => ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>
