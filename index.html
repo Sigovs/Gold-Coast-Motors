@@ -208,26 +208,31 @@ section[id],footer[id],form[id]{scroll-margin-top:84px}
 .i-txt .lnk{margin-top:24px}
 /* PREMIER: showcase */
 .prem{padding:144px var(--pad) 136px;background:#07090c;overflow-x:clip}
-.tabs{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px 32px;margin-bottom:-6px}
-.tabs button{padding:10px 0;background:none;border:0;cursor:pointer;font-family:var(--disp);font-weight:600;font-size:19px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);transition:color .25s}
-.tabs button:hover{color:var(--ink2)}
-.tabs [aria-selected=true]{color:var(--or)}
-/* premier switcher: four small frames; the others wait in the dark, the chosen car is lit */
-.tabs{gap:10px;margin-bottom:0;list-style:none;padding:0}
-.tabs .pt{display:block;width:96px;padding:0;text-align:left;color:var(--ink3)}
-.pt-i{position:relative;display:block;aspect-ratio:3/2;border-radius:4px;overflow:hidden;background:#000;box-shadow:0 0 0 1px rgb(236 238 241/.08)}
-.pt-i img{width:100%;height:100%;object-fit:cover;object-position:50% 60%;filter:brightness(.3) saturate(.5);transform:scale(1.06);transition:filter .6s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
-.pt-l{display:flex;align-items:baseline;gap:6px;margin-top:8px;font-family:var(--disp);font-weight:600;font-size:14px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .3s}
-.tabs .pt:hover .pt-i img{filter:brightness(.62) saturate(.8)}
+.lights{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}
+/* PREMIER: the whole car on the left, as the dealer shows it; the four cars wait on the right, the chosen one lit */
+.p-split{display:grid;grid-template-columns:minmax(0,1fr) clamp(300px,27vw,460px);gap:clamp(28px,3vw,48px);align-items:stretch;margin-top:48px}
+.stage{position:relative;aspect-ratio:3/2;border-radius:6px;overflow:hidden;background:#000}
+.stage img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.stage-next{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;will-change:clip-path,transform}
+.p-r{position:relative;min-height:0;container-type:size;--tg:12px}
+.tabs{position:absolute;inset:0;display:grid;grid-template-rows:repeat(4,minmax(0,1fr));gap:var(--tg);margin:0;padding:0;list-style:none}
+.tabs li{display:flex;min-height:0}
+.tabs .pt{display:grid;grid-template-columns:calc((100cqh - 3 * var(--tg)) / 4 * 1.5) minmax(0,1fr);align-items:center;gap:20px;width:100%;height:100%;padding:0;background:none;border:0;cursor:pointer;text-align:left;color:var(--ink3)}
+.pt-i{position:relative;display:block;width:100%;aspect-ratio:3/2;border-radius:4px;overflow:hidden;background:#000;box-shadow:0 0 0 1px rgb(236 238 241/.08);transition:box-shadow .4s}
+.pt-i img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 55%;filter:brightness(.3) saturate(.5);transform:scale(1.06);transition:filter .6s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.pt-x{display:grid;gap:8px;min-width:0}
+.pt-l{font-family:var(--disp);font-weight:600;font-size:clamp(17px,1.5vw,22px);line-height:1.05;letter-spacing:.04em;text-transform:uppercase;transition:color .3s}
+.pt-s{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgb(236 238 241/.4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .3s}
+.pt-s b{font-weight:inherit;white-space:nowrap}
 .tabs .pt:hover{color:var(--ink2)}
+.tabs .pt:hover .pt-i img{filter:brightness(.62) saturate(.8)}
 .tabs .pt[aria-selected=true]{color:var(--ink)}
+.tabs .pt[aria-selected=true] .pt-s{color:var(--ink3)}
 .tabs .pt[aria-selected=true] .pt-i{box-shadow:0 0 0 1px var(--or)}
 .tabs .pt[aria-selected=true] .pt-i img{filter:none;transform:none}
 .tabs .pt:focus{outline:none}.tabs .pt:focus-visible .pt-i{outline:2px solid var(--ink);outline-offset:3px}
-.stage{position:relative;max-width:1488px;margin:48px auto 0;aspect-ratio:2.1/1;border-radius:6px;overflow:hidden;background:#000}
-.stage img{width:100%;height:100%;object-fit:cover;object-position:50% 36%}
-.lights{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}
-.stage-next{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 36%;will-change:clip-path,transform}
+@media (max-width:1100px){.tabs .pt{gap:14px}.pt-x{gap:4px}.pt-s{white-space:normal;line-height:1.5}.p-r{--tg:10px}}
+@media (max-width:860px){.p-split{grid-template-columns:minmax(0,1fr);gap:20px;margin-top:32px}.p-r{container-type:normal;min-width:0}.tabs .pt{grid-template-columns:1fr;gap:10px;height:auto;align-content:start}.tabs{position:static;grid-template-rows:none;grid-auto-flow:column;grid-auto-columns:minmax(150px,1fr);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:12px;padding-bottom:4px}.tabs::-webkit-scrollbar{display:none}.tabs li{scroll-snap-align:start}.lot-a{flex-wrap:wrap;row-gap:18px}}
 .p-hd{display:flex;justify-content:space-between;align-items:flex-end;gap:48px}
 .p-hd h2{margin-top:14px;font-size:clamp(44px,4.4vw,68px)}
 /* one information block: the car on the left, its figures on the right, on one bottom line */
@@ -398,7 +403,7 @@ h2.kick{font-weight:400}
   .hero{height:auto;min-height:0;max-height:none;padding-bottom:56px}.hero-img{position:relative;height:60vw}
   .h-copy{position:relative;left:auto;top:auto;transform:none;padding:32px var(--pad) 0}
   .dock{position:relative;right:auto;top:auto;transform:none;width:auto;margin:40px var(--pad) 0}
-  .scroll{display:none}.cards,.panels,.quotes{grid-template-columns:1fr}.pan{min-height:220px}.i-img{max-width:560px}.lot{grid-template-columns:1fr;row-gap:48px}.p-hd{flex-direction:column;align-items:flex-start;gap:20px}.tabs{justify-content:flex-start}.tabs{gap:20px;flex-wrap:wrap}
+  .scroll{display:none}.cards,.panels,.quotes{grid-template-columns:1fr}.pan{min-height:220px}.i-img{max-width:560px}.lot{grid-template-columns:1fr;row-gap:48px}.p-hd{flex-direction:column;align-items:flex-start;gap:20px}
   .sheet{overflow-x:auto;scroll-snap-type:x mandatory;height:260px}.ig-t{flex:0 0 200px;scroll-snap-align:start}.ig-t:hover{flex-grow:0}.ig-o{opacity:1;transform:none}.base{flex-direction:column;align-items:flex-start}.base ul{flex-wrap:wrap;gap:14px 22px}
 }
 
@@ -552,9 +557,12 @@ h2.kick{font-weight:400}
 </section>
 
 <section class="prem" id="premier" aria-labelledby="prem-t">
-  <div class="in p-hd"><div><p class="kick">Collector selections</p><h2 class="t-light" id="prem-t">Premier listings</h2></div><ul class="tabs" role="tablist" aria-label="Premier listings"><li><button class="pt" role="tab" type="button" id="lt0" aria-selected="true" tabindex="0" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/03608-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-l">720S</span></button></li><li><button class="pt" role="tab" type="button" id="lt1" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/09386-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-l">812 Superfast</span></button></li><li><button class="pt" role="tab" type="button" id="lt2" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/04778-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-l">911 GT3 RS</span></button></li><li><button class="pt" role="tab" type="button" id="lt3" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/04804-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-l">GT R</span></button></li></ul></div>
+  <div class="in p-hd"><div><p class="kick">Collector selections</p><h2 class="t-light" id="prem-t">Premier listings</h2></div></div>
+  <div class="in p-split">
+    <div class="stage-w glow" style="--gw:1300px;--gh:900px"><div class="stage"><img id="lot-img" src="assets/lots/03608-2200.webp" alt="McLaren 720S in our showroom" width="2200" height="1467" loading="lazy" decoding="async"><div class="lights"></div></div></div>
+    <div class="p-r"><ul class="tabs" role="tablist" aria-label="Premier listings" aria-orientation="vertical"><li><button class="pt" role="tab" type="button" id="lt0" aria-selected="true" tabindex="0" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/03608-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-x"><span class="pt-l">720S</span><span class="pt-s">2019 · <b>McLaren</b></span></span></button></li><li><button class="pt" role="tab" type="button" id="lt1" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/09386-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-x"><span class="pt-l">812 Superfast</span><span class="pt-s">2018 · <b>Ferrari</b></span></span></button></li><li><button class="pt" role="tab" type="button" id="lt2" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/04778-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-x"><span class="pt-l">911 GT3 RS</span><span class="pt-s">2019 · <b>Porsche</b></span></span></button></li><li><button class="pt" role="tab" type="button" id="lt3" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/04804-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-x"><span class="pt-l">GT R</span><span class="pt-s">2018 · <b>Mercedes-AMG</b></span></span></button></li></ul></div>
+  </div>
   <div id="lot-p" role="tabpanel" aria-labelledby="lt0">
-    <div class="stage-w glow" style="--gw:1500px;--gh:900px"><div class="stage"><img id="lot-img" src="assets/lots/03608-2200.webp" alt="McLaren 720S in our showroom" width="2200" height="1467" loading="lazy" decoding="async"><div class="lights"></div></div></div>
     <div class="in lot">
       <div class="lot-l">
         <p class="lot-y"><span data-k="year">2019</span></p>
@@ -649,11 +657,14 @@ h2.kick{font-weight:400}
     o.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'center' });
     setTimeout(() => (fields().find(el => el.name !== 'email' && !ok(el)) || o.elements.name).focus({ preventScroll: true }), still ? 0 : 600);
   });
-  /* one beam of light runs once around the hero form on load */
+  /* one beam of light runs once around each sell form: the hero form on load, the offer form when it comes on screen */
   if (!still && CSS.supports('(--a: 0deg)')) {
     const beam = el => { const b = document.createElement('span'); b.className = 'beam'; b.setAttribute('aria-hidden', 'true'); el.appendChild(b); return b; };
     const hb = beam($('.dock'));
     setTimeout(() => hb.classList.add('run'), 1300);
+    /* and once around the offer form, after its arrival settles */
+    const ob = beam(o);
+    new IntersectionObserver(([e], io) => { if (e.isIntersecting) { io.disconnect(); setTimeout(() => ob.classList.add('run'), 1100); } }, { threshold: .55 }).observe(o);
   }
   $$('.ib[aria-pressed]').forEach(b => b.addEventListener('click', () => {
     b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
@@ -673,18 +684,18 @@ h2.kick{font-weight:400}
     const setText = () => $$('#lot-p [data-k]').forEach(d => { const k = d.dataset.k; if (/^(hp|z|v)$/.test(k) && window.gcmCount) window.gcmCount(d, L[k]); else d.textContent = k === 'mm' ? `${L.make} ${L.model}` : L[k]; });
     if (still) { img.src = src; img.alt = alt; await img.decode().catch(() => 0); setText(); }
     else {
-      /* wipe: the next car is drawn across the stage like a curtain, from the side of the chosen tab;
+      /* wipe: the next car is drawn over the stage like a curtain, from the side of the chosen row (below or above);
          the outgoing car steps back into the dark under it */
       const dir = i > cur ? 1 : -1, ease = 'cubic-bezier(.77,0,.18,1)', T = 1150;
       const next = new Image(); next.src = src; next.alt = ''; next.className = 'stage-next';
       await next.decode().catch(() => 0);
       img.after(next);
       const inn = next.animate([
-        { clipPath: dir > 0 ? 'inset(0% 0% 0% 100%)' : 'inset(0% 100% 0% 0%)', transform: `translateX(${8 * dir}%) scale(1.1)` },
-        { clipPath: 'inset(0% 0% 0% 0%)', transform: 'translateX(0) scale(1)' }], { duration: T, easing: ease, fill: 'forwards' });
+        { clipPath: dir > 0 ? 'inset(100% 0% 0% 0%)' : 'inset(0% 0% 100% 0%)', transform: `translateY(${8 * dir}%) scale(1.1)` },
+        { clipPath: 'inset(0% 0% 0% 0%)', transform: 'translateY(0) scale(1)' }], { duration: T, easing: ease, fill: 'forwards' });
       const out = img.animate([
-        { transform: 'translateX(0) scale(1)', filter: 'brightness(1)' },
-        { transform: `translateX(${-10 * dir}%) scale(1.04)`, filter: 'brightness(.3)' }], { duration: T, easing: ease, fill: 'forwards' });
+        { transform: 'translateY(0) scale(1)', filter: 'brightness(1)' },
+        { transform: `translateY(${-10 * dir}%) scale(1.04)`, filter: 'brightness(.3)' }], { duration: T, easing: ease, fill: 'forwards' });
       setTimeout(setText, T * .35);
       await inn.finished;
       img.src = src; img.alt = alt; await img.decode().catch(() => 0);
