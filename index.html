@@ -264,7 +264,11 @@ section[id],footer[id],form[id]{scroll-margin-top:84px}
 .figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0}
 .figs > div{position:relative;padding:22px 24px 26px;border-radius:6px;border:1px solid rgb(236 238 241/.08);background:linear-gradient(180deg,rgb(236 238 241/.045) 0,rgb(236 238 241/.012) 46%,rgb(236 238 241/0) 100%),#0d1016;box-shadow:inset 0 1px 0 rgb(236 238 241/.06)}
 .figs dt{display:block}
-.figs dd{margin:22px 0 0;font-family:var(--disp);font-weight:300;font-size:clamp(52px,5vw,76px);line-height:.86;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.figs > div{container-type:inline-size}
+.figs dd{margin:22px 0 0;white-space:nowrap;font-family:var(--disp);font-weight:300;font-size:min(clamp(34px,2.9vw,48px),28cqi);line-height:.95;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.figs dd small{margin-left:6px;font-family:var(--mono);font-size:13px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+@media (min-width:861px) and (max-width:1240px){.lot{grid-template-columns:1fr;row-gap:40px}.figs dd{font-size:min(40px,28cqi)}}
+@media (max-width:600px){.figs{grid-template-columns:1fr;gap:8px}.figs > div{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:16px 18px}.figs > div{container-type:normal}.figs dd{margin:0;font-size:28px!important}}
 .lot-s{margin-top:40px;font-size:13px;color:rgb(236 238 241/.34)}
 /* CTA panels */
 .panels{display:grid;grid-template-columns:repeat(3,1fr);background:#07090c}
@@ -407,7 +411,7 @@ h2.kick{font-weight:400}
 @media (max-width:520px){
   .logo img{width:148px}.pill{padding:0 14px;height:36px}.pill .w{display:none}
   .of-g{grid-template-columns:1fr}.of-f .of-g:first-of-type{grid-template-columns:1fr 1fr}.of-f .of-g:first-of-type .f:not(:has(select)){grid-column:1/-1}.of-f{padding:28px 22px 26px}.offer{padding:72px var(--pad)}.row{grid-template-columns:1fr 1fr}.ft .v-row{flex-direction:column;gap:28px}.ft .ph{white-space:nowrap}
-  .figs dd{font-size:44px}
+  .figs dd{font-size:min(36px,28cqi)}
   .iss{gap:24px}.issues{gap:72px}
 }
 @media (max-width:1100px){
@@ -586,14 +590,14 @@ h2.kick{font-weight:400}
       <div class="lot-l">
         <p class="lot-y"><span data-k="year">2019</span></p>
         <h3 class="lot-t" data-k="mm">McLaren 720S</h3>
-        <p class="lot-m"><span data-k="mi">6,812</span> mi <i>·</i> Stock <span data-k="stk">P0142</span></p>
+        <p class="lot-m">Stock <span data-k="stk">P0142</span></p>
         <p class="lot-p" data-k="price">$239,900</p>
         <div class="lot-a"><a class="bx pri" href="#contact"><span>Ask about this car</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a><a class="lnk" href="#">Details<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a></div>
       </div>
       <dl class="figs">
-        <div><dt class="lab">Horsepower</dt><dd data-k="hp">710</dd></div>
-        <div><dt class="lab">0–60 mph, s</dt><dd data-k="z">2.8</dd></div>
-        <div><dt class="lab">Top speed, mph</dt><dd data-k="v">212</dd></div>
+        <div><dt class="lab">Mileage</dt><dd><span data-k="mi">6,812</span><small>mi</small></dd></div>
+        <div><dt class="lab">Transmission</dt><dd data-k="tr">7-speed DCT</dd></div>
+        <div><dt class="lab">Engine</dt><dd data-k="en">4.0L V8</dd></div>
       </dl>
     </div>
   </div>
@@ -705,7 +709,7 @@ h2.kick{font-weight:400}
   dock.addEventListener('focusout', e => { if (!dock.contains(e.relatedTarget)) { hold = false; tick(); } });
   document.addEventListener('visibilitychange', tick);
   tick();
-  const lots = [{"img": "03608", "make": "McLaren", "model": "720S", "hp": "710", "z": "2.8", "v": "212", "year": "2019", "mi": "6,812", "stk": "P0142", "price": "$239,900"}, {"img": "09386", "make": "Ferrari", "model": "812 Superfast", "hp": "789", "z": "2.9", "v": "211", "year": "2018", "mi": "4,210", "stk": "P0138", "price": "$389,900"}, {"img": "04778", "make": "Porsche", "model": "911 GT3 RS", "hp": "520", "z": "3.0", "v": "193", "year": "2019", "mi": "3,105", "stk": "P0151", "price": "$229,900"}, {"img": "04804", "make": "Mercedes-AMG", "model": "GT R", "hp": "577", "z": "3.5", "v": "198", "year": "2018", "mi": "9,880", "stk": "P0127", "price": "$149,900"}];
+  const lots = [{"img": "03608", "make": "McLaren", "model": "720S", "tr": "7-speed DCT", "en": "4.0L V8", "year": "2019", "mi": "6,812", "stk": "P0142", "price": "$239,900"}, {"img": "09386", "make": "Ferrari", "model": "812 Superfast", "tr": "7-speed DCT", "en": "6.5L V12", "year": "2018", "mi": "4,210", "stk": "P0138", "price": "$389,900"}, {"img": "04778", "make": "Porsche", "model": "911 GT3 RS", "tr": "7-speed PDK", "en": "4.0L Flat-6", "year": "2019", "mi": "3,105", "stk": "P0151", "price": "$229,900"}, {"img": "04804", "make": "Mercedes-AMG", "model": "GT R", "tr": "7-speed DCT", "en": "4.0L V8", "year": "2018", "mi": "9,880", "stk": "P0127", "price": "$149,900"}];
   const tabs = $$('.tabs [role=tab]'), img = $('#lot-img'), lights = $('.lights');
   let cur = 0, want = 0, busy = false, queued = null;
   const pick = async (i, focus, way) => {
@@ -716,7 +720,7 @@ h2.kick{font-weight:400}
     $('#lot-p').setAttribute('aria-labelledby', tabs[i].id);
     const L = lots[i];
     const src = `assets/lots/${L.img}-2200.webp`, alt = `${L.make} ${L.model} in our showroom`;
-    const setText = () => $$('#lot-p [data-k]').forEach(d => { const k = d.dataset.k; if (/^(hp|z|v)$/.test(k) && window.gcmCount) window.gcmCount(d, L[k]); else d.textContent = k === 'mm' ? `${L.make} ${L.model}` : L[k]; });
+    const setText = () => $$('#lot-p [data-k]').forEach(d => { const k = d.dataset.k; if (k === 'mi' && window.gcmCount) window.gcmCount(d, L[k]); else d.textContent = k === 'mm' ? `${L.make} ${L.model}` : k === 'price' ? (L.price || 'Call for price') : L[k]; });
     if (still) { img.src = src; img.alt = alt; await img.decode().catch(() => 0); setText(); }
     else {
       /* wipe: the next car is drawn over the stage like a curtain, from the side of the chosen row (below or above);
@@ -846,21 +850,22 @@ h2.kick{font-weight:400}
 })();
 </script>
 <script>
-/* Premier figures count: from zero when they first arrive, then from the old car's value to the new one on every swap.
+/* Premier mileage counts: from zero when it first arrives, then from the old car's value to the new one on every swap.
    Tabular figures keep the width steady. Without GSAP or under reduced motion, values are set directly. */
 (() => {
   if (!window.gsap || !window.ScrollTrigger) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('shot')) return;
   const run = (el, to, from) => {
-    const target = String(to), dec = (target.split('.')[1] || '').length, end = parseFloat(target);
-    const o = { v: from == null ? parseFloat(el.textContent) || 0 : from };
+    const num = t => parseFloat(String(t).replace(/,/g, '')) || 0;
+    const target = String(to), end = num(target);
+    const o = { v: from == null ? num(el.textContent) : from };
     gsap.killTweensOf(o);
-    gsap.to(o, { v: end, duration: 1.4, ease: 'power2.out', onUpdate: () => { el.textContent = o.v.toFixed(dec); }, onComplete: () => { el.textContent = target; } });
+    gsap.to(o, { v: end, duration: 1.4, ease: 'power2.out', onUpdate: () => { el.textContent = Math.round(o.v).toLocaleString('en-US'); }, onComplete: () => { el.textContent = target; } });
   };
   window.gcmCount = (el, to) => run(el, to);
-  const figs = document.querySelectorAll('.figs dd');
+  const figs = document.querySelectorAll('.figs [data-k=mi]');
   const finals = [...figs].map(d => d.textContent.trim());
-  figs.forEach(d => { d.textContent = (0).toFixed((d.textContent.split('.')[1] || '').length); });
+  figs.forEach(d => { d.textContent = '0'; });
   ScrollTrigger.create({ trigger: '.figs', start: 'top 88%', once: true, onEnter: () => figs.forEach((d, i) => run(d, finals[i], 0)) });
 })();
 </script>
