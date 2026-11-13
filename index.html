@@ -215,6 +215,15 @@ section[id],footer[id],form[id]{scroll-margin-top:84px}
 .stage img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
 .stage-next{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;will-change:clip-path,transform}
 .p-r{position:relative;min-height:0;container-type:size;--tg:12px}
+.st-nav{position:absolute;right:20px;bottom:20px;z-index:2;display:flex;gap:8px}
+.st-nav button{display:grid;place-items:center;width:52px;height:52px;padding:0;border-radius:var(--r);border:1px solid rgb(236 238 241/.26);background:rgb(8 9 12/.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:var(--ink);cursor:pointer;transition:border-color .25s,background-color .25s}
+.st-nav button:hover{border-color:var(--ink);background:rgb(8 9 12/.72)}
+.st-nav button:focus{outline:none}.st-nav button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.st-nav svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s}
+.st-nav .st-p svg{transform:scaleX(-1)}
+.st-nav .st-n:hover svg{transform:translateX(2px)}.st-nav .st-p:hover svg{transform:scaleX(-1) translateX(2px)}
+@media (max-width:860px){.st-nav{right:12px;bottom:12px}.st-nav button{width:44px;height:44px}}
+@media (prefers-reduced-motion:reduce){.st-nav button,.st-nav svg{transition:none}}
 .tabs{position:absolute;inset:0;display:grid;grid-template-rows:repeat(4,minmax(0,1fr));gap:var(--tg);margin:0;padding:0;list-style:none}
 .tabs li{display:flex;min-height:0}
 .tabs .pt{display:grid;grid-template-columns:calc((100cqh - 3 * var(--tg)) / 4 * 1.5) minmax(0,1fr);align-items:center;gap:20px;width:100%;height:100%;padding:0;background:none;border:0;cursor:pointer;text-align:left;color:var(--ink3)}
@@ -559,7 +568,7 @@ h2.kick{font-weight:400}
 <section class="prem" id="premier" aria-labelledby="prem-t">
   <div class="in p-hd"><div><p class="kick">Collector selections</p><h2 class="t-light" id="prem-t">Premier listings</h2></div></div>
   <div class="in p-split">
-    <div class="stage-w glow" style="--gw:1300px;--gh:900px"><div class="stage"><img id="lot-img" src="assets/lots/03608-2200.webp" alt="McLaren 720S in our showroom" width="2200" height="1467" loading="lazy" decoding="async"><div class="lights"></div></div></div>
+    <div class="stage-w glow" style="--gw:1300px;--gh:900px"><div class="stage"><img id="lot-img" src="assets/lots/03608-2200.webp" alt="McLaren 720S in our showroom" width="2200" height="1467" loading="lazy" decoding="async"><div class="lights"></div><div class="st-nav"><button class="st-p" type="button" aria-label="Previous car" aria-controls="lot-p"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button><button class="st-n" type="button" aria-label="Next car" aria-controls="lot-p"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button></div></div></div>
     <div class="p-r"><ul class="tabs" role="tablist" aria-label="Premier listings" aria-orientation="vertical"><li><button class="pt" role="tab" type="button" id="lt0" aria-selected="true" tabindex="0" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/03608-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-x"><span class="pt-l">720S</span><span class="pt-s">2019 · <b>McLaren</b></span></span></button></li><li><button class="pt" role="tab" type="button" id="lt1" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/09386-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-x"><span class="pt-l">812 Superfast</span><span class="pt-s">2018 · <b>Ferrari</b></span></span></button></li><li><button class="pt" role="tab" type="button" id="lt2" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/04778-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-x"><span class="pt-l">911 GT3 RS</span><span class="pt-s">2019 · <b>Porsche</b></span></span></button></li><li><button class="pt" role="tab" type="button" id="lt3" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/04804-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-x"><span class="pt-l">GT R</span><span class="pt-s">2018 · <b>Mercedes-AMG</b></span></span></button></li></ul></div>
   </div>
   <div id="lot-p" role="tabpanel" aria-labelledby="lt0">
@@ -672,10 +681,10 @@ h2.kick{font-weight:400}
   }));
   const lots = [{"img": "03608", "make": "McLaren", "model": "720S", "hp": "710", "z": "2.8", "v": "212", "year": "2019", "mi": "6,812", "stk": "P0142", "price": "$239,900"}, {"img": "09386", "make": "Ferrari", "model": "812 Superfast", "hp": "789", "z": "2.9", "v": "211", "year": "2018", "mi": "4,210", "stk": "P0138", "price": "$389,900"}, {"img": "04778", "make": "Porsche", "model": "911 GT3 RS", "hp": "520", "z": "3.0", "v": "193", "year": "2019", "mi": "3,105", "stk": "P0151", "price": "$229,900"}, {"img": "04804", "make": "Mercedes-AMG", "model": "GT R", "hp": "577", "z": "3.5", "v": "198", "year": "2018", "mi": "9,880", "stk": "P0127", "price": "$149,900"}];
   const tabs = $$('.tabs [role=tab]'), img = $('#lot-img'), lights = $('.lights');
-  let cur = 0, busy = false, queued = null;
-  const pick = async (i, focus) => {
-    if (busy) { queued = i; return; }
-    if (i === cur) return; busy = true;
+  let cur = 0, want = 0, busy = false, queued = null;
+  const pick = async (i, focus, way) => {
+    if (busy) { queued = [i, way]; return; }
+    if (i === cur) return; busy = true; want = i;
     tabs.forEach((t, k) => { t.setAttribute('aria-selected', k === i); t.tabIndex = k === i ? 0 : -1; });
     if (focus) tabs[i].focus();
     $('#lot-p').setAttribute('aria-labelledby', tabs[i].id);
@@ -686,7 +695,7 @@ h2.kick{font-weight:400}
     else {
       /* wipe: the next car is drawn over the stage like a curtain, from the side of the chosen row (below or above);
          the outgoing car steps back into the dark under it */
-      const dir = i > cur ? 1 : -1, ease = 'cubic-bezier(.77,0,.18,1)', T = 1150;
+      const dir = way || (i > cur ? 1 : -1), ease = 'cubic-bezier(.77,0,.18,1)', T = 1150;
       const next = new Image(); next.src = src; next.alt = ''; next.className = 'stage-next';
       await next.decode().catch(() => 0);
       img.after(next);
@@ -702,8 +711,12 @@ h2.kick{font-weight:400}
       out.cancel(); next.parentNode.removeChild(next);
     }
     cur = i; busy = false;
-    if (queued !== null) { const n = queued; queued = null; if (n !== cur) pick(n); }
+    if (queued !== null) { const [n, w] = queued; queued = null; if (n !== cur) pick(n, false, w); }
   };
+  /* arrows on the photo: next and previous, round the four cars */
+  const step = d => { const base = queued !== null ? queued[0] : want; pick((base + d + tabs.length) % tabs.length, false, d); };
+  $('.st-n').addEventListener('click', () => step(1));
+  $('.st-p').addEventListener('click', () => step(-1));
   tabs.forEach((t, i) => {
     t.addEventListener('click', () => pick(i));
     t.addEventListener('keydown', e => {
