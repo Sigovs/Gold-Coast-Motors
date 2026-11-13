@@ -44,17 +44,17 @@ svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.4;stroke
 .util a{display:inline-flex;align-items:center;gap:8px}
 .util .ic{color:var(--ink2)}.util .ic+.ic{margin-left:-10px}
 .util b{color:var(--ink);font-weight:500}
-.bar{display:flex;justify-content:space-between;align-items:center;height:84px}
-.logo img{width:188px}
+.bar{display:flex;justify-content:space-between;align-items:center;height:92px}
+.logo img{width:236px}
 /* sticky bar: after the first screen starts to scroll, the main bar holds the top of the window */
-.hdr.is-stuck .bar{position:fixed;top:0;left:0;right:0;z-index:60;height:68px;padding:0 max(var(--pad),calc((100vw - 1488px)/2));background:rgb(11 15 19/.94);box-shadow:0 1px 0 rgb(236 238 241/.07);animation:barIn .5s cubic-bezier(.2,.7,.2,1)}
-.hdr.is-stuck .logo img{width:156px}
+.hdr.is-stuck .bar{position:fixed;top:0;left:0;right:0;z-index:60;height:76px;padding:0 var(--pad);background:rgb(11 15 19/.94);box-shadow:0 1px 0 rgb(236 238 241/.07);animation:barIn .5s cubic-bezier(.2,.7,.2,1)}
 @keyframes barIn{from{transform:translateY(-100%)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){.hdr.is-stuck .bar{animation:none}}
 section[id],footer[id],form[id]{scroll-margin-top:84px}
 .bar nav{display:flex;align-items:center;gap:40px}
-.bar ul{display:flex;gap:30px;font-family:var(--disp);font-weight:600;font-size:16px;letter-spacing:.14em;text-transform:uppercase}
-.bar ul a{display:inline-flex;align-items:center;gap:6px}
+.bar ul{display:flex;gap:32px;font-family:var(--disp);font-weight:700;font-size:20px;letter-spacing:.07em;text-transform:uppercase}
+.bar ul a{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.logo{flex:none}
 .bar ul a[aria-current]{color:var(--or)}
 .chev{width:10px;height:10px;stroke-width:1.6;opacity:.7}
 .pill{display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 18px;border-radius:999px;border:1px solid rgb(236 238 241/.26);color:var(--ink);font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
@@ -99,7 +99,21 @@ section[id],footer[id],form[id]{scroll-margin-top:84px}
 .sh.c p.sub{margin-top:18px;font-size:15px;color:var(--ink3)}
 /* INVENTORY */
 .inv{padding:128px var(--pad) 136px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cards{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 40px) / 3);gap:20px;margin:0;padding:0;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;overscroll-behavior-x:contain}
+.cards::-webkit-scrollbar{display:none}
+.cards > .card{scroll-snap-align:start}
+/* inventory arrows: the pin button's square tile, beside "View all inventory" */
+.r-a{display:flex;align-items:center;gap:8px}
+.r-a .bx{margin-right:8px}
+.cn{display:grid;place-items:center;width:52px;height:52px;padding:0;border-radius:var(--r);border:1px solid rgb(236 238 241/.26);background:none;color:var(--ink);cursor:pointer;transition:border-color .25s,opacity .25s}
+.cn:hover{border-color:var(--ink)}
+.cn:disabled{opacity:.3;cursor:default}.cn:disabled:hover{border-color:rgb(236 238 241/.26)}
+.cn:focus{outline:none}.cn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.cn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s}
+.cn-p svg{transform:scaleX(-1)}
+.cn-n:not(:disabled):hover svg{transform:translateX(2px)}.cn-p:not(:disabled):hover svg{transform:scaleX(-1) translateX(2px)}
+@media (max-width:860px){.inv .cards{grid-template-columns:none;grid-auto-columns:84%;gap:14px}.cn{width:44px;height:44px}}
+@media (prefers-reduced-motion:reduce){.cards{scroll-behavior:auto}}
 .card{display:flex;flex-direction:column;background:var(--bg3);border-radius:6px;overflow:hidden}
 .c-img{display:block;aspect-ratio:16/10;overflow:hidden}
 .c-img img{width:100%;height:100%;object-fit:cover;object-position:50% 66%;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
@@ -409,17 +423,21 @@ h2.kick{font-weight:400}
   .dock-h{flex-wrap:wrap;gap:8px}
 }
 @media (max-width:520px){
-  .logo img{width:148px}.pill{padding:0 14px;height:36px}.pill .w{display:none}
+  .logo img{width:172px}.pill{padding:0 14px;height:36px}.pill .w{display:none}
   .of-g{grid-template-columns:1fr}.of-f .of-g:first-of-type{grid-template-columns:1fr 1fr}.of-f .of-g:first-of-type .f:not(:has(select)){grid-column:1/-1}.of-f{padding:28px 22px 26px}.offer{padding:72px var(--pad)}.row{grid-template-columns:1fr 1fr}.ft .v-row{flex-direction:column;gap:28px}.ft .ph{white-space:nowrap}
   .figs dd{font-size:min(36px,28cqi)}
   .iss{gap:24px}.issues{gap:72px}
 }
 @media (max-width:1100px){
-  .bar ul{gap:18px;font-size:14px}.bar nav{gap:20px}.u-hrs{display:none}
+  .bar ul{gap:20px;font-size:17px;letter-spacing:.05em}.bar nav{gap:22px}.logo img{width:196px}.u-hrs{display:none}
   .sell{grid-template-columns:1fr}.s-img{min-height:420px}
   .of{grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:48px}.of-l{padding-top:22px}.of-f{padding:28px 28px 32px}.iss{grid-template-columns:1fr;gap:32px}.iss:nth-child(even) .i-img{order:0}
   .quotes{gap:32px}.visit{grid-template-columns:1fr;padding-right:var(--pad)}
 }
+@media (min-width:1201px) and (max-width:1360px){.bar ul{font-size:18px;gap:24px;letter-spacing:.05em}.bar nav{gap:28px}}
+@media (min-width:1101px) and (max-width:1200px){.logo img{width:210px}.bar ul{font-size:17px;gap:20px;letter-spacing:.05em}.bar nav{gap:22px}.pill .w{display:none}}
+@media (min-width:861px) and (max-width:1100px){.pill .w{display:none}}
+@media (min-width:861px) and (max-width:1040px){.logo img{width:172px}.bar ul{font-size:16px;gap:16px;letter-spacing:.04em}.bar nav{gap:18px}.pill .n{display:none}.pill{width:40px;padding:0;justify-content:center}}
 @media (max-width:860px){
   .hdr{position:relative;background:var(--bg)}.bar ul{display:none}.util .u-addr{display:none}
   .hero{height:auto;min-height:0;max-height:none;padding-bottom:56px}.hero-img{position:relative;height:60vw}.h-pg{bottom:auto;top:calc(60vw - 40px);left:var(--pad)}
@@ -444,7 +462,7 @@ h2.kick{font-weight:400}
     <a class="logo" href="#" aria-label="Gold Coast Motors, home"><img src="assets/brand/logo-h-light.svg" alt="" width="263" height="47"></a>
     <nav aria-label="Main">
       <ul><li><a href="#" aria-current="page">Home</a></li><li><a href="#">Inventory<svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3"/></svg></a></li><li><a href="#">Financing</a></li><li><a href="#">Sell Us Your Car</a></li><li><a href="#">Contact Us<svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3"/></svg></a></li></ul>
-      <a class="pill" href="tel:+16303059900"><span style="display:inline-grid;color:var(--or)"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.2 2.5h2.4l1.2 3-1.6 1a8 8 0 0 0 4.3 4.3l1-1.6 3 1.2v2.4a1.2 1.2 0 0 1-1.3 1.2A11.5 11.5 0 0 1 2 3.8a1.2 1.2 0 0 1 1.2-1.3z"/></svg></span><span class="w">Call&nbsp;</span>630-305-9900</a>
+      <a class="pill" href="tel:+16303059900" aria-label="Call 630-305-9900"><span style="display:inline-grid;color:var(--or)"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.2 2.5h2.4l1.2 3-1.6 1a8 8 0 0 0 4.3 4.3l1-1.6 3 1.2v2.4a1.2 1.2 0 0 1-1.3 1.2A11.5 11.5 0 0 1 2 3.8a1.2 1.2 0 0 1 1.2-1.3z"/></svg></span><span class="w">Call&nbsp;</span><span class="n">630-305-9900</span></a>
     </nav>
   </div>
 </header>
@@ -470,8 +488,8 @@ h2.kick{font-weight:400}
 </section>
 
 <section class="inv" id="inventory" aria-labelledby="inv-t"><div class="in">
-  <div class="hd"><div><p class="kick">Featured inventory</p><h2 class="t-light" id="inv-t">Our trending inventory</h2></div><div class="r"><p>Hand-picked by the owners and on the floor in Naperville now.</p><a class="bx" href="#"><span>View all inventory</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></div></div>
-  <ul class="cards">
+  <div class="hd"><div><p class="kick">Featured inventory</p><h2 class="t-light" id="inv-t">Our trending inventory</h2></div><div class="r"><p>Hand-picked by the owners and on the floor in Naperville now.</p><div class="r-a"><a class="bx" href="#"><span>View all inventory</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a><button class="cn cn-p" type="button" aria-label="Previous cars" aria-controls="inv-track" disabled><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button><button class="cn cn-n" type="button" aria-label="Next cars" aria-controls="inv-track"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button></div></div></div>
+  <ul class="cards" id="inv-track" aria-label="Featured inventory">
 <li class="card">
   <a class="c-img" href="https://www.gcmchicago.com/details-2015-porsche-911-_991_1_carrera_gts__7~speed_manual__low_miles__full_car_ppf_-used-wp0ab2a96fs124486.html" tabindex="-1" aria-hidden="true"><img src="assets/inv/3522-1024.webp" alt="" width="1024" height="768" loading="lazy" decoding="async"></a>
   <div class="c-b">
@@ -508,6 +526,45 @@ h2.kick{font-weight:400}
       <button class="ib" type="button" aria-pressed="false" aria-label="Save 2023 Dodge Challenger Demon 170" title="Save"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h8v11L8 10.6 4 13.5z"/></svg></button>
       <button class="ib" type="button" aria-label="Share 2023 Dodge Challenger Demon 170" title="Share"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="12" cy="3.5" r="1.8"/><circle cx="4" cy="8" r="1.8"/><circle cx="12" cy="12.5" r="1.8"/><path d="M5.6 7.1l4.8-2.7M5.6 8.9l4.8 2.7"/></svg></button>
       <a class="bx sm lt" href="https://www.gcmchicago.com/details-2023-dodge-challenger-_demon_170__lightweight_edition__only_1400_miles__ppf_-used-2c3cdzl9xph100598.html" style="margin-left:auto"><span>Details<span class="sr"> of the 2023 Dodge Challenger Demon 170</span></span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a>
+    </div>
+  </div>
+</li>
+<li class="card">
+  <a class="c-img" href="https://www.gcmchicago.com/details-2020-porsche-718_spyder-_718_spyder__4_0l_6cyl__6~speed_manual__1~owner_-used-wp0cc2a81ls240543.html" tabindex="-1" aria-hidden="true"><img src="assets/inv/3513-1024.webp" alt="" width="1024" height="768" loading="lazy" decoding="async"></a>
+  <div class="c-b">
+    <h3 class="c-t"><a href="https://www.gcmchicago.com/details-2020-porsche-718_spyder-_718_spyder__4_0l_6cyl__6~speed_manual__1~owner_-used-wp0cc2a81ls240543.html">2020 Porsche 718 Spyder</a></h3>
+    <p class="c-pm"><span>Price: <b>$119,900</b></span><span>Mileage: <b>20,325</b></span></p>
+    <p class="c-d">4.0L flat-six, 6-speed manual. One owner. White over Black.</p>
+    <div class="c-a">
+      <button class="ib" type="button" aria-pressed="false" aria-label="Save 2020 Porsche 718 Spyder" title="Save"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h8v11L8 10.6 4 13.5z"/></svg></button>
+      <button class="ib" type="button" aria-label="Share 2020 Porsche 718 Spyder" title="Share"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="12" cy="3.5" r="1.8"/><circle cx="4" cy="8" r="1.8"/><circle cx="12" cy="12.5" r="1.8"/><path d="M5.6 7.1l4.8-2.7M5.6 8.9l4.8 2.7"/></svg></button>
+      <a class="bx sm lt" href="https://www.gcmchicago.com/details-2020-porsche-718_spyder-_718_spyder__4_0l_6cyl__6~speed_manual__1~owner_-used-wp0cc2a81ls240543.html" style="margin-left:auto"><span>Details<span class="sr"> of the 2020 Porsche 718 Spyder</span></span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a>
+    </div>
+  </div>
+</li>
+<li class="card">
+  <a class="c-img" href="https://www.gcmchicago.com/details-2024-chevrolet-corvette-_z06_3lz__z07~performance_pkg__carbon_aero_pkg__comp~seats_-used-1g1yf2d34r5604967.html" tabindex="-1" aria-hidden="true"><img src="assets/inv/3460-1024.webp" alt="" width="1024" height="768" loading="lazy" decoding="async"></a>
+  <div class="c-b">
+    <h3 class="c-t"><a href="https://www.gcmchicago.com/details-2024-chevrolet-corvette-_z06_3lz__z07~performance_pkg__carbon_aero_pkg__comp~seats_-used-1g1yf2d34r5604967.html">2024 Chevrolet Corvette Z06 3LZ</a></h3>
+    <p class="c-pm"><span>Price: <b>$123,900</b></span><span>Mileage: <b>5,677</b></span></p>
+    <p class="c-d">5.5L V8, 8-speed automatic. Z07 Performance and Carbon Aero packages. Black over Jet Black.</p>
+    <div class="c-a">
+      <button class="ib" type="button" aria-pressed="false" aria-label="Save 2024 Chevrolet Corvette Z06 3LZ" title="Save"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h8v11L8 10.6 4 13.5z"/></svg></button>
+      <button class="ib" type="button" aria-label="Share 2024 Chevrolet Corvette Z06 3LZ" title="Share"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="12" cy="3.5" r="1.8"/><circle cx="4" cy="8" r="1.8"/><circle cx="12" cy="12.5" r="1.8"/><path d="M5.6 7.1l4.8-2.7M5.6 8.9l4.8 2.7"/></svg></button>
+      <a class="bx sm lt" href="https://www.gcmchicago.com/details-2024-chevrolet-corvette-_z06_3lz__z07~performance_pkg__carbon_aero_pkg__comp~seats_-used-1g1yf2d34r5604967.html" style="margin-left:auto"><span>Details<span class="sr"> of the 2024 Chevrolet Corvette Z06 3LZ</span></span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a>
+    </div>
+  </div>
+</li>
+<li class="card">
+  <a class="c-img" href="https://www.gcmchicago.com/details-2009-honda-s2000-_2009_s2k__last_year__1_of_324__only_6k_miles__1~owner_-used-jhmap21429s000045.html" tabindex="-1" aria-hidden="true"><img src="assets/inv/3221-1024.webp" alt="" width="1024" height="768" loading="lazy" decoding="async"></a>
+  <div class="c-b">
+    <h3 class="c-t"><a href="https://www.gcmchicago.com/details-2009-honda-s2000-_2009_s2k__last_year__1_of_324__only_6k_miles__1~owner_-used-jhmap21429s000045.html">2009 Honda S2000</a></h3>
+    <p class="c-pm"><span>Price: <b>$69,900</b></span><span>Mileage: <b>6,188</b></span></p>
+    <p class="c-d">2.2L four-cylinder, 6-speed manual. Final model year, one owner. Berlina Black over Black.</p>
+    <div class="c-a">
+      <button class="ib" type="button" aria-pressed="false" aria-label="Save 2009 Honda S2000" title="Save"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h8v11L8 10.6 4 13.5z"/></svg></button>
+      <button class="ib" type="button" aria-label="Share 2009 Honda S2000" title="Share"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="12" cy="3.5" r="1.8"/><circle cx="4" cy="8" r="1.8"/><circle cx="12" cy="12.5" r="1.8"/><path d="M5.6 7.1l4.8-2.7M5.6 8.9l4.8 2.7"/></svg></button>
+      <a class="bx sm lt" href="https://www.gcmchicago.com/details-2009-honda-s2000-_2009_s2k__last_year__1_of_324__only_6k_miles__1~owner_-used-jhmap21429s000045.html" style="margin-left:auto"><span>Details<span class="sr"> of the 2009 Honda S2000</span></span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a>
     </div>
   </div>
 </li>
@@ -565,15 +622,15 @@ h2.kick{font-weight:400}
   <div class="in a-hd"><p class="kick">About us</p><h2 class="t-light" id="about-t">Welcome to Gold Coast Motors</h2><p class="sub">Enthusiast and collector cars, chosen by the people who run the place.</p></div>
   <div class="issues">
     <article class="iss glow">
-      <div class="i-img"><img src="assets/e-about-video-v.webp" alt="" width="960" height="1200" loading="lazy" decoding="async"><button class="play" type="button" aria-label="Play our walkaround videos on YouTube"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6L13 8z" fill="currentColor" stroke="none"/></svg></button></div>
+      <div class="i-img"><img src="assets/e-about-gen-1.webp" alt="A videographer filming a walkaround of a silver Porsche 911 in a white showroom (generated artwork)" width="960" height="1200" loading="lazy" decoding="async"><button class="play" type="button" aria-label="Play our walkaround videos on YouTube"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6L13 8z" fill="currentColor" stroke="none"/></svg></button></div>
       <div class="i-txt"><span class="lab">01 — On YouTube</span><span class="kick">Walkarounds</span><h3>Every car,<br>on camera</h3><p>Walkaround videos of the cars on our floor, on our channel @GoldCoastMotors.</p><a class="lnk" href="https://www.youtube.com/@GoldCoastMotors">Watch the channel<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a></div>
     </article>
     <article class="iss glow">
-      <div class="i-img"><img src="assets/d-m3-nose.webp" alt="Front of a BMW M3 (E36) in our showroom" width="960" height="1200" loading="lazy" decoding="async"></div>
+      <div class="i-img"><img src="assets/e-about-gen-2.webp" alt="Walking along a row of sports cars in a white showroom, looking each one over (generated artwork)" width="960" height="1200" loading="lazy" decoding="async"></div>
       <div class="i-txt"><span class="lab">02 — The owners</span><span class="kick">Hand-picked</span><h3>Picked by<br>the people who<br>run it</h3><p>Our customers are busy and don't have time to hunt for deals, so the owners take on the job of hand-picking our inventory and finding you the car you have been looking for.</p><a class="lnk" href="#contact">Contact us<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a></div>
     </article>
     <article class="iss glow">
-      <div class="i-img"><img src="assets/e-about-h1-v.webp" alt="Hummer H1 in our showroom" width="960" height="1200" loading="lazy" decoding="async"></div>
+      <div class="i-img"><img src="assets/e-about-gen-3.webp" alt="A white Porsche 911 rolling off an enclosed transporter onto a driveway (generated artwork)" width="960" height="1200" loading="lazy" decoding="async"></div>
       <div class="i-txt"><span class="lab">03 — Delivery</span><span class="kick">Anywhere</span><h3>Next town over<br>or across<br>the country</h3><p>We arrange shipping wherever you are, and we offer free pickup from either of Chicago's two major airports, O'Hare or Midway.</p><a class="lnk" href="tel:+16303059900">630-305-9900<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a></div>
     </article>
   </div>
@@ -709,6 +766,24 @@ h2.kick{font-weight:400}
   dock.addEventListener('focusout', e => { if (!dock.contains(e.relatedTarget)) { hold = false; tick(); } });
   document.addEventListener('visibilitychange', tick);
   tick();
+  /* inventory arrows */
+  const track = $('#inv-track'), cp = $('.cn-p'), cnx = $('.cn-n');
+  const stepW = () => { const c = track.querySelector('.card'); return c ? c.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 20) : track.clientWidth; };
+  const ends = () => { cp.disabled = track.scrollLeft < 4; cnx.disabled = track.scrollLeft + track.clientWidth > track.scrollWidth - 4; };
+  /* clicks add up: each one moves the target a card further, even mid-scroll */
+  let tgt = null, tgtT = 0;
+  const go = d => {
+    const st = stepW(), max = track.scrollWidth - track.clientWidth;
+    const base = tgt != null ? tgt : track.scrollLeft;
+    tgt = Math.max(0, Math.min(max, (Math.round(base / st) + d) * st));
+    track.scrollTo({ left: tgt, behavior: still ? 'auto' : 'smooth' });
+    clearTimeout(tgtT); tgtT = setTimeout(() => { tgt = null; }, 900);
+  };
+  cp.addEventListener('click', () => go(-1));
+  cnx.addEventListener('click', () => go(1));
+  track.addEventListener('scroll', ends, { passive: true });
+  addEventListener('resize', ends);
+  ends();
   const lots = [{"img": "03608", "make": "McLaren", "model": "720S", "tr": "7-speed DCT", "en": "4.0L V8", "year": "2019", "mi": "6,812", "stk": "P0142", "price": "$239,900"}, {"img": "09386", "make": "Ferrari", "model": "812 Superfast", "tr": "7-speed DCT", "en": "6.5L V12", "year": "2018", "mi": "4,210", "stk": "P0138", "price": "$389,900"}, {"img": "04778", "make": "Porsche", "model": "911 GT3 RS", "tr": "7-speed PDK", "en": "4.0L Flat-6", "year": "2019", "mi": "3,105", "stk": "P0151", "price": "$229,900"}, {"img": "04804", "make": "Mercedes-AMG", "model": "GT R", "tr": "7-speed DCT", "en": "4.0L V8", "year": "2018", "mi": "9,880", "stk": "P0127", "price": "$149,900"}];
   const tabs = $$('.tabs [role=tab]'), img = $('#lot-img'), lights = $('.lights');
   let cur = 0, want = 0, busy = false, queued = null;
