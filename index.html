@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gold Coast Motors · Enthusiast and collector cars, Naperville</title>
+<title>Gold Coast Motors · Enthusiast and collector cars, St. Charles</title>
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Barlow:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;400;500;600;700;800&family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/e-hero-n3-2560.webp" imagesrcset="assets/e-hero-n3-1440.webp 1440w, assets/e-hero-n3-2560.webp 2560w" imagesizes="100vw">
 <style>
@@ -54,8 +55,22 @@ section[id],footer[id],form[id]{scroll-margin-top:84px}
 .bar nav{display:flex;align-items:center;gap:40px}
 .bar ul{display:flex;gap:32px;font-family:var(--disp);font-weight:700;font-size:20px;letter-spacing:.07em;text-transform:uppercase}
 .bar ul a{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
-.logo{flex:none}
+.logo{flex:none;display:inline-flex;border-radius:4px;transition:opacity .25s}
+.logo:hover{opacity:.78}.logo:focus{outline:none}.logo:focus-visible{outline:2px solid var(--ink);outline-offset:6px}
 .bar ul a[aria-current]{color:var(--or)}
+/* Inventory dropdown: a floating panel (a real edge, allowed), opens on hover and on keyboard focus */
+.bar ul > li{position:relative}
+/* main nav hover: colour only (no underlines, per the no-stripes rule) */
+.bar ul > li > a{transition:color .2s}
+.bar ul > li > a:hover,.has-dd:hover > a,.bar ul > li > a:focus-visible{color:var(--or)}
+.bar ul.dd{position:absolute;top:100%;left:-18px;z-index:70;display:grid;gap:0;min-width:236px;margin:0;padding:22px 0 0;list-style:none;font-size:17px;letter-spacing:.05em;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .2s,transform .2s,visibility 0s .2s}
+.bar ul.dd::before{content:"";position:absolute;inset:14px 0 0;z-index:-1;border-radius:4px;background:#10141b;border:1px solid rgb(236 238 241/.1);box-shadow:0 18px 40px -18px rgb(0 0 0/.7)}
+.bar ul.dd li:first-child{padding-top:8px}.bar ul.dd li:last-child{padding-bottom:8px}
+.bar ul.dd a{display:block;padding:10px 18px;color:var(--ink2);white-space:nowrap;transition:color .2s,background-color .2s}
+.bar ul.dd a:hover,.bar ul.dd a:focus-visible{color:var(--or);background:rgb(236 238 241/.05);outline:none}
+.has-dd:hover > .dd,.has-dd:focus-within > .dd{opacity:1;visibility:visible;transform:none;transition:opacity .2s,transform .2s}
+.has-dd > a .chev{transition:transform .2s}.has-dd:hover > a .chev,.has-dd:focus-within > a .chev{transform:rotate(180deg)}
+@media (prefers-reduced-motion:reduce){.bar ul.dd,.has-dd > a .chev{transition:none}}
 .chev{width:10px;height:10px;stroke-width:1.6;opacity:.7}
 .pill{display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 18px;border-radius:999px;border:1px solid rgb(236 238 241/.26);color:var(--ink);font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
 /* HERO */
@@ -66,6 +81,8 @@ section[id],footer[id],form[id]{scroll-margin-top:84px}
 /* HERO SLIDES: the lakefront at night from two positions, then the showroom after hours; the light crosses from one view to the next */
 .hero-img .hs{position:absolute;inset:0;opacity:0;transition:opacity 1.6s cubic-bezier(.4,0,.2,1)}
 .hero-img .hs.on{opacity:1}
+.hero-img .hs-gt2{filter:none;object-position:50% 55%}
+.hero-img .hs-light{filter:none;object-position:50% 50%}
 .h-pg{position:absolute;left:var(--pad);bottom:24px;z-index:2;display:flex;align-items:center;margin-left:-6px}
 .h-pg button{display:grid;place-items:center;height:28px;padding:0 6px;background:none;border:0;cursor:pointer}
 .h-pg button::before{content:"";display:block;width:8px;height:8px;border-radius:999px;background:rgb(236 238 241/.38);transition:width .6s cubic-bezier(.2,.7,.2,1),background-color .35s}
@@ -77,8 +94,8 @@ section[id],footer[id],form[id]{scroll-margin-top:84px}
   linear-gradient(180deg,rgb(10 13 18/.8) 0,rgb(10 13 18/0) 20%),
   linear-gradient(0deg,var(--bg) 0,rgb(10 13 18/0) 26%)}
 .h-copy{position:absolute;left:var(--pad);top:50%;transform:translateY(-44%);max-width:520px}
-.h-copy h1{margin-top:20px;font-family:var(--disp);font-weight:800;font-size:clamp(56px,6.2vw,92px);line-height:.88;text-transform:uppercase;letter-spacing:.005em}
-.h-copy p{margin-top:24px;font-size:17px;line-height:1.5;color:var(--ink2);max-width:34ch}
+.h-copy h1{margin-top:0;font-family:var(--disp);font-weight:800;font-size:clamp(56px,6.2vw,92px);line-height:.88;text-transform:uppercase;letter-spacing:.005em}
+.h-copy p{margin-top:24px;font-size:17px;line-height:1.5;color:var(--ink2);max-width:34ch;text-wrap:balance}
 .h-copy .cta{display:flex;gap:12px;margin-top:32px}
 .scroll{position:absolute;left:50%;bottom:32px;transform:translateX(-50%);font-family:var(--mono);font-size:12px;letter-spacing:.3em;color:var(--ink3)}
 .dock{position:absolute;right:var(--pad);top:50%;transform:translateY(-44%);width:360px;display:grid;gap:14px;padding:32px;border-radius:6px;background:rgb(14 18 26/.9);border:1px solid var(--edge)}
@@ -131,11 +148,19 @@ section[id],footer[id],form[id]{scroll-margin-top:84px}
 .more svg{width:12px;height:12px;stroke-width:1.8}
 /* SELL: split */
 .sell{display:grid;grid-template-columns:1fr 1fr;background:var(--bg2);min-height:820px;overflow-x:clip}
+/* SERVICES: the Sell layout, mirrored - text on the page grid at the left, the photograph full height on the right */
+.svc .s-img{order:2}
+.svc .s-img img{object-position:84% 50%}
+.svc .s-txt{justify-self:end;width:100%;padding:112px clamp(48px,6vw,112px) 112px var(--pad)}
+.svc .s-txt h2{max-width:20ch;text-wrap:balance}
+.svc .steps{gap:24px}
+.svc .steps h3{font-size:26px}
 .s-img{position:relative;overflow:hidden}
 .s-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
 .s-txt{align-self:center;padding:112px var(--pad) 112px clamp(48px,6vw,112px);max-width:760px}
 .s-txt h2{margin-top:14px;font-size:clamp(48px,4.6vw,72px)}
-.s-txt .lead{margin-top:18px;font-size:16px;color:var(--ink2);max-width:40ch}
+.s-txt .lead{margin-top:18px;font-size:16px;line-height:1.6;color:var(--ink2);max-width:52ch}
+.s-txt .lead b{font-weight:500;color:var(--ink)}
 .steps{margin-top:48px;display:grid;gap:30px}
 .steps li{display:grid;grid-template-columns:52px 1fr;align-items:baseline}
 .steps .n{font-family:var(--mono);font-size:14px;color:var(--or)}
@@ -144,6 +169,13 @@ section[id],footer[id],form[id]{scroll-margin-top:84px}
 .s-txt .cta{display:flex;gap:12px;margin-top:48px}
 /* OFFER band */
 [hidden]{display:none!important}
+/* FONT OPTIONS (client review): A is the default; B and C via ?font=b / ?font=c */
+html[data-font=b]{--disp:"Barlow Condensed",sans-serif;--body:"Barlow",system-ui,sans-serif}
+/* C = serif: Instrument Serif headings in sentence case + Geist text; the menu stays sans */
+html[data-font=c]{--disp:"Instrument Serif",Georgia,serif}
+html[data-font=c] .t-light,html[data-font=c] .bar ul,html[data-font=c] .h-copy h1,html[data-font=c] .dock-h h2,html[data-font=c] .c-t,html[data-font=c] .steps h3,html[data-font=c] .of-done h3,html[data-font=c] .i-txt h3,html[data-font=c] .a-end .stmt,html[data-font=c] .pt-l,html[data-font=c] .lot-t,html[data-font=c] .lot-p,html[data-font=c] .figs dd,html[data-font=c] .score b,html[data-font=c] .addr,html[data-font=c] .ph,html[data-font=c] .base ul{text-transform:none;font-weight:400;letter-spacing:-.005em}
+html[data-font=c] .bar ul{font-family:var(--body);font-weight:500;font-size:clamp(12px,.96vw,15px);gap:clamp(14px,1.5vw,28px);letter-spacing:.06em;text-transform:uppercase}
+html[data-font=c] .bar ul.dd{font-size:15px}
 /* OFFER: a functional pause. Calm editorial left column, a quiet form surface on the right; both share one top and one bottom line */
 .offer{padding:88px var(--pad);background:var(--bg)}
 .of{max-width:1264px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,740px);gap:clamp(48px,6vw,112px);align-items:start}
@@ -213,7 +245,17 @@ section[id],footer[id],form[id]{scroll-margin-top:84px}
 .o-tel{margin-top:22px;text-align:center;font-size:15px;color:var(--ink3)}
 .o-tel a{color:var(--ink)}
 /* ABOUT: editorial issue */
-.about{padding:136px var(--pad) 144px;background:var(--bg2);overflow-x:clip}
+.about{padding:136px var(--pad) 144px;background:var(--bg);overflow-x:clip}
+/* ABOUT, simplified (Kirsten): one photograph of theirs, the heading, their words */
+.ab{max-width:1180px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(48px,6vw,104px);align-items:center}
+.ab-img{border-radius:6px;overflow:hidden;aspect-ratio:4/5;background:var(--bg3)}
+.ab-img img{width:100%;height:100%;object-fit:cover}
+.ab-txt h2{margin-top:14px;font-size:clamp(44px,4.4vw,68px)}
+.ab-sub{margin-top:16px;font-size:18px;line-height:1.45;color:var(--ink2)}
+.ab-txt p:not(.kick):not(.ab-sub):not(.ab-sign){margin-top:20px;font-size:16px;line-height:1.65;color:var(--ink3);max-width:58ch}
+.ab-sign{margin-top:24px;font-size:17px;line-height:1.5;color:var(--ink);max-width:46ch}
+.ab-a{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+@media (max-width:860px){.ab{grid-template-columns:1fr;gap:40px}.ab-img{max-width:560px}}
 .issues{max-width:980px;margin:72px auto 0;display:grid;gap:96px}
 .iss{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 .iss:nth-child(even) .i-img{order:2}
@@ -229,6 +271,13 @@ section[id],footer[id],form[id]{scroll-margin-top:84px}
 .i-txt h3{margin-top:12px;font-family:var(--disp);font-weight:400;font-size:34px;letter-spacing:.1em;text-transform:uppercase;line-height:1.1}
 .i-txt p{margin-top:16px;font-size:15px;line-height:1.6;color:var(--ink3);max-width:40ch}
 .i-txt .lnk{margin-top:24px}
+.i-txt p + p{margin-top:12px}
+/* closing statement: the client's last two lines, said once, large, after the chapters */
+.a-end{max-width:980px;margin:128px auto 0;text-align:center}
+.a-end .pre{margin:0 auto;max-width:60ch;font-size:15px;line-height:1.6;color:var(--ink3);text-wrap:balance}
+.a-end .stmt{margin:32px auto 0;max-width:26ch;font-family:var(--disp);font-weight:300;font-size:clamp(38px,4vw,60px);line-height:1;letter-spacing:.01em;text-transform:uppercase;text-wrap:balance}
+.a-end .sign{margin-top:28px;font-size:17px;line-height:1.5;color:var(--ink2);text-wrap:balance}
+@media (max-width:860px){.a-end{margin-top:88px}}
 /* PREMIER: showcase */
 .prem{padding:144px var(--pad) 136px;background:#07090c;overflow-x:clip}
 .lights{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}
@@ -434,10 +483,14 @@ h2.kick{font-weight:400}
   .of{grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:48px}.of-l{padding-top:22px}.of-f{padding:28px 28px 32px}.iss{grid-template-columns:1fr;gap:32px}.iss:nth-child(even) .i-img{order:0}
   .quotes{gap:32px}.visit{grid-template-columns:1fr;padding-right:var(--pad)}
 }
-@media (min-width:1201px) and (max-width:1360px){.bar ul{font-size:18px;gap:24px;letter-spacing:.05em}.bar nav{gap:28px}}
-@media (min-width:1101px) and (max-width:1200px){.logo img{width:210px}.bar ul{font-size:17px;gap:20px;letter-spacing:.05em}.bar nav{gap:22px}.pill .w{display:none}}
-@media (min-width:861px) and (max-width:1100px){.pill .w{display:none}}
-@media (min-width:861px) and (max-width:1040px){.logo img{width:172px}.bar ul{font-size:16px;gap:16px;letter-spacing:.04em}.bar nav{gap:18px}.pill .n{display:none}.pill{width:40px;padding:0;justify-content:center}}
+@media (max-width:1100px){.svc .s-img{order:0}.svc .s-txt{justify-self:stretch;padding:96px var(--pad)}}
+@media (max-width:860px){.svc .s-txt{padding:72px var(--pad)}}
+@media (max-width:520px){.logo img{width:150px}.r-a{flex-wrap:wrap;row-gap:12px}}
+/* six menu items (Home is the logo): the menu steps down instead of wrapping */
+@media (min-width:861px) and (max-width:1599px){.bar ul{font-size:18px;gap:24px;letter-spacing:.05em}.bar nav{gap:28px}}
+@media (min-width:861px) and (max-width:1360px){.logo img{width:236px}.bar ul{font-size:17px;gap:20px}.bar nav{gap:22px}}
+@media (min-width:861px) and (max-width:1200px){.logo img{width:196px}.bar ul{font-size:16px;gap:16px;letter-spacing:.04em}.bar nav{gap:18px}.pill .w{display:none}}
+@media (min-width:861px) and (max-width:1040px){.logo img{width:160px}.bar ul{font-size:15px;gap:14px}.pill .n{display:none}.pill{width:40px;padding:0;justify-content:center}}
 @media (max-width:860px){
   .hdr{position:relative;background:var(--bg)}.bar ul{display:none}.util .u-addr{display:none}
   .hero{height:auto;min-height:0;max-height:none;padding-bottom:56px}.hero-img{position:relative;height:60vw}.h-pg{bottom:auto;top:calc(60vw - 40px);left:var(--pad)}
@@ -451,32 +504,31 @@ h2.kick{font-weight:400}
 </style>
 </head>
 <body>
+<script>var gcmFont=new URLSearchParams(location.search).get("font");if(gcmFont)document.documentElement.setAttribute("data-font",gcmFont);</script>
 <script>if(location.hash==="#shot")document.documentElement.classList.add("shot")</script>
 <header class="hdr">
   <div class="util">
     <div><a class="ic" href="#" aria-label="Instagram"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3.5"/><circle cx="8" cy="8" r="2.8"/><circle cx="11.6" cy="4.4" r=".6" fill="currentColor" stroke="none"/></svg></a><a class="ic" href="https://www.youtube.com/@GoldCoastMotors" aria-label="YouTube"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="3.5" width="13" height="9" rx="2.5"/><path d="M6.7 6v4l3.4-2z" fill="currentColor" stroke="none"/></svg></a>
-      <a class="u-addr" href="#contact"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s-4.5-4.6-4.5-8a4.5 4.5 0 0 1 9 0c0 3.4-4.5 8-4.5 8z"/><circle cx="8" cy="6.5" r="1.6"/></svg>1570 W Ogden Ave #112, Naperville, IL</a><span class="u-hrs">Mon–Fri 10–6 · Sat 10–5</span></div>
+      <a class="u-addr" href="#contact"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s-4.5-4.6-4.5-8a4.5 4.5 0 0 1 9 0c0 3.4-4.5 8-4.5 8z"/><circle cx="8" cy="6.5" r="1.6"/></svg>3880 E. Main Street, St. Charles, IL</a><span class="u-hrs">Mon–Fri 10–6 · Sat 10–5</span></div>
     <div><a href="#"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h8v11L8 10.6 4 13.5z"/></svg>Saved <b>0</b></a></div>
   </div>
   <div class="bar">
     <a class="logo" href="#" aria-label="Gold Coast Motors, home"><img src="assets/brand/logo-h-light.svg" alt="" width="263" height="47"></a>
     <nav aria-label="Main">
-      <ul><li><a href="#" aria-current="page">Home</a></li><li><a href="#">Inventory<svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3"/></svg></a></li><li><a href="#">Financing</a></li><li><a href="#">Sell Us Your Car</a></li><li><a href="#">Contact Us<svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3"/></svg></a></li></ul>
-      <a class="pill" href="tel:+16303059900" aria-label="Call 630-305-9900"><span style="display:inline-grid;color:var(--or)"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.2 2.5h2.4l1.2 3-1.6 1a8 8 0 0 0 4.3 4.3l1-1.6 3 1.2v2.4a1.2 1.2 0 0 1-1.3 1.2A11.5 11.5 0 0 1 2 3.8a1.2 1.2 0 0 1 1.2-1.3z"/></svg></span><span class="w">Call&nbsp;</span><span class="n">630-305-9900</span></a>
+      <ul><li class="has-dd"><a href="#" aria-haspopup="true">Inventory<svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3"/></svg></a><ul class="dd" aria-label="Inventory"><li><a href="#">Current Inventory</a></li><li><a href="#">Sold Inventory</a></li><li><a href="#sell">Sell Your Car</a></li></ul></li><li><a href="#">Financing</a></li><li><a href="#sell">Sell Your Car</a></li><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul>
+      <a class="pill" href="tel:+16303059900" aria-label="Call 630-305-9900"><span style="display:inline-grid;color:var(--or)"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.2 2.5h2.4l1.2 3-1.6 1a8 8 0 0 0 4.3 4.3l1-1.6 3 1.2v2.4a1.2 1.2 0 0 1-1.3 1.2A11.5 11.5 0 0 1 2 3.8a1.2 1.2 0 0 1 1.2-1.3z"/></svg></span><span class="n">630-305-9900</span></a>
     </nav>
   </div>
 </header>
 <main>
 <section class="hero" aria-labelledby="h1">
-  <div class="hero-img"><img class="hs on" src="assets/e-hero-n3-2560.webp" srcset="assets/e-hero-n3-1440.webp 1440w, assets/e-hero-n3-2560.webp 2560w" sizes="100vw" alt="Rear view of sports cars with tail lights on at the lakefront (generated artwork)" width="2560" height="1440" fetchpriority="high"><img class="hs" src="assets/e-hero-n1-2560.webp" srcset="assets/e-hero-n1-1440.webp 1440w, assets/e-hero-n1-2560.webp 2560w" sizes="100vw" alt="Sports cars on the Chicago lakefront at night, skyline behind (generated artwork)" width="2560" height="1440" fetchpriority="low" decoding="async" aria-hidden="true"><img class="hs" src="assets/e-hero-room-2560.webp" srcset="assets/e-hero-room-1440.webp 1440w, assets/e-hero-room-2560.webp 2560w" sizes="100vw" alt="Porsche 911 GT2 RS in a dimmed showroom (room extended with generated artwork)" width="2560" height="1536" fetchpriority="low" decoding="async" aria-hidden="true"></div>
-  <div class="h-pg" role="group" aria-label="Hero photos"><button type="button" aria-label="Photo 1 of 3" aria-current="true"></button><button type="button" aria-label="Photo 2 of 3" aria-current="false"></button><button type="button" aria-label="Photo 3 of 3" aria-current="false"></button></div>
+  <div class="hero-img"><img class="hs on" src="assets/e-hero-n3-2560.webp" srcset="assets/e-hero-n3-1440.webp 1440w, assets/e-hero-n3-2560.webp 2560w" sizes="100vw" alt="Rear view of sports cars with tail lights on at the lakefront (generated artwork)" width="2560" height="1440" fetchpriority="high"><img class="hs" src="assets/e-hero-n1-2560.webp" srcset="assets/e-hero-n1-1440.webp 1440w, assets/e-hero-n1-2560.webp 2560w" sizes="100vw" alt="Sports cars on the Chicago lakefront at night, skyline behind (generated artwork)" width="2560" height="1440" fetchpriority="low" decoding="async" aria-hidden="true"><img class="hs hs-gt2" src="assets/e-hero-gt2n-2413.webp" srcset="assets/e-hero-gt2n-1440.webp 1440w, assets/e-hero-gt2n-2413.webp 2413w" sizes="100vw" alt="Red Porsche 911 GT2 RS on a wet plaza at night, city skyline behind" width="2413" height="1485" fetchpriority="low" decoding="async" aria-hidden="true"><img class="hs hs-light" src="assets/e-hero-mcl-1920.webp" srcset="assets/e-hero-mcl-1440.webp 1440w, assets/e-hero-mcl-1920.webp 1920w" sizes="100vw" alt="Blue McLaren 720S with its doors up on a wet Chicago riverwalk at dusk" width="1920" height="1080" fetchpriority="low" decoding="async" aria-hidden="true"></div>
+  <div class="h-pg" role="group" aria-label="Hero photos"><button type="button" aria-label="Photo 1 of 4" aria-current="true"></button><button type="button" aria-label="Photo 2 of 4" aria-current="false"></button><button type="button" aria-label="Photo 3 of 4" aria-current="false"></button><button type="button" aria-label="Photo 4 of 4" aria-current="false"></button></div>
   <div class="h-copy">
-    <p class="kick">Naperville, Illinois</p>
-    <h1 id="h1"><span class="ln"><span>Hand-picked</span></span><span class="ln"><span>by the</span></span><span class="ln"><span>owners.</span></span></h1>
-    <p>Enthusiast and collector cars on Ogden Avenue. We buy them too.</p>
+    <h1 id="h1"><span class="ln"><span>Driven by</span></span><span class="ln"><span>passion,</span></span><span class="ln"><span>defined by</span></span><span class="ln"><span>rarity.</span></span></h1>
     <div class="cta"><a class="bx lt" href="#inventory"><span>View inventory</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a><a class="bx" href="#"><span>Financing</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></div>
   </div>
-  <form class="dock" action="#offer" data-quick aria-labelledby="dock-t">
+  <form class="dock" action="#sell-page" method="get" data-quick aria-labelledby="dock-t">
     <div class="dock-h"><h2 id="dock-t">Sell us your car</h2></div>
     <div class="row"><label class="f"><span>Year</span><select name="year"><option value="">Select</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option><option>2014</option><option>2013</option><option>2012</option><option>2011</option><option>2010</option><option>2009</option><option>2008</option><option>2007</option><option>2006</option><option>2005</option><option>2004</option><option>2003</option><option>2002</option><option>2001</option><option>2000</option><option>1999</option><option>1998</option><option>1997</option><option>1996</option><option>1995</option><option>1994</option><option>1993</option><option>1992</option><option>1991</option><option>1990</option><option>1989</option><option>1988</option><option>1987</option><option>1986</option><option>1985</option><option>1984</option><option>1983</option><option>1982</option><option>1981</option><option>1980</option></select></label><label class="f"><span>Make</span><select name="make"><option value="">Select</option><option>Acura</option><option>Audi</option><option>BMW</option><option>Chevrolet</option><option>Dodge</option><option>Ferrari</option><option>Ford</option><option>Honda</option><option>Lamborghini</option><option>McLaren</option><option>Mercedes-Benz</option><option>Nissan</option><option>Porsche</option><option>Toyota</option><option>Other</option></select></label></div>
     <label class="f"><span>Model</span><input name="model" type="text" placeholder="e.g. 911 Carrera S" autocomplete="off"></label>
@@ -488,7 +540,7 @@ h2.kick{font-weight:400}
 </section>
 
 <section class="inv" id="inventory" aria-labelledby="inv-t"><div class="in">
-  <div class="hd"><div><p class="kick">Featured inventory</p><h2 class="t-light" id="inv-t">Our trending inventory</h2></div><div class="r"><p>Hand-picked by the owners and on the floor in Naperville now.</p><div class="r-a"><a class="bx" href="#"><span>View all inventory</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a><button class="cn cn-p" type="button" aria-label="Previous cars" aria-controls="inv-track" disabled><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button><button class="cn cn-n" type="button" aria-label="Next cars" aria-controls="inv-track"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button></div></div></div>
+  <div class="hd"><div><p class="kick">Featured inventory</p><h2 class="t-light" id="inv-t">Our trending inventory</h2></div><div class="r"><p>Hand-picked by the owners and on the floor in St. Charles now.</p><div class="r-a"><a class="bx" href="#"><span>View all inventory</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a><button class="cn cn-p" type="button" aria-label="Previous cars" aria-controls="inv-track" disabled><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button><button class="cn cn-n" type="button" aria-label="Next cars" aria-controls="inv-track"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button></div></div></div>
   <ul class="cards" id="inv-track" aria-label="Featured inventory">
 <li class="card">
   <a class="c-img" href="https://www.gcmchicago.com/details-2015-porsche-911-_991_1_carrera_gts__7~speed_manual__low_miles__full_car_ppf_-used-wp0ab2a96fs124486.html" tabindex="-1" aria-hidden="true"><img src="assets/inv/3522-1024.webp" alt="" width="1024" height="768" loading="lazy" decoding="async"></a>
@@ -574,73 +626,56 @@ h2.kick{font-weight:400}
 <section class="sell" id="sell" aria-labelledby="sell-t">
   <div class="s-img"><img src="assets/e-sell-gen.webp" alt="A silver Porsche 911 rolling into a bright white showroom through the open door (generated artwork)" width="1200" height="1369" loading="lazy" decoding="async"></div>
   <div class="s-txt glow" style="--gx:45%;--gw:760px;--gh:720px">
-    <p class="kick">We buy cars</p>
-    <h2 class="t-light" id="sell-t">Sell us your car</h2>
-    <p class="lead">Even if you don't buy one of ours. Four steps, and you are paid.</p>
+    <p class="kick">Sell us your car</p>
+    <h2 class="t-light" id="sell-t">We buy vehicles</h2>
+    <p class="lead">Whether you have a daily driver or a rare, unique vehicle, GCM wants to hear from you! We purchase vehicles directly from the public, with <b>no purchase or trade-in required.</b> Give us the opportunity to make you a competitive offer and enjoy a simple, hassle-free selling experience. VIN, Pic, Miles is all we need… Yes, it is that simple!</p>
     <ol class="steps">
-      <li><span class="n">01</span><div><h3>Tell us about the car</h3><p>Year, make, model, mileage and how to reach you.</p></div></li>
+      <li><span class="n">01</span><div><h3>Tell us about the car</h3><p>The VIN, a picture and the miles. That's all we need.</p></div></li>
       <li><span class="n">02</span><div><h3>Get your quote</h3><p>Our buyers look at the details and come back with a number.</p></div></li>
-      <li><span class="n">03</span><div><h3>Bring it to us</h3><p>1570 W Ogden Ave, Naperville. Mon–Fri 10–6, Sat 10–5.</p></div></li>
+      <li><span class="n">03</span><div><h3>Bring it to us</h3><p>3880 E. Main Street, St. Charles. Mon–Fri 10–6, Sat 10–5.</p></div></li>
       <li><span class="n">04</span><div><h3>Get paid</h3><p>Even if you don't buy from us.</p></div></li>
     </ol>
-    <div class="cta"><a class="bx pri" href="#offer"><span>Get your offer</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a><a class="bx" href="tel:+16303059900"><span>630-305-9900</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.2 2.5h2.4l1.2 3-1.6 1a8 8 0 0 0 4.3 4.3l1-1.6 3 1.2v2.4a1.2 1.2 0 0 1-1.3 1.2A11.5 11.5 0 0 1 2 3.8a1.2 1.2 0 0 1 1.2-1.3z"/></svg></i></a></div>
+    <div class="cta"><a class="bx pri" href="#sell-page"><span>Get your offer</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a><a class="bx" href="tel:+16303059900"><span>630-305-9900</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.2 2.5h2.4l1.2 3-1.6 1a8 8 0 0 0 4.3 4.3l1-1.6 3 1.2v2.4a1.2 1.2 0 0 1-1.3 1.2A11.5 11.5 0 0 1 2 3.8a1.2 1.2 0 0 1 1.2-1.3z"/></svg></i></a></div>
   </div>
 </section>
 
-<section class="offer" aria-labelledby="offer-t"><div class="in of">
-  <div class="of-l">
-    <h2 class="t-light" id="offer-t">Get your offer<br>today</h2>
-    <span class="of-rule" aria-hidden="true"></span>
-    <p class="of-lead">A few details and you're done.</p>
-    <ul class="of-why">
-      <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>No obligation</li>
-      <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>Takes only a few minutes</li>
-      <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>We buy even if you don't buy from us</li>
-    </ul>
-    <p class="of-tel">Rather talk? <a href="tel:+16303059900">Call 630-305-9900 <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></p>
-  </div>
-  <form class="of-f" id="offer" action="#" novalidate>
-    <fieldset class="of-p"><legend class="sr">Your car and how to reach you</legend>
-      <div class="of-g">
-        <label class="f"><span>Year</span><select name="year"><option value="">Select</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option><option>2014</option><option>2013</option><option>2012</option><option>2011</option><option>2010</option><option>2009</option><option>2008</option><option>2007</option><option>2006</option><option>2005</option><option>2004</option><option>2003</option><option>2002</option><option>2001</option><option>2000</option><option>1999</option><option>1998</option><option>1997</option><option>1996</option><option>1995</option><option>1994</option><option>1993</option><option>1992</option><option>1991</option><option>1990</option><option>1989</option><option>1988</option><option>1987</option><option>1986</option><option>1985</option><option>1984</option><option>1983</option><option>1982</option><option>1981</option><option>1980</option></select><em class="err" aria-live="polite"></em></label>
-        <label class="f"><span>Make</span><select name="make"><option value="">Select</option><option>Acura</option><option>Audi</option><option>BMW</option><option>Chevrolet</option><option>Dodge</option><option>Ferrari</option><option>Ford</option><option>Honda</option><option>Lamborghini</option><option>McLaren</option><option>Mercedes-Benz</option><option>Nissan</option><option>Porsche</option><option>Toyota</option><option>Other</option></select><em class="err" aria-live="polite"></em></label>
-        <label class="f"><span>Model</span><input name="model" type="text" placeholder="e.g. 911 Carrera S" autocomplete="off"><em class="err" aria-live="polite"></em></label>
-        <label class="f"><span>Mileage</span><input name="mileage" type="text" inputmode="numeric" placeholder="e.g. 24,500" autocomplete="off"><em class="err" aria-live="polite"></em></label>
-      </div>
-      <div class="of-g">
-        <label class="f"><span>Name</span><input id="o-name" name="name" type="text" autocomplete="name" placeholder="First and last name"><em class="err" aria-live="polite"></em></label>
-        <label class="f"><span>Phone</span><input name="phone" type="tel" autocomplete="tel" placeholder="(630) 000-0000"><em class="err" aria-live="polite"></em></label>
-        <label class="f" style="grid-column:1/-1"><span>Email <i>optional</i></span><input name="email" type="email" autocomplete="email" placeholder="you@example.com"><em class="err" aria-live="polite"></em></label>
-      </div>
-      <button class="bx pri full" type="submit"><span>Get my offer</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></button>
-    </fieldset>
-    <div class="of-done" hidden role="status"><p class="kick">Received</p><h3>Thanks, <span class="of-who"></span>.</h3><p>Our buyers will call you at <b class="of-ph"></b> with a number for your <span class="of-car2"></span>.</p></div>
-  </form>
-</div></section>
-
 <section class="about" id="about" aria-labelledby="about-t">
-  <div class="in a-hd"><p class="kick">About us</p><h2 class="t-light" id="about-t">Welcome to Gold Coast Motors</h2><p class="sub">Enthusiast and collector cars, chosen by the people who run the place.</p></div>
-  <div class="issues">
-    <article class="iss glow">
-      <div class="i-img"><img src="assets/e-about-gen-1.webp" alt="A videographer filming a walkaround of a silver Porsche 911 in a white showroom (generated artwork)" width="960" height="1200" loading="lazy" decoding="async"><button class="play" type="button" aria-label="Play our walkaround videos on YouTube"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6L13 8z" fill="currentColor" stroke="none"/></svg></button></div>
-      <div class="i-txt"><span class="lab">01 — On YouTube</span><span class="kick">Walkarounds</span><h3>Every car,<br>on camera</h3><p>Walkaround videos of the cars on our floor, on our channel @GoldCoastMotors.</p><a class="lnk" href="https://www.youtube.com/@GoldCoastMotors">Watch the channel<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a></div>
-    </article>
-    <article class="iss glow">
-      <div class="i-img"><img src="assets/e-about-gen-2.webp" alt="Walking along a row of sports cars in a white showroom, looking each one over (generated artwork)" width="960" height="1200" loading="lazy" decoding="async"></div>
-      <div class="i-txt"><span class="lab">02 — The owners</span><span class="kick">Hand-picked</span><h3>Picked by<br>the people who<br>run it</h3><p>Our customers are busy and don't have time to hunt for deals, so the owners take on the job of hand-picking our inventory and finding you the car you have been looking for.</p><a class="lnk" href="#contact">Contact us<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a></div>
-    </article>
-    <article class="iss glow">
-      <div class="i-img"><img src="assets/e-about-gen-3.webp" alt="A white Porsche 911 just delivered to a sunny driveway, the enclosed transporter behind it (generated artwork)" width="960" height="1200" loading="lazy" decoding="async"></div>
-      <div class="i-txt"><span class="lab">03 — Delivery</span><span class="kick">Anywhere</span><h3>Next town over<br>or across<br>the country</h3><p>We arrange shipping wherever you are, and we offer free pickup from either of Chicago's two major airports, O'Hare or Midway.</p><a class="lnk" href="tel:+16303059900">630-305-9900<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></a></div>
-    </article>
+  <div class="in ab">
+    <div class="ab-img"><img src="assets/e-about-room.webp" alt="A white Ferrari 458 in front, with a red 458, a blue Nissan GT-R and a silver BMW M3 behind, in a bright showroom" width="1199" height="1312" loading="lazy" decoding="async"></div>
+    <div class="ab-txt">
+      <p class="kick">About us</p>
+      <h2 class="t-light" id="about-t">About Gold Coast Motors</h2>
+      <p class="ab-sub">Rooted in Family. Driven by Passion. Defined by Rarity.</p>
+      <p>At Gold Coast Motors, we believe that some cars are more than just automobiles. They are memories, milestones, and lifelong dreams. They are the cars that once hung on your bedroom wall, the ones you admired growing up, and the ones you promised yourself you would own someday. Our passion is turning those dreams into reality.</p>
+      <p>With over 25 years of experience in the automotive industry, Gold Coast Motors is a family-run business built on the timeless principles of trust, integrity, and genuine relationships. We consider ourselves an automotive boutique: a carefully curated collection of rare, niche, luxury, and performance automobiles that you won't find on just any showroom floor.</p>
+      <p class="ab-sign">Welcome to Gold Coast Motors. Where yesterday's dreams become today's reality.</p>
+      <div class="ab-a"><a class="bx lt" href="#about-page"><span>Read more</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a><a class="bx" href="#contact"><span>Contact us</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sell svc" id="services" aria-labelledby="svc-t">
+  <div class="s-img"><img src="assets/e-svc.webp" alt="A white Corvette ZR1 in a bright detailing studio with hexagon ceiling lights, paint protection film on a stand and a wheel on a dolly" width="1418" height="1402" loading="lazy" decoding="async"></div>
+  <div class="s-txt glow" style="--gx:55%;--gw:760px;--gh:720px">
+    <p class="kick">Beyond the drive</p>
+    <h2 class="t-light" id="svc-t">Premium automotive care &amp; protection</h2>
+    <p class="lead">At GCM, our commitment to exceptional vehicles extends beyond the sale. We offer a curated selection of professional automotive services designed to protect, preserve, and enhance your investment.</p>
+    <ol class="steps">
+      <li><span class="n">01</span><div><h3>Paint protection film</h3><p>Preserve your vehicle's finish with premium paint protection film.</p></div></li>
+      <li><span class="n">02</span><div><h3>Window tinting</h3><p>Enhance your vehicle's appearance, privacy, and comfort with professional window tinting.</p></div></li>
+      <li><span class="n">03</span><div><h3>Ceramic coating</h3><p>Protect your investment with advanced ceramic coating technology.</p></div></li>
+      <li><span class="n">04</span><div><h3>Detailing &amp; paint correction</h3><p>Restore your vehicle's brilliance with meticulous detailing and professional paint correction.</p></div></li>
+      <li><span class="n">05</span><div><h3>Paintless dent repair</h3><p>Restore your vehicle's original body lines without compromising its factory finish.</p></div></li>
+    </ol>
+    <div class="cta"><a class="bx pri" href="#services-page"><span>View services</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a><a class="bx" href="#contact"><span>Contact us</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></div>
   </div>
 </section>
 
 <section class="prem" id="premier" aria-labelledby="prem-t">
-  <div class="in p-hd"><div><p class="kick">Collector selections</p><h2 class="t-light" id="prem-t">Premier listings</h2></div></div>
+  <div class="in p-hd"><div><p class="kick">Last 30 days</p><h2 class="t-light" id="prem-t">New listings</h2></div></div>
   <div class="in p-split">
     <div class="stage-w glow" style="--gw:1300px;--gh:900px"><div class="stage"><img id="lot-img" src="assets/lots/03608-2200.webp" alt="McLaren 720S in our showroom" width="2200" height="1467" loading="lazy" decoding="async"><div class="lights"></div><div class="st-nav"><button class="st-p" type="button" aria-label="Previous car" aria-controls="lot-p"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button><button class="st-n" type="button" aria-label="Next car" aria-controls="lot-p"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button></div></div></div>
-    <div class="p-r"><ul class="tabs" role="tablist" aria-label="Premier listings" aria-orientation="vertical"><li><button class="pt" role="tab" type="button" id="lt0" aria-selected="true" tabindex="0" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/03608-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-x"><span class="pt-l">720S</span><span class="pt-s">2019 · <b>McLaren</b></span></span></button></li><li><button class="pt" role="tab" type="button" id="lt1" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/09386-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-x"><span class="pt-l">812 Superfast</span><span class="pt-s">2018 · <b>Ferrari</b></span></span></button></li><li><button class="pt" role="tab" type="button" id="lt2" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/04778-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-x"><span class="pt-l">911 GT3 RS</span><span class="pt-s">2019 · <b>Porsche</b></span></span></button></li><li><button class="pt" role="tab" type="button" id="lt3" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/04804-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-x"><span class="pt-l">GT R</span><span class="pt-s">2018 · <b>Mercedes-AMG</b></span></span></button></li></ul></div>
+    <div class="p-r"><ul class="tabs" role="tablist" aria-label="New listings" aria-orientation="vertical"><li><button class="pt" role="tab" type="button" id="lt0" aria-selected="true" tabindex="0" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/03608-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-x"><span class="pt-l">720S</span><span class="pt-s">2019 · <b>McLaren</b></span></span></button></li><li><button class="pt" role="tab" type="button" id="lt1" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/09386-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-x"><span class="pt-l">812 Superfast</span><span class="pt-s">2018 · <b>Ferrari</b></span></span></button></li><li><button class="pt" role="tab" type="button" id="lt2" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/04778-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-x"><span class="pt-l">911 GT3 RS</span><span class="pt-s">2019 · <b>Porsche</b></span></span></button></li><li><button class="pt" role="tab" type="button" id="lt3" aria-selected="false" tabindex="-1" aria-controls="lot-p"><span class="pt-i"><img src="assets/lots/04804-900.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></span><span class="pt-x"><span class="pt-l">GT R</span><span class="pt-s">2018 · <b>Mercedes-AMG</b></span></span></button></li></ul></div>
   </div>
   <div id="lot-p" role="tabpanel" aria-labelledby="lt0">
     <div class="in lot">
@@ -662,7 +697,7 @@ h2.kick{font-weight:400}
 
 <div class="panels">
   <section class="pan" aria-labelledby="p1"><img src="assets/about/06339-1600.webp" alt="" width="1600" height="1067" loading="lazy" decoding="async" style="object-position:40% 60%"><p class="kick">Get approved</p><h2 class="t-light" id="p1">Financing</h2><p>Apply online before you visit.</p><a class="bx sm" href="#"><span>Start here</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></section>
-  <section class="pan" aria-labelledby="p2"><img src="assets/c-room-1440.webp" alt="" width="1440" height="864" loading="lazy" decoding="async" style="object-position:30% 55%"><p class="kick">Get your offer</p><h2 class="t-light" id="p2">We buy cars</h2><p>Even if you don't buy one of ours.</p><a class="bx sm" href="#offer"><span>Get an offer</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></section>
+  <section class="pan" aria-labelledby="p2"><img src="assets/e-hero-gt2-1440.webp" alt="" width="1440" height="960" loading="lazy" decoding="async" style="object-position:30% 55%"><p class="kick">Get your offer</p><h2 class="t-light" id="p2">We buy cars</h2><p>Even if you don't buy one of ours.</p><a class="bx sm" href="#sell-page"><span>Get an offer</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></section>
   <section class="pan" aria-labelledby="p3"><img src="assets/e-pan-collection.webp" alt="" width="1500" height="1000" loading="lazy" decoding="async" style="object-position:50% 58%"><p class="kick">Inventory</p><h2 class="t-light" id="p3">Our collection</h2><p>Everything currently on the floor.</p><a class="bx sm" href="#"><span>View all</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a></section>
 </div>
 
@@ -689,17 +724,17 @@ h2.kick{font-weight:400}
   <div class="visit glow" style="--gx:22%;--gw:860px;--gh:640px">
     <div>
       <p class="kick">Visit the showroom</p>
-      <address class="addr">1570 W Ogden Ave<br>Suite 112<br>Naperville, IL 60540</address>
+      <address class="addr">3880 E. Main Street<br>St. Charles, IL 60174</address>
       <div class="v-row">
         <div><p class="lab">Sales</p><a class="ph" href="tel:+16303059900">630-305-9900</a></div>
         <div><p class="lab">Hours</p><dl class="hrs"><dt>Mon–Fri</dt><dd>10 am – 6 pm</dd><dt>Saturday</dt><dd>10 am – 5 pm</dd><dt>Sunday</dt><dd>Closed</dd></dl></div>
       </div>
-      <div class="v-cta"><a class="bx" href="#"><span>Contact us</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a><a class="pinb" href="https://www.google.com/maps/dir/?api=1&amp;destination=1570+W+Ogden+Ave+112+Naperville+IL+60540" aria-label="Directions to 1570 W Ogden Ave" title="Directions"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s-4.5-4.6-4.5-8a4.5 4.5 0 0 1 9 0c0 3.4-4.5 8-4.5 8z"/><circle cx="8" cy="6.5" r="1.6"/></svg></a></div>
+      <div class="v-cta"><a class="bx" href="#"><span>Contact us</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></i></a><a class="pinb" href="https://www.google.com/maps/dir/?api=1&amp;destination=3880+E+Main+St+St+Charles+IL+60174" aria-label="Directions to 3880 E. Main Street, St. Charles" title="Directions"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s-4.5-4.6-4.5-8a4.5 4.5 0 0 1 9 0c0 3.4-4.5 8-4.5 8z"/><circle cx="8" cy="6.5" r="1.6"/></svg></a></div>
     </div>
-    <div id="map" aria-label="Map of 1570 W Ogden Ave, Naperville"><p class="fb">Map loads here</p></div>
+    <div id="map" aria-label="Map of 3880 E. Main Street, St. Charles"><p class="fb">Map loads here</p></div>
   </div>
   <div class="in base"><p class="small" style="margin:0;padding:0">© 2026 Gold Coast Motors Inc.</p>
-    <ul><li><a href="#">Inventory</a></li><li><a href="#">Sold</a></li><li><a href="#">Financing</a></li><li><a href="#sell">Sell us your car</a></li><li><a href="#contact">Contact us</a></li></ul></div>
+    <ul><li><a href="#">Inventory</a></li><li><a href="#">Sold</a></li><li><a href="#">Financing</a></li><li><a href="#sell">Sell your car</a></li><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul></div>
 </footer>
 
 <script>
@@ -710,41 +745,20 @@ h2.kick{font-weight:400}
   const hdr = $('.hdr');
   const stick = () => hdr.classList.toggle('is-stuck', scrollY > 140);
   addEventListener('scroll', stick, { passive: true }); stick();
-  /* offer form: one form. The hero form fills the car and lands on the first empty field. */
-  const q = $('[data-quick]'), o = $('#offer');
+  /* hero form: Year/Make/Model/Mileage carry over to the Sell page on the platform (photos are added there).
+     In this mock-up the page doesn't exist yet, so Continue scrolls to the Sell section instead. */
+  const q = $('[data-quick]');
   const fmtMi = v => { const d = v.replace(/\D/g, '').slice(0, 7); return d ? Number(d).toLocaleString('en-US') : ''; };
-  const fmtPh = v => { const d = v.replace(/\D/g, '').slice(0, 10); return d.length < 4 ? d : d.length < 7 ? `(${d.slice(0, 3)}) ${d.slice(3)}` : `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}`; };
-  [q.elements.mileage, o.elements.mileage].forEach(i => i.addEventListener('input', () => { i.value = fmtMi(i.value); }));
-  o.elements.phone.addEventListener('input', e => { e.target.value = fmtPh(e.target.value); });
-  const msg = { year: 'Choose the year', make: 'Choose the make', model: 'Add the model', mileage: 'Add the mileage', name: 'Add your name', phone: 'Add a 10-digit phone number', email: 'Check the email address' };
-  const ok = el => { const v = el.value.trim(); if (el.name === 'email') return !v || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v); if (el.name === 'phone') return v.replace(/\D/g, '').length === 10; return !!v; };
-  const fields = () => ['year', 'make', 'model', 'mileage', 'name', 'phone', 'email'].map(n => o.elements[n]);
-  const check = els => { let first = null; els.forEach(el => { const good = ok(el), f = el.closest('.f'); f.classList.toggle('bad', !good); f.querySelector('.err').textContent = good ? '' : msg[el.name]; el.setAttribute('aria-invalid', good ? 'false' : 'true'); if (!good && !first) first = el; }); return first; };
-  const car = () => `${o.elements.year.value} ${o.elements.make.value} ${o.elements.model.value}`.trim();
-  o.addEventListener('submit', e => {
-    e.preventDefault();
-    const bad = check(fields()); if (bad) { bad.focus(); return; }
-    o.querySelector('.of-p').hidden = true;
-    const d = o.querySelector('.of-done'); d.hidden = false;
-    d.querySelector('.of-who').textContent = o.elements.name.value.trim().split(/\s+/)[0];
-    d.querySelector('.of-ph').textContent = o.elements.phone.value;
-    d.querySelector('.of-car2').textContent = car();
-    d.tabIndex = -1; d.focus();
-  });
+  q.elements.mileage.addEventListener('input', e => { e.target.value = fmtMi(e.target.value); });
   q.addEventListener('submit', e => {
     e.preventDefault();
-    ['year', 'make', 'model', 'mileage'].forEach(n => { o.elements[n].value = q.elements[n].value; });
-    o.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'center' });
-    setTimeout(() => (fields().find(el => el.name !== 'email' && !ok(el)) || o.elements.name).focus({ preventScroll: true }), still ? 0 : 600);
+    $('#sell').scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'start' });
   });
-  /* one beam of light runs once around each sell form: the hero form on load, the offer form when it comes on screen */
+  /* one beam of light runs once around the hero form on load */
   if (!still && CSS.supports('(--a: 0deg)')) {
     const beam = el => { const b = document.createElement('span'); b.className = 'beam'; b.setAttribute('aria-hidden', 'true'); el.appendChild(b); return b; };
     const hb = beam($('.dock'));
     setTimeout(() => hb.classList.add('run'), 1300);
-    /* and once around the offer form, after its arrival settles */
-    const ob = beam(o);
-    new IntersectionObserver(([e], io) => { if (e.isIntersecting) { io.disconnect(); setTimeout(() => ob.classList.add('run'), 1100); } }, { threshold: .55 }).observe(o);
   }
   $$('.ib[aria-pressed]').forEach(b => b.addEventListener('click', () => {
     b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
@@ -841,7 +855,7 @@ h2.kick{font-weight:400}
   const start = async () => { try {
     await addCss('https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.css');
     await addJs('https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.js');
-    const at = [-88.1852937, 41.7676727];
+    const at = [-88.2659197, 41.9213180];
     const map = new maplibregl.Map({ container: mapEl, style: 'https://tiles.openfreemap.org/styles/positron', center: at, zoom: 14.4, attributionControl: false, cooperativeGestures: true });
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
     map.once('style.load', () => darken(map));
@@ -879,7 +893,7 @@ h2.kick{font-weight:400}
   if (hc) {
     const kick = hc.querySelector('.kick'), lead = hc.querySelector(':scope > p:not(.kick)');
     [kick, lead].forEach(el => { if (el && !el.querySelector('.ln')) el.innerHTML = '<span class="ln"><span>' + el.innerHTML + '</span></span>'; });
-    const steps = [kick.querySelector('.ln > span'), ...hc.querySelectorAll('#h1 .ln > span'), lead.querySelector('.ln > span')];
+    const steps = [kick && kick.querySelector('.ln > span'), ...hc.querySelectorAll('#h1 .ln > span'), lead && lead.querySelector('.ln > span')].filter(Boolean);
     gsap.timeline({ delay: .25, defaults: { ease: 'power3.out' } })
       .from(steps, { xPercent: -104, duration: 1, stagger: .12 })
       .from(hc.querySelectorAll('.cta > *'), { x: -48, opacity: 0, duration: .8, stagger: .12 }, '-=.55');
@@ -985,7 +999,7 @@ h2.kick{font-weight:400}
       .from(lab, { x: d.text, opacity: 0, duration: .5 }, .2)
       .from(txt.querySelector('.kick'), { x: d.text, opacity: 0, duration: .5 }, .32)
       .from(lines, { yPercent: 108, duration: .8, stagger: .09 }, .42)
-      .from(txt.querySelector('p'), { x: d.text * .6, opacity: 0, duration: .65 }, .72)
+      .from(txt.querySelectorAll('p'), { x: d.text * .6, opacity: 0, duration: .65, stagger: .1 }, .72)
       .from(txt.querySelector('.lnk'), { x: d.text * .4, opacity: 0, duration: .5 }, .9);
     if (play) tl.from(play, { scale: .6, opacity: 0, duration: .5, clearProps: 'transform,opacity' }, .75);
 
@@ -996,6 +1010,13 @@ h2.kick{font-weight:400}
     /* the chapter number is the progress mark: the chapter in the middle of the screen is lit, the others go quiet */
     ScrollTrigger.create({ trigger: a, start: 'top 55%', end: 'bottom 45%', toggleClass: 'is-current' });
   });
+  const end = document.querySelector('.a-end');
+  if (end) {
+    gsap.timeline({ scrollTrigger: { trigger: end, start: 'top 78%', once: true }, defaults: { ease: E } })
+      .from(end.querySelector('.pre'), { opacity: 0, duration: .7 })
+      .from(end.querySelector('.stmt'), { y: 24, opacity: 0, duration: .9 }, .2)
+      .from(end.querySelector('.sign'), { opacity: 0, duration: .7 }, .55);
+  }
 })();
 </script>
 </body>
